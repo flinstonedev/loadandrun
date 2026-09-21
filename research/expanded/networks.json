@@ -1,0 +1,1636 @@
+[
+  {
+    "id": "community-message-relay",
+    "title": "Messages that travel when the network cannot",
+    "summary": "Keep non-urgent community notices moving through temporary connections and volunteer relay points.",
+    "opportunity": "Build a community notice service that stores messages until another device can carry them onward, with honest delivery status, expiry, and receipts that survive an interrupted connection.",
+    "domain": "Resilient networks",
+    "tags": [
+      "Delay-tolerant networking",
+      "Community infrastructure",
+      "Offline"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "RFC 4838 — Delay-Tolerant Networking Architecture",
+        "url": "https://www.rfc-editor.org/rfc/rfc4838.html"
+      },
+      {
+        "title": "RFC 9171 — Bundle Protocol Version 7",
+        "url": "https://www.rfc-editor.org/rfc/rfc9171.html"
+      },
+      {
+        "title": "dtn7-rs — pinned source",
+        "url": "https://github.com/dtn7/dtn7-rs/tree/c30181b4b111e2adc5538931c797c0f7190acc4c"
+      }
+    ],
+    "existingWork": "The Bundle Protocol has multiple implementations. dtn7-rs provides a BP7 daemon, routing strategies, command-line tools, network discovery, and application interfaces. The transport can therefore be reused for the notice service.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "dtn7-rs",
+      "codeUrl": "https://github.com/dtn7/dtn7-rs/tree/c30181b4b111e2adc5538931c797c0f7190acc4c",
+      "licenseUrl": "https://github.com/dtn7/dtn7-rs/blob/c30181b4b111e2adc5538931c797c0f7190acc4c/LICENSE-MIT",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2019 Lars Baumgaertner",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. The project offers MIT or Apache-2.0 licensing; this entry selects the MIT option.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the software. Original additions may use another license.",
+      "commit": "c30181b4b111e2adc5538931c797c0f7190acc4c",
+      "licenseText": "Copyright (c) 2019 Lars Baumgaertner\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n",
+      "licenseTextSha256": "e7edae5a89e9516bb717ead4d663f6a0599dafb014b669065f734d6eb80fe4b5"
+    },
+    "details": {
+      "origin": {
+        "title": "Delay-Tolerant Networking Architecture",
+        "people": [
+          "Vinton Cerf",
+          "Scott Burleigh",
+          "Adrian Hooke",
+          "Leigh Torgerson",
+          "Robert Durst",
+          "Keith Scott",
+          "Kevin Fall",
+          "Howard Weiss"
+        ],
+        "year": 2007,
+        "summary": "The DTN architecture treats interruptions as a normal property of a network. A device retains a complete message and forwards it when a suitable contact appears, instead of requiring a continuous path between sender and recipient. RFC 4838 documents this store-and-forward architecture; Bundle Protocol version 7 later standardized its message format.",
+        "sourceIds": [
+          "origin",
+          "protocol"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "DTN is implemented and standardized. The opportunity is an understandable, community-operated notice service built on that foundation.",
+        "whatWasBuilt": "The Bundle Protocol has multiple implementations. dtn7-rs provides a BP7 daemon, routing strategies, command-line tools, network discovery, and application interfaces. The transport can therefore be reused for the notice service.",
+        "whatRemains": "This proposal adds a complete experience for composing, relaying, expiring, acknowledging, and correcting ordinary notices. A sender needs to distinguish stored locally, copied to a relay, received by a destination, and actually acknowledged; those states should remain intelligible after several disconnected hops.",
+        "sourceIds": [
+          "protocol",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A library, traveling workshop, or rural association could test whether scheduled encounters make useful communications possible with fewer assumptions about connectivity. The proposed benefit is continuity for low-urgency coordination. It must be demonstrated through delivery trials rather than inferred from a successful network demo.",
+        "beneficiaries": [
+          "Rural community organizations",
+          "Traveling education teams",
+          "Volunteer coordinators"
+        ],
+        "sourceIds": [
+          "origin",
+          "protocol"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Deliver 100 numbered test notices between three isolated local networks through one periodically connected relay, then reconcile receipts.",
+        "steps": [
+          {
+            "title": "Make the interruption visible",
+            "description": "Build a local outbox and inbox above dtn7-rs. Give every notice an identifier, destination, expiry, size limit, and status explanation that remains readable without a connection.",
+            "deliverable": "A working notice composer with a durable queue."
+          },
+          {
+            "title": "Exercise scheduled encounters",
+            "description": "Connect relay nodes on a fixed schedule, deliberately interrupt transfers, and record which notices arrived, expired, or were duplicated. Compare routing settings with the same replayable contact pattern.",
+            "deliverable": "A reproducible three-network delivery experiment."
+          },
+          {
+            "title": "Test the human handoff",
+            "description": "Ask volunteers to operate relays without a developer. Add clear storage limits, contact summaries, and a recovery procedure for a lost or full device.",
+            "deliverable": "An operator guide and usability report with delivery measurements."
+          }
+        ],
+        "successCriteria": [
+          "Every received notice maps to a single original despite duplicate transport.",
+          "Expired notices are marked clearly and never presented as current.",
+          "Volunteers can explain the difference between relayed and acknowledged without assistance."
+        ],
+        "nonGoals": [
+          "Emergency dispatch or guaranteed delivery",
+          "New radio hardware or replacement of the Bundle Protocol"
+        ],
+        "roles": [
+          {
+            "name": "Network engineer",
+            "contribution": "Build the contact schedule and instrument transport behavior."
+          },
+          {
+            "name": "Application developer",
+            "contribution": "Implement message state, receipts, and recovery."
+          },
+          {
+            "name": "Community organizer",
+            "contribution": "Choose realistic notices and evaluate volunteer operation."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Delivery is not guaranteed",
+          "description": "BP7 does not itself promise end-to-end arrival. Application receipts, expiry, and an explicit unknown state are essential; a green icon must not imply that a person has read a notice."
+        },
+        {
+          "title": "Relay trust and storage",
+          "description": "A relay can withhold messages or run out of space. Begin with synthetic, non-sensitive notices and known operators; define authentication, retention, and abuse limits before handling real community information."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Bundle Protocol Version 7",
+          "url": "https://www.rfc-editor.org/rfc/rfc9171.html",
+          "relationship": "The existing transport standard this application would use, including its explicit delivery limitations."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "RFC 4838 — Delay-Tolerant Networking Architecture",
+          "url": "https://www.rfc-editor.org/rfc/rfc4838.html",
+          "kind": "specification",
+          "supports": "Historical architecture and the rationale for communication across intermittent contacts."
+        },
+        {
+          "id": "protocol",
+          "title": "RFC 9171 — Bundle Protocol Version 7",
+          "url": "https://www.rfc-editor.org/rfc/rfc9171.html",
+          "kind": "specification",
+          "supports": "Store-carry-forward capabilities, prior implementations, application interfaces, and limits of delivery assurance."
+        },
+        {
+          "id": "implementation",
+          "title": "dtn7-rs — pinned source",
+          "url": "https://github.com/dtn7/dtn7-rs/tree/c30181b4b111e2adc5538931c797c0f7190acc4c",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "dtn7-rs — reuse license",
+          "url": "https://github.com/dtn7/dtn7-rs/blob/c30181b4b111e2adc5538931c797c0f7190acc4c/LICENSE-MIT",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "capability-civic-services",
+    "title": "Small services with exactly the permission they need",
+    "summary": "Let community tools cooperate without giving every integration access to an entire account.",
+    "opportunity": "Build a shared equipment library whose booking, reminder, and reporting tools receive narrowly scoped, revocable capabilities, with a visual explanation of who can do what.",
+    "domain": "Privacy and agency",
+    "tags": [
+      "Object capabilities",
+      "Permissions",
+      "Civic software"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Getting Started with E — original concepts",
+        "url": "https://erights.org/history/original-e/programmers/Econcepts.html"
+      },
+      {
+        "title": "Cap’n Proto RPC protocol",
+        "url": "https://capnproto.org/rpc.html"
+      },
+      {
+        "title": "Cap’n Proto — pinned source",
+        "url": "https://github.com/capnproto/capnproto/tree/e9a6b56094655765e57b75ebc1c7b002fb036fde"
+      }
+    ],
+    "existingWork": "E implemented a capability-oriented programming model. Cap’n Proto later built an RPC system informed by E’s CapTP protocol, including remote object references and promise pipelining. Its MIT-licensed implementation is the reusable foundation selected here.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Cap’n Proto",
+      "codeUrl": "https://github.com/capnproto/capnproto/tree/e9a6b56094655765e57b75ebc1c7b002fb036fde",
+      "licenseUrl": "https://github.com/capnproto/capnproto/blob/e9a6b56094655765e57b75ebc1c7b002fb036fde/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2013-2017 Sandstorm Development Group, Inc.; Cloudflare, Inc.; and other contributors.",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. This is a later implementation of capability-oriented RPC, not a license grant for historical E source code.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the software. Original additions may use another license.",
+      "commit": "e9a6b56094655765e57b75ebc1c7b002fb036fde",
+      "licenseText": "Copyright (c) 2013-2017 Sandstorm Development Group, Inc.; Cloudflare, Inc.;\nand other contributors. Each commit is copyright by its respective author or\nauthor's employer.\n\nLicensed under the MIT License:\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n\n",
+      "licenseTextSha256": "9564998c8d7f270a61a8b89869a8d17a9d5e3783b64027788b5e339ec8479e10"
+    },
+    "details": {
+      "origin": {
+        "title": "E and capability-based distributed cooperation",
+        "people": [
+          "Mark S. Miller",
+          "Electric Communities"
+        ],
+        "year": 1996,
+        "summary": "The original E documentation describes distributed programs that cooperate through references carrying specific authority. An object can reach another object only after receiving an appropriate reference. This offers a way to express a limited relationship, such as access to one document, instead of trusting an application with everything a user owns.",
+        "sourceIds": [
+          "origin"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Capability systems exist. The unfinished product direction here is making delegated authority legible and manageable for a small community organization.",
+        "whatWasBuilt": "E implemented a capability-oriented programming model. Cap’n Proto later built an RPC system informed by E’s CapTP protocol, including remote object references and promise pipelining. Its MIT-licensed implementation is the reusable foundation selected here.",
+        "whatRemains": "Build a concrete permission experience around those primitives: a reminder tool may read the date of one booking but cannot browse the membership directory; a volunteer can hand off a temporary role; an owner can revoke a delegation and see its consequences. The experiment would test these application behaviors with a small volunteer organization.",
+        "sourceIds": [
+          "origin",
+          "rpc",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "Volunteer organizations often combine tools maintained by different people. A small equipment library provides a manageable setting to test whether permission by task is easier to understand than accumulating broad integrations. The expected benefit is reduced accidental exposure and easier handover when a volunteer leaves; both require testing with actual workflows.",
+        "beneficiaries": [
+          "Tool libraries",
+          "Volunteer-run associations",
+          "Maintainers of community software"
+        ],
+        "sourceIds": [
+          "origin",
+          "rpc"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Connect three local services for a fictional tool library and demonstrate that a booking-only integration cannot enumerate members or change inventory.",
+        "steps": [
+          {
+            "title": "Define authority as an interface",
+            "description": "Model inventory lookup, booking creation, and reminder delivery as separate interfaces. Start with synthetic members and explicit trust boundaries between processes.",
+            "deliverable": "A runnable service example and documented permission graph."
+          },
+          {
+            "title": "Make delegation understandable",
+            "description": "Build a screen that explains the object, allowed actions, holder, expiry policy, and parent delegation. Implement revocation using an application-level intermediary and exercise a handover.",
+            "deliverable": "A usable permission inspector with a tested revocation path."
+          },
+          {
+            "title": "Try realistic mistakes",
+            "description": "Have volunteers connect the wrong tool, share a capability too widely, and retire an account. Record whether the interface makes the problem detectable and recoverable.",
+            "deliverable": "An adversarial test set and a volunteer usability report."
+          }
+        ],
+        "successCriteria": [
+          "The reminder service cannot access fields beyond its declared interface.",
+          "Revocation blocks new calls through the revoked intermediary.",
+          "Participants correctly predict the scope of a delegation before sharing it."
+        ],
+        "nonGoals": [
+          "A new programming language",
+          "A promise to retract information already copied by an authorized recipient"
+        ],
+        "roles": [
+          {
+            "name": "Distributed systems developer",
+            "contribution": "Implement service boundaries and capability transport."
+          },
+          {
+            "name": "Security engineer",
+            "contribution": "Test delegation, attenuation, and revocation assumptions."
+          },
+          {
+            "name": "Interaction designer",
+            "contribution": "Make the permission graph understandable to volunteers."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Revocation has a boundary",
+          "description": "Stopping future calls cannot erase data already received. The interface must distinguish ongoing authority from information that has already left the service."
+        },
+        {
+          "title": "Ambient authority can return",
+          "description": "A narrow RPC interface does not help if its implementation also has unnecessary filesystem, database, or network access. Trace authority through the whole service, including fallback and recovery paths."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "E language",
+          "url": "https://www.erights.org/",
+          "relationship": "Historical implementation and design lineage; its source is not covered by the selected Cap’n Proto license."
+        },
+        {
+          "title": "Sandstorm",
+          "url": "https://sandstorm.io/about",
+          "relationship": "An existing application platform using capability-oriented security; useful evidence that the primitive already works in a larger system."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Getting Started with E — original concepts",
+          "url": "https://erights.org/history/original-e/programmers/Econcepts.html",
+          "kind": "historical-document",
+          "supports": "The original distributed communication and capability-semantics design."
+        },
+        {
+          "id": "rpc",
+          "title": "Cap’n Proto RPC protocol",
+          "url": "https://capnproto.org/rpc.html",
+          "kind": "specification",
+          "supports": "Later object-capability RPC architecture and its relationship to E and CapTP."
+        },
+        {
+          "id": "implementation",
+          "title": "Cap’n Proto — pinned source",
+          "url": "https://github.com/capnproto/capnproto/tree/e9a6b56094655765e57b75ebc1c7b002fb036fde",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "Cap’n Proto — reuse license",
+          "url": "https://github.com/capnproto/capnproto/blob/e9a6b56094655765e57b75ebc1c7b002fb036fde/LICENSE",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "federated-local-knowledge",
+    "title": "A local knowledge commons that can disagree",
+    "summary": "Share repair and community knowledge while keeping authorship, local context, and alternative versions visible.",
+    "opportunity": "Connect three repair collectives through a federated handbook: each can adapt a page, preserve where it came from, and publish a tested variation without forcing everyone into one canonical answer.",
+    "domain": "Knowledge commons",
+    "tags": [
+      "Federated wiki",
+      "Provenance",
+      "Repair"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Federated Wiki — Contribute Code",
+        "url": "https://fed.wiki.org/contribute-code.html"
+      },
+      {
+        "title": "Smallest Federated Wiki — original goals and implementation",
+        "url": "https://github.com/WardCunningham/Smallest-Federated-Wiki"
+      },
+      {
+        "title": "Federated Wiki — pinned source",
+        "url": "https://github.com/fedwiki/wiki/tree/2ba2500719d4d96e78401414d41e387000250e16"
+      }
+    ],
+    "existingWork": "Federated Wiki has working servers, a browser client, plugins, and a federation of sites. The Node.js package assembles these components and documents running a personal server and seeding a neighborhood of related sites.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Federated Wiki",
+      "codeUrl": "https://github.com/fedwiki/wiki/tree/2ba2500719d4d96e78401414d41e387000250e16",
+      "licenseUrl": "https://github.com/fedwiki/wiki/blob/2ba2500719d4d96e78401414d41e387000250e16/LICENSE.txt",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2011-2015 Ward Cunningham and other contributors.",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. The core package uses MIT terms. Its separately maintained client, server, plugins, and node_modules must retain their individual licenses; content contributed to a wiki is not automatically MIT-licensed.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the software. Original additions may use another license.",
+      "commit": "2ba2500719d4d96e78401414d41e387000250e16",
+      "licenseText": "Copyright (c) 2011-2015 Ward Cunningham and other contributors\n\nThis software consists of voluntary contributions made by many\nindividuals. For exact contribution history, see the revision history\navailable at https://github.com/fedwiki/wiki\n\nThe following license applies to all parts of this software except as\ndocumented below:\n\n====\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n\n====\n\nAll files located in the node_modules are externally maintained libraries\nused by this software which have their own licenses; we recommend you read\nthem, as their terms may differ from the terms above.\n",
+      "licenseTextSha256": "8a602347f364a0d8a71a358b793b66e69b5b349ea48557de5bb693f5bb0f4f2b"
+    },
+    "details": {
+      "origin": {
+        "title": "Federated Wiki and Folk Memory",
+        "people": [
+          "Ward Cunningham",
+          "Federated Wiki contributors"
+        ],
+        "year": 2011,
+        "summary": "Federated Wiki began as a small implementation of a broader Folk Memory vision. Instead of editing only one shared page on one server, participants own sites and copy pages into new contexts. The project’s own history describes its 2011 beginning and the later separation of client, server, and plugins.",
+        "sourceIds": [
+          "origin",
+          "original-code"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Federated Wiki already supports this publishing model. The proposed experiment makes local adaptation useful for a real network of repair groups.",
+        "whatWasBuilt": "Federated Wiki has working servers, a browser client, plugins, and a federation of sites. The Node.js package assembles these components and documents running a personal server and seeding a neighborhood of related sites.",
+        "whatRemains": "Create a handbook workflow that records which equipment and circumstances a procedure applies to, why a group changed it, who tested the change, and where an earlier version can be found. Build comparison and update notices around that context rather than treating every different page as an error to be merged.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "Repair collectives can benefit from one another’s discoveries while serving different communities and equipment. This proposal tests whether federation helps knowledge travel without erasing useful disagreement. The benefit would be a maintained network of practical learning, measured by successful reuse and clear attribution rather than the number of copied pages.",
+        "beneficiaries": [
+          "Repair cafés",
+          "Community workshops",
+          "Local technical educators"
+        ],
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Run three independently owned wikis and follow ten software troubleshooting guides as each group adapts and tests them.",
+        "steps": [
+          {
+            "title": "Establish a small commons",
+            "description": "Agree on a content license and a guide template containing prerequisites, software version, evidence, and local contact. Seed ten original software repair guides on separate sites.",
+            "deliverable": "Three running sites and ten deliberately licensed guides."
+          },
+          {
+            "title": "Show the path of an adaptation",
+            "description": "Add a comparison view that traces page origins, identifies changed steps, and records the reason for a local variation. Let authors subscribe to relevant upstream changes without automatic replacement.",
+            "deliverable": "A provenance and comparison workflow tested across sites."
+          },
+          {
+            "title": "Test knowledge handover",
+            "description": "Give a new volunteer a guide from another group. Observe whether they can identify the applicable version, contact its maintainer, and publish a verified correction.",
+            "deliverable": "A study of ten cross-group uses and a maintenance agreement."
+          }
+        ],
+        "successCriteria": [
+          "Every adapted guide retains an identifiable source and content license.",
+          "Readers can distinguish tested steps from untested suggestions.",
+          "Each group can export its own pages and continue independently."
+        ],
+        "nonGoals": [
+          "A universal encyclopedia or mandatory consensus",
+          "Copying third-party manuals without permission"
+        ],
+        "roles": [
+          {
+            "name": "Web developer",
+            "contribution": "Implement comparison and update workflows with the existing wiki components."
+          },
+          {
+            "name": "Technical writer",
+            "contribution": "Develop the guide format and version conventions."
+          },
+          {
+            "name": "Repair volunteer",
+            "contribution": "Write, test, and adapt guides in real sessions."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Versions need context",
+          "description": "Two pages can differ because both are correct for different software releases. Present prerequisites and evidence next to the differences so that a newer edit does not automatically look more authoritative."
+        },
+        {
+          "title": "A federation needs care",
+          "description": "Independent ownership also means broken links, inactive maintainers, and differing moderation standards. Start with named stewards and test exports and replacements before adding more sites."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Federated Wiki Node.js package",
+          "url": "https://github.com/fedwiki/wiki",
+          "relationship": "The existing server assembly to extend; this proposal adds a repair-handbook workflow rather than another wiki implementation."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Federated Wiki — Contribute Code",
+          "url": "https://fed.wiki.org/contribute-code.html",
+          "kind": "project-history",
+          "supports": "Project origin in 2011, the Folk Memory lineage, and the actual implementation history."
+        },
+        {
+          "id": "original-code",
+          "title": "Smallest Federated Wiki — original goals and implementation",
+          "url": "https://github.com/WardCunningham/Smallest-Federated-Wiki",
+          "kind": "historical-document",
+          "supports": "Author’s preserved statement of federation goals, original implementation, and relationship to the later Node.js version."
+        },
+        {
+          "id": "implementation",
+          "title": "Federated Wiki — pinned source",
+          "url": "https://github.com/fedwiki/wiki/tree/2ba2500719d4d96e78401414d41e387000250e16",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "Federated Wiki — reuse license",
+          "url": "https://github.com/fedwiki/wiki/blob/2ba2500719d4d96e78401414d41e387000250e16/LICENSE.txt",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "cooperative-app-hosting",
+    "title": "Community software that survives its first administrator",
+    "summary": "Give a small organization control of its tools, with a practical path to transfer and recover them.",
+    "opportunity": "Build a cooperative hosting kit around Sandstorm that makes service ownership, maintenance, backups, and administrator succession explicit for a neighborhood association.",
+    "domain": "Community infrastructure",
+    "tags": [
+      "Self-hosting",
+      "Cooperative ownership",
+      "Digital continuity"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Sandstorm — mission and project history",
+        "url": "https://sandstorm.io/about"
+      },
+      {
+        "title": "Sandstorm documentation — Backups",
+        "url": "https://docs.sandstorm.io/en/latest/administering/backups/"
+      },
+      {
+        "title": "Sandstorm — pinned source",
+        "url": "https://github.com/sandstorm-io/sandstorm/tree/a97cf3ee19d3bf2761cd597583ca5d998de425d8"
+      }
+    ],
+    "existingWork": "Sandstorm provides a self-hostable application platform, isolated application instances, installation tooling, and documentation for backups. Its project history records a transition from a funded team to community development in 2017.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Sandstorm",
+      "codeUrl": "https://github.com/sandstorm-io/sandstorm/tree/a97cf3ee19d3bf2761cd597583ca5d998de425d8",
+      "licenseUrl": "https://github.com/sandstorm-io/sandstorm/blob/a97cf3ee19d3bf2761cd597583ca5d998de425d8/LICENSE",
+      "license": "Apache License 2.0",
+      "licenseId": "Apache-2.0",
+      "notice": "Copyright Sandstorm Development Group, Inc. and contributing authors.",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. The license file lists separately licensed bundled works, including MIT libraries, BSD code, and OFL fonts. The Sandstorm name and logo remain trademarks; app packages carry their own licenses.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Include the license, preserve applicable attribution and NOTICE information, and mark changed files when redistributing. The license includes a contributor patent grant with stated limits; it does not grant trademark rights.",
+      "commit": "a97cf3ee19d3bf2761cd597583ca5d998de425d8",
+      "licenseText": "Sandstorm is licensed under the Apache License, version 2.0.\n\nThe Sandstorm name and logo are trademarks. See below.\n\nThis package/repository contains code from the Sandstorm project as well as\nsome open-source works.\n\nFile Copyrights\n===============\n\nAll files not explicitly mentioned below\n    What: Sandstorm\n    Source URL: https://sandstorm.io\n    Copyright: Sandstorm Development Group, Inc.\n    License: Apache 2.0\n    License text: See below\n\nshell/public/spinner_96.gif\n    What: GIF spinner\n    Source URL: https://github.com/sjhcockrell/spinners\n    License: MIT\n    License URL: https://github.com/sjhcockrell/spinners/blob/master/README.md\n\nshell/public/clipboard.js\n    What: clipboard.js\n    Copyright: Zeno Rocha\n    Source URL: https://github.com/zenorocha/clipboard.js/\n    License: MIT\n    License URL: https://github.com/zenorocha/clipboard.js/blob/master/readme.md\n                 (at bottom)\n\nshell/public/fonts/WOFF/OTF/SourceSansPro-Regular.otf.woff\nshell/public/fonts/WOFF/OTF/SourceSansPro-It.otf.woff\nshell/public/fonts/WOFF/OTF/SourceSansPro-Semibold.otf.woff\nshell/public/fonts/WOFF/OTF/SourceSansPro-SemiboldIt.otf.woff\nshell/public/fonts/WOFF/OTF/SourceSansPro-Bold.otf.woff\nshell/public/fonts/WOFF/OTF/SourceSansPro-BoldIt.otf.woff\n    What: Source Sans Pro font\n    Source URL: https://github.com/adobe-fonts/source-sans-pro\n    Copyright: Adobe Systems Incorporated\n    License: SIL Open Font License, Version 1.1\n    License URL: https://github.com/adobe-fonts/source-sans-pro/blob/master/LICENSE.txt\n\nshell/imports/client/accounts/login-buttons.html\nshell/imports/client/accounts/login-buttons.js\nshell/imports/client/accounts/login-buttons-session.js\n    What: forked from accounts-ui/accounts-ui-unstyled\n    Source URL: https://github.com/meteor/meteor\n    Copyright: Meteor Development Group\n    License: MIT\n    License URL: https://github.com/meteor/meteor/blob/devel/LICENSE.txt\n\nshell/imports/client/vendor/ansi-up.js\n    What: ansi_up library (converts ANSI escape codes to HTML)\n    Source URL: http://github.com/drudru/ansi_up\n    Copyright: Dru Nelson\n    License: MIT\n    License URL: https://github.com/drudru/ansi_up/blob/master/Readme.md\n                 (at bottom)\n\nshell/imports/sandstorm-identicons/identicon.ts\n    What: identicon.js\n    Source URL: https://github.com/stewartlord/identicon.js\n    Copyright: Stewart Lord\n    License: BSD 2-clause\n    License URL: http://opensource.org/licenses/bsd-license.php\n\nshell/imports/client/accounts/ldap/ldap-client.js\nshell/imports/server/accounts/ldap/ldap-server.js\n    What: forked from Meteor accounts-ldap package\n    Source URL: https://github.com/typ90/meteor-accounts-ldap\n    Copyright: Eric Typaldos\n    License: MIT\n    License URL: https://github.com/typ90/meteor-accounts-ldap/blob/master/LICENSE\n\nshell/imports/client/accounts/saml/saml-client.js\nshell/imports/server/accounts/saml-utils.js\nshell/imports/server/accounts/saml/saml-server.js\n    What: forked from Meteor accounts-saml package\n    Source URL: https://github.com/nate-strauser/meteor-accounts-saml\n    Copyright: Nathan Strauser\n    License: MIT\n    License URL: https://github.com/nate-strauser/meteor-accounts-saml/blob/master/LICENSE\n\nsrc/joyent-http/*\n    What: Node.js HTTP parsing library\n    Source URL: https://github.com/joyent/http-parser\n    Copyright: Joyent, Inc.; Nginx, Inc.; Igor Sysoev; others.\n    License: MIT\n    License text: See comments at top of source files.\n\nbase64 handling in src/sandstorm/sandstorm-http-bridge.c++\n    What: Code copied from libb64\n    Source URL: http://libb64.sourceforge.net/\n    Copyright: Public Domain (authored by Chris Venter)\n    License: Public Domain\n    License text: http://creativecommons.org/licenses/publicdomain/\n\nlocaledata-C\n    What: A C locale supporting UTF-8, based on Debian and Fedora's C.UTF-8 locales\n    Source URLs:\n      http://sources.debian.net/data/main/g/glibc/2.19-22/localedata/locales/C\n      https://lists.stg.fedoraproject.org/archives/list/glibc%40lists.fedoraproject.org/message/RAIVZBJH55SKKLPSR6AX7RJOIUG3BF57/attachment/2/0001-Add-a-C.UTF-8-locale.patch\n    Copyright: Aurelien Jarno (Debian), Mike Fabian (Fedora)\n    License: LGPL Version 2.1 or later\n    License text: http://opensource.org/licenses/LGPL-2.1\n\nTrademarks\n==========\n\nThe Sandstorm name and logo are trademarks of Sandstorm Development Group, Inc.\nand may only be used in reference to the original Sandstorm code, project, or\nproduct as distributed by Sandstorm Development Group, Inc. You may not use\nthese trademarks to describe or promote a derivative work, nor may you use\nthese trademarks in conjuction with any commercial service, without prior\nwritten consent of Sandstorm Development Group, Inc.\n\nEventually, a more detailed trademark policy will be developed. For now,\nif in doubt, just ask us first. We are likely to be reasonable. :)\n\nWe intend our trademark policy to be similar to that of Mozilla's Firefox or\nGoogle's Android.\n\n===============================================================================\n\n                                 Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS\n\n   Copyright 2015 Sandstorm Development Group, Inc.\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n",
+      "licenseTextSha256": "175c7b1b4723b1e1cfe0eb22be331e67fcc0abc612c9cd4c173cdfd6e1e29c03"
+    },
+    "details": {
+      "origin": {
+        "title": "A server people control, operated by someone they trust",
+        "people": [
+          "Kenton Varda",
+          "Jade Wang",
+          "Sandstorm contributors"
+        ],
+        "year": 2014,
+        "summary": "Sandstorm’s stated mission was to make independent web applications practical for ordinary people. Its proposal allowed a friend, organization, or service to administer a server while users installed their own applications. Isolating those applications was part of making that delegated operation possible.",
+        "sourceIds": [
+          "origin"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Sandstorm exists as a usable platform. This brief revives the ownership ambition through a specific continuity and stewardship experiment.",
+        "whatWasBuilt": "Sandstorm provides a self-hostable application platform, isolated application instances, installation tooling, and documentation for backups. Its project history records a transition from a funded team to community development in 2017.",
+        "whatRemains": "Create a complete operating model for a small association: a plain-language service inventory, named backup stewards, maintenance windows, understandable recovery status, and a rehearsed transfer to a new administrator. The next step is organizational continuity around working software.",
+        "sourceIds": [
+          "origin",
+          "backups",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A community’s digital records should remain usable when the technically confident volunteer moves away. A cooperative hosting kit could reduce that single-person dependency while preserving local choice of tools. Hosting, labor, and storage still cost money; the experiment is about control and recoverability rather than promising free infrastructure.",
+        "beneficiaries": [
+          "Neighborhood associations",
+          "Member-run cooperatives",
+          "Small nonprofit teams"
+        ],
+        "sourceIds": [
+          "origin",
+          "backups"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Operate two licensed demonstration apps for a fictional association, then restore them on a second server with a different administrator.",
+        "steps": [
+          {
+            "title": "Define the operating agreement",
+            "description": "Document who owns each app’s data, who may administer the server, how updates are chosen, and what happens if the host leaves. Use synthetic records until the handover works.",
+            "deliverable": "A service inventory and one-page stewardship agreement."
+          },
+          {
+            "title": "Build a recovery dashboard",
+            "description": "Wrap the documented backup procedure with last-successful-backup status, restore rehearsal history, and clear operator tasks. Keep backup credentials separate from ordinary application access.",
+            "deliverable": "An operator view with verifiable recovery records."
+          },
+          {
+            "title": "Rehearse losing the host",
+            "description": "Move the demonstration apps to a clean server using the backup and written guide. Let a second volunteer perform the transfer without help from the first.",
+            "deliverable": "A timed recovery report and revised handover instructions."
+          }
+        ],
+        "successCriteria": [
+          "The second administrator restores the agreed records and verifies them.",
+          "Every service has a named owner and a backup steward.",
+          "Members can export their app data through a documented route."
+        ],
+        "nonGoals": [
+          "A new cloud provider or a new container runtime",
+          "A promise that every arbitrary application can run unchanged"
+        ],
+        "roles": [
+          {
+            "name": "Systems administrator",
+            "contribution": "Create reproducible deployment and restore procedures."
+          },
+          {
+            "name": "Application maintainer",
+            "contribution": "Package the demonstration apps and document data export."
+          },
+          {
+            "name": "Cooperative organizer",
+            "contribution": "Test ownership, succession, and member communication."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Backups are not recovery",
+          "description": "A recent backup is only one part of continuity. Dependencies, secrets, domain access, and a working restore process also need to survive the original administrator."
+        },
+        {
+          "title": "Independence carries maintenance work",
+          "description": "Self-hosting transfers operational responsibility to the group. Measure the actual time needed for updates, support, and restores; a sustainable service may need a shared paid maintainer."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Sandstorm backup documentation",
+          "url": "https://docs.sandstorm.io/en/latest/administering/backups/",
+          "relationship": "An existing operational foundation; the new work is understandable stewardship and a tested handover."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Sandstorm — mission and project history",
+          "url": "https://sandstorm.io/about",
+          "kind": "project-history",
+          "supports": "Original ownership ambition, project leads, existing platform, and transition to community development."
+        },
+        {
+          "id": "backups",
+          "title": "Sandstorm documentation — Backups",
+          "url": "https://docs.sandstorm.io/en/latest/administering/backups/",
+          "kind": "project-documentation",
+          "supports": "Existing backup and restoration procedures that the proposed kit would make easier to operate."
+        },
+        {
+          "id": "implementation",
+          "title": "Sandstorm — pinned source",
+          "url": "https://github.com/sandstorm-io/sandstorm/tree/a97cf3ee19d3bf2761cd597583ca5d998de425d8",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "Sandstorm — reuse license",
+          "url": "https://github.com/sandstorm-io/sandstorm/blob/a97cf3ee19d3bf2761cd597583ca5d998de425d8/LICENSE",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "offline-mutual-aid-circles",
+    "title": "A mutual-aid circle that keeps working offline",
+    "summary": "Coordinate ordinary offers and requests through signed local histories that reconnect when people do.",
+    "opportunity": "Build a small mutual-aid board using Secure Scuttlebutt feeds, with clear request expiry, reconciliation of duplicate offers, and an honest explanation of what can and cannot be deleted.",
+    "domain": "Community coordination",
+    "tags": [
+      "Peer-to-peer",
+      "Mutual aid",
+      "Offline social software"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Scuttlebutt Protocol Guide",
+        "url": "https://ssbc.github.io/scuttlebutt-protocol-guide/"
+      },
+      {
+        "title": "ssb-db — documented feed and deletion semantics",
+        "url": "https://github.com/ssbc/ssb-db/blob/18ce13af132456434ad62340784fe2b456c14a8c/README.md"
+      },
+      {
+        "title": "ssb-db — pinned source",
+        "url": "https://github.com/ssbc/ssb-db/tree/18ce13af132456434ad62340784fe2b456c14a8c"
+      }
+    ],
+    "existingWork": "ssb-db stores and verifies signed append-only feeds and provides interfaces for reading and publishing messages. The protocol guide explains identity, replication, discovery, and private messages. The application can build on these existing components.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "ssb-db",
+      "codeUrl": "https://github.com/ssbc/ssb-db/tree/18ce13af132456434ad62340784fe2b456c14a8c",
+      "licenseUrl": "https://github.com/ssbc/ssb-db/blob/18ce13af132456434ad62340784fe2b456c14a8c/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2014 Dominic Tarr.",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. This covers the ssb-db storage component, not every Scuttlebutt client or plugin. Replication, encrypted groups, and mobile applications require separately reviewed components.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the software. Original additions may use another license.",
+      "commit": "18ce13af132456434ad62340784fe2b456c14a8c",
+      "licenseText": "Copyright (c) 2014 Dominic Tarr\n\nPermission is hereby granted, free of charge, \nto any person obtaining a copy of this software and \nassociated documentation files (the \"Software\"), to \ndeal in the Software without restriction, including \nwithout limitation the rights to use, copy, modify, \nmerge, publish, distribute, sublicense, and/or sell \ncopies of the Software, and to permit persons to whom \nthe Software is furnished to do so, \nsubject to the following conditions:\n\nThe above copyright notice and this permission notice \nshall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, \nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES \nOF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. \nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR \nANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, \nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+      "licenseTextSha256": "bd72eb3720e8b226aedf4d84850238939dd43ad1139ffd72a888acd721510aa3"
+    },
+    "details": {
+      "origin": {
+        "title": "Secure Scuttlebutt’s locally held social histories",
+        "people": [
+          "Dominic Tarr",
+          "Secure Scuttlebutt contributors"
+        ],
+        "year": 2014,
+        "summary": "Secure Scuttlebutt organizes communication as signed histories held on participants’ devices. Peers exchange the parts of those histories they lack when connections become available. The ssb-db component records this model directly: an identity signs an ordered feed, allowing another peer to verify who wrote a message and where it belongs.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Scuttlebutt has working social applications and protocol components. This proposal tests a narrow coordination problem where stale information must be handled explicitly.",
+        "whatWasBuilt": "ssb-db stores and verifies signed append-only feeds and provides interfaces for reading and publishing messages. The protocol guide explains identity, replication, discovery, and private messages. The application can build on these existing components.",
+        "whatRemains": "Make an offer-and-request workflow that remains understandable when two neighbors act before either sees the other’s update. Record offered, tentatively claimed, confirmed, completed, and expired states without pretending disconnected peers share an immediate global truth. Add consent and retention explanations before inviting a real group.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A group sharing garden tools or surplus materials could use a local board during an internet outage or at a gathering without reliable service. The test is whether delayed coordination helps with ordinary, non-sensitive tasks. It should not be presented as emergency communication or as a confidential case-management system.",
+        "beneficiaries": [
+          "Neighborhood sharing groups",
+          "Community gardens",
+          "Volunteer repair networks"
+        ],
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Let five test participants post and tentatively claim fictional offers while disconnected, then reconcile the board after peers meet.",
+        "steps": [
+          {
+            "title": "Build the offer state machine",
+            "description": "Publish signed events for a small set of offer states. Show the last known update and keep a tentative claim distinct from the offer owner’s confirmation.",
+            "deliverable": "A local board backed by verifiable feed events."
+          },
+          {
+            "title": "Make conflicts ordinary",
+            "description": "Simulate two people claiming one item before synchronization. Preserve both requests and ask the owner to resolve the conflict with a new signed event.",
+            "deliverable": "Repeatable conflict scenarios with clear explanations."
+          },
+          {
+            "title": "Explain participation and exit",
+            "description": "Test onboarding, lost-device recovery, local blocking, and retirement of a profile with volunteers using synthetic data. Show that removing a local copy cannot erase peers’ copies.",
+            "deliverable": "A consent flow and a documented exit exercise."
+          }
+        ],
+        "successCriteria": [
+          "No tentative claim silently becomes a confirmed commitment.",
+          "All peers eventually display the same owner-confirmed outcome after receiving the same events.",
+          "Participants can explain the retention and deletion limits before posting."
+        ],
+        "nonGoals": [
+          "Emergency response or sensitive support records",
+          "Guaranteed global deletion of replicated messages"
+        ],
+        "roles": [
+          {
+            "name": "Protocol developer",
+            "contribution": "Integrate feeds and exercise synchronization failures."
+          },
+          {
+            "name": "Product designer",
+            "contribution": "Explain stale state, confirmation, and retention."
+          },
+          {
+            "name": "Community facilitator",
+            "contribution": "Test whether the coordination rules match real group behavior."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Persistent histories and consent",
+          "description": "Append-only replication makes history useful but limits erasure. Local deletion does not recall a message already copied elsewhere; avoid personal or sensitive data in the initial experiment."
+        },
+        {
+          "title": "Identity and social trust differ",
+          "description": "A valid signature identifies a key, not a trustworthy person. The group still needs an invitation process, a way to report abuse, and a recovery policy for lost keys."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "ssb-db2",
+          "url": "https://github.com/ssbc/ssb-db2",
+          "relationship": "A later storage implementation to compare during technical planning; its license is not the one granted by this entry."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Scuttlebutt Protocol Guide",
+          "url": "https://ssbc.github.io/scuttlebutt-protocol-guide/",
+          "kind": "specification",
+          "supports": "Signed feeds, peer replication, identities, and the existing communication model."
+        },
+        {
+          "id": "storage",
+          "title": "ssb-db — documented feed and deletion semantics",
+          "url": "https://github.com/ssbc/ssb-db/blob/18ce13af132456434ad62340784fe2b456c14a8c/README.md",
+          "kind": "project-documentation",
+          "supports": "Existing storage capabilities, append-only verification, and limits of deleting replicated messages."
+        },
+        {
+          "id": "implementation",
+          "title": "ssb-db — pinned source",
+          "url": "https://github.com/ssbc/ssb-db/tree/18ce13af132456434ad62340784fe2b456c14a8c",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "ssb-db — reuse license",
+          "url": "https://github.com/ssbc/ssb-db/blob/18ce13af132456434ad62340784fe2b456c14a8c/LICENSE",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "community-network-rehearsal",
+    "title": "A rehearsal room for community networks",
+    "summary": "Help volunteer network operators understand failures before they change the real network.",
+    "opportunity": "Build an interactive lab that replays a community network’s topology with Babel routing, shows why routes change, and lets volunteers rehearse an outage on simulated links.",
+    "domain": "Resilient networks",
+    "tags": [
+      "Mesh routing",
+      "Simulation",
+      "Community infrastructure"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "RFC 6126 — experimental Babel protocol",
+        "url": "https://www.rfc-editor.org/rfc/rfc6126.html"
+      },
+      {
+        "title": "RFC 8966 — The Babel Routing Protocol",
+        "url": "https://www.rfc-editor.org/rfc/rfc8966.html"
+      },
+      {
+        "title": "Babel — author’s project page",
+        "url": "https://www.irif.fr/~jch/software/babel/"
+      },
+      {
+        "title": "babeld — pinned source",
+        "url": "https://github.com/jech/babeld/tree/118774d0c720cef016c0f3894ef8d24cd9cadd17"
+      }
+    ],
+    "existingWork": "babeld implements the routing protocol. RFC 8966 later standardized an updated version, documenting behavior, security considerations, and limitations. The protocol already handles route selection; the rehearsal environment would expose and explain that behavior.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "babeld",
+      "codeUrl": "https://github.com/jech/babeld/tree/118774d0c720cef016c0f3894ef8d24cd9cadd17",
+      "licenseUrl": "https://github.com/jech/babeld/blob/118774d0c720cef016c0f3894ef8d24cd9cadd17/LICENCE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2007, 2008 by Juliusz Chroboczek.",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. ",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the software. Original additions may use another license.",
+      "commit": "118774d0c720cef016c0f3894ef8d24cd9cadd17",
+      "licenseText": "Copyright (c) 2007, 2008 by Juliusz Chroboczek\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
+      "licenseTextSha256": "b415c41292cedef6c97b243609e50552887c29343566c639f23282d31efd2afd"
+    },
+    "details": {
+      "origin": {
+        "title": "Babel’s routing design for changing networks",
+        "people": [
+          "Juliusz Chroboczek"
+        ],
+        "year": 2011,
+        "summary": "The experimental Babel specification described a routing protocol intended to remain useful as links change, including in wireless mesh networks. It combines distance-vector routing with rules that limit looping and allow recovery after a route disappears. Its design acknowledges tradeoffs such as update traffic and convergence time.",
+        "sourceIds": [
+          "origin"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Babel is a standardized protocol with existing implementations. The opportunity is participatory understanding and rehearsal for the people operating a local network.",
+        "whatWasBuilt": "babeld implements the routing protocol. RFC 8966 later standardized an updated version, documenting behavior, security considerations, and limitations. The protocol already handles route selection; the rehearsal environment would expose and explain that behavior.",
+        "whatRemains": "Create a software-only rehearsal environment that connects observable routing events to a map a volunteer can understand. A participant should be able to remove a link, see which destinations become unreachable, compare recovery paths, and export the exact experiment for another operator to replay.",
+        "sourceIds": [
+          "protocol",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "Community connectivity is easier to maintain when more than one person understands what happens after a failure. A repeatable simulation could support training and shared planning without purchasing radio equipment or touching production routes. Its value is a better-informed operating team, to be measured through diagnosis tasks and recovery exercises.",
+        "beneficiaries": [
+          "Community network operators",
+          "Volunteer infrastructure teams",
+          "Networking educators"
+        ],
+        "sourceIds": [
+          "origin",
+          "protocol"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Run six isolated babeld nodes in a virtual topology, remove two links, and render a replay explaining the resulting reachability changes.",
+        "steps": [
+          {
+            "title": "Build a repeatable virtual network",
+            "description": "Create isolated network namespaces or containers with explicit links, delay, and packet-loss parameters. Store topology and random seeds in a portable scenario file.",
+            "deliverable": "A six-node lab that produces the same events on replay."
+          },
+          {
+            "title": "Connect routes to explanations",
+            "description": "Collect route changes and link observations without inspecting message payloads. Present destination reachability, next-hop changes, and confidence in observations alongside the map.",
+            "deliverable": "An interactive event timeline with readable route explanations."
+          },
+          {
+            "title": "Run volunteer diagnosis sessions",
+            "description": "Ask operators to explain three injected failures before and after using the replay. Record mistaken assumptions and improve terminology and exercises.",
+            "deliverable": "A small training pack with measured diagnosis results."
+          }
+        ],
+        "successCriteria": [
+          "A second operator can replay the same topology and failure sequence.",
+          "The view distinguishes measured state from a simulated prediction.",
+          "Participants can identify a broken path and describe at least one recovery option."
+        ],
+        "nonGoals": [
+          "New radio hardware or antenna planning",
+          "Automatic changes to a live network"
+        ],
+        "roles": [
+          {
+            "name": "Network engineer",
+            "contribution": "Build isolated topologies and verify protocol observations."
+          },
+          {
+            "name": "Visualization developer",
+            "contribution": "Make route changes and reachability understandable."
+          },
+          {
+            "name": "Community trainer",
+            "contribution": "Design and evaluate realistic operator exercises."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "A simulation is only a model",
+          "description": "A virtual link does not capture every property of real wireless equipment. Show the configured assumptions and use the lab for reasoning and comparison, not guaranteed predictions about field coverage."
+        },
+        {
+          "title": "Observability can reveal infrastructure",
+          "description": "Topology and operational data can expose private locations and network weaknesses. Begin with synthetic maps and let operators redact a scenario before sharing it."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Babel routing protocol",
+          "url": "https://www.rfc-editor.org/rfc/rfc8966.html",
+          "relationship": "The implemented standard under observation; the new work is a collaborative rehearsal and explanation tool."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "RFC 6126 — experimental Babel protocol",
+          "url": "https://www.rfc-editor.org/rfc/rfc6126.html",
+          "kind": "specification",
+          "supports": "Historical 2011 protocol design and its stated behavior and limitations."
+        },
+        {
+          "id": "protocol",
+          "title": "RFC 8966 — The Babel Routing Protocol",
+          "url": "https://www.rfc-editor.org/rfc/rfc8966.html",
+          "kind": "specification",
+          "supports": "Standardized routing behavior, multiple-origin limitations, convergence, and security considerations."
+        },
+        {
+          "id": "project",
+          "title": "Babel — author’s project page",
+          "url": "https://www.irif.fr/~jch/software/babel/",
+          "kind": "project-documentation",
+          "supports": "Existing protocol implementation and software lineage."
+        },
+        {
+          "id": "implementation",
+          "title": "babeld — pinned source",
+          "url": "https://github.com/jech/babeld/tree/118774d0c720cef016c0f3894ef8d24cd9cadd17",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "babeld — reuse license",
+          "url": "https://github.com/jech/babeld/blob/118774d0c720cef016c0f3894ef8d24cd9cadd17/LICENCE",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "verifiable-community-archive",
+    "title": "A community archive with proof someone still has it",
+    "summary": "Preserve openly licensed local records through shared custody and regular recovery checks.",
+    "opportunity": "Build an archive where three community stewards retain verifiable copies of a small collection, publish custody status, and rehearse recovery when the original publisher disappears.",
+    "domain": "Digital preservation",
+    "tags": [
+      "Content addressing",
+      "Shared stewardship",
+      "Open archives"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "IPFS — original 2014 paper",
+        "url": "https://arxiv.org/abs/1407.3561"
+      },
+      {
+        "title": "IPFS documentation — Pin files",
+        "url": "https://docs.ipfs.tech/how-to/pin-files/"
+      },
+      {
+        "title": "IPFS Kubo — pinned source",
+        "url": "https://github.com/ipfs/kubo/tree/f8850fc57352c80a8e84d88b77e55e80ef43e859"
+      }
+    ],
+    "existingWork": "Kubo is an existing IPFS implementation with tools for adding, finding, retrieving, and pinning content. Official documentation explains that cached objects may be garbage-collected and that pinning expresses an intention to retain selected objects.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "IPFS Kubo",
+      "codeUrl": "https://github.com/ipfs/kubo/tree/f8850fc57352c80a8e84d88b77e55e80ef43e859",
+      "licenseUrl": "https://github.com/ipfs/kubo/blob/f8850fc57352c80a8e84d88b77e55e80ef43e859/LICENSE-MIT",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Retain applicable IPFS Kubo contributor notices in copied files.",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. Kubo’s root LICENSE describes an MIT-only to MIT/Apache-2.0 transition. This entry selects MIT, which is available across that transition. The license does not grant rights to material placed on IPFS.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the software. Original additions may use another license.",
+      "commit": "f8850fc57352c80a8e84d88b77e55e80ef43e859",
+      "licenseText": "The MIT License (MIT)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
+      "licenseTextSha256": "8f71659370c5268d9a1dc962a46232540e8fca63462586d8efaa95aab492a208"
+    },
+    "details": {
+      "origin": {
+        "title": "IPFS: Content Addressed, Versioned, P2P File System",
+        "people": [
+          "Juan Benet"
+        ],
+        "year": 2014,
+        "summary": "The IPFS paper proposed identifying files by their content and locating matching copies across peers. A stable content identifier allows a reader to verify the bytes obtained from a different host. The vision separates the identity of information from the continued availability of its original web server.",
+        "sourceIds": [
+          "origin"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "IPFS is built and used. This proposal addresses a preservation workflow that content addressing alone does not supply.",
+        "whatWasBuilt": "Kubo is an existing IPFS implementation with tools for adding, finding, retrieving, and pinning content. Official documentation explains that cached objects may be garbage-collected and that pinning expresses an intention to retain selected objects.",
+        "whatRemains": "Turn storage primitives into an accountable agreement among archive stewards: who promises to keep which collection, how often recovery is checked, what happens when a volunteer leaves, and how collection descriptions and permissions are preserved with the bytes. A content hash proves identity, not permanent availability or historical truth.",
+        "sourceIds": [
+          "pinning",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A local history group or community software project could distribute custody of a modest, clearly licensed collection among several organizations. The potential benefit is resilience against a single neglected server. That benefit depends on funded storage, active stewards, and successful restore drills; a decentralized identifier by itself does not preserve anything.",
+        "beneficiaries": [
+          "Local history groups",
+          "Community archives",
+          "Small open source projects"
+        ],
+        "sourceIds": [
+          "origin",
+          "pinning"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Preserve 500 openly licensed test files across three steward nodes and recover the entire collection after taking the original publisher offline.",
+        "steps": [
+          {
+            "title": "Package a collection responsibly",
+            "description": "Create a manifest with file identifiers, titles, provenance, content licenses, and retention decisions. Begin with original or explicitly reusable public material.",
+            "deliverable": "A portable collection manifest and 500-file sample."
+          },
+          {
+            "title": "Make custody inspectable",
+            "description": "Let stewards accept named collections and report successful checks. Periodically fetch sampled blocks and schedule full restoration drills instead of trusting a node’s claim that it holds a copy.",
+            "deliverable": "A custody dashboard that distinguishes claims from verified retrievals."
+          },
+          {
+            "title": "Rehearse loss and succession",
+            "description": "Disconnect the publisher, remove one steward, and restore onto a clean node from the others. Transfer the departing steward’s responsibilities and record failures.",
+            "deliverable": "A recovery report and a tested succession procedure."
+          }
+        ],
+        "successCriteria": [
+          "All restored bytes match the collection manifest.",
+          "Readers can identify both the content’s rights and its source.",
+          "The system exposes a missed custody check and the next responsible person."
+        ],
+        "nonGoals": [
+          "Guaranteed permanent storage",
+          "Publishing private records or material without reuse permission"
+        ],
+        "roles": [
+          {
+            "name": "Storage engineer",
+            "contribution": "Implement pinning, integrity checks, and restores."
+          },
+          {
+            "name": "Archivist",
+            "contribution": "Define provenance, metadata, and retention rules."
+          },
+          {
+            "name": "Community steward",
+            "contribution": "Operate a node and test handover to another custodian."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Integrity is not authenticity",
+          "description": "Matching a hash proves that bytes match an identifier. It does not prove who created them or whether their claims are true; keep provenance and curatorial review separate from integrity checks."
+        },
+        {
+          "title": "Replication complicates removal",
+          "description": "Unpinning one copy does not recall copies held elsewhere. Decide what belongs in a public collection before replication and make correction and withdrawal limits visible."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "IPFS pinning tools",
+          "url": "https://docs.ipfs.tech/how-to/pin-files/",
+          "relationship": "Existing retention controls; the proposed addition is a human custody agreement backed by measured recovery."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "IPFS — original 2014 paper",
+          "url": "https://arxiv.org/abs/1407.3561",
+          "kind": "research-paper",
+          "supports": "Original content-addressed, versioned peer-to-peer filesystem proposal."
+        },
+        {
+          "id": "pinning",
+          "title": "IPFS documentation — Pin files",
+          "url": "https://docs.ipfs.tech/how-to/pin-files/",
+          "kind": "project-documentation",
+          "supports": "Existing pinning behavior, caching, garbage collection, and retention limits."
+        },
+        {
+          "id": "license-scope",
+          "title": "Kubo — root license selection notice",
+          "url": "https://github.com/ipfs/kubo/blob/f8850fc57352c80a8e84d88b77e55e80ef43e859/LICENSE",
+          "kind": "license",
+          "supports": "MIT availability across the project’s transition to dual MIT/Apache licensing."
+        },
+        {
+          "id": "implementation",
+          "title": "IPFS Kubo — pinned source",
+          "url": "https://github.com/ipfs/kubo/tree/f8850fc57352c80a8e84d88b77e55e80ef43e859",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "IPFS Kubo — reuse license",
+          "url": "https://github.com/ipfs/kubo/blob/f8850fc57352c80a8e84d88b77e55e80ef43e859/LICENSE-MIT",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "versioned-citizen-data",
+    "title": "Citizen-science data that can outlive its publisher",
+    "summary": "Let communities publish changing datasets with verifiable versions and independent mirrors.",
+    "opportunity": "Build a small environmental data commons where contributors publish signed dataset versions, mirrors retain selected records, and every chart can name the exact data it used.",
+    "domain": "Open science",
+    "tags": [
+      "Dataset versioning",
+      "Peer-to-peer",
+      "Reproducibility"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Dat Protocol — archived protocol vision and whitepaper",
+        "url": "https://www.datprotocol.com/"
+      },
+      {
+        "title": "Dat — Distributed Dataset Synchronization and Versioning",
+        "url": "https://github.com/dat-ecosystem-archive/whitepaper/blob/bcaa3703ac0df22f3e2fa13d47416f1078811eb8/source/dat-paper.md"
+      },
+      {
+        "title": "Hypercore — pinned source",
+        "url": "https://github.com/holepunchto/hypercore/tree/3eebb294216e914b7c402575da07f6b3500d0381"
+      }
+    ],
+    "existingWork": "Hypercore provides signed, verifiable data logs, selective replication, and APIs for data updates and snapshots. Its documentation explicitly notes incompatibility with older releases and supports truncation; it should not be described as an automatically immutable archive.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Hypercore",
+      "codeUrl": "https://github.com/holepunchto/hypercore/tree/3eebb294216e914b7c402575da07f6b3500d0381",
+      "licenseUrl": "https://github.com/holepunchto/hypercore/blob/3eebb294216e914b7c402575da07f6b3500d0381/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2016 Mathias Buus.",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. Hypercore is a later reference component for the versioned-data direction. Its current APIs are not represented as wire-compatible with the archived Dat protocol or earlier Hypercore releases.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the software. Original additions may use another license.",
+      "commit": "3eebb294216e914b7c402575da07f6b3500d0381",
+      "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2016 Mathias Buus\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
+      "licenseTextSha256": "6a134e51aa31496c15a741592fc5d782b2dbf8d8b6b8524e15c8520ae0cd6374"
+    },
+    "details": {
+      "origin": {
+        "title": "Dat’s distributed dataset synchronization vision",
+        "people": [
+          "Maxwell Ogden",
+          "Karissa McKelvey",
+          "Mathias Buus Madsen"
+        ],
+        "year": 2017,
+        "summary": "The Dat whitepaper described synchronizing large, changing folders while preserving verifiable dataset versions. Its protocol materials presented a public-key-addressed archive whose updates are signed and whose hosting can move without making identity depend on one server. The aim was reusable, distributed data rather than a single download location.",
+        "sourceIds": [
+          "origin",
+          "paper"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Dat and later Hypercore software have implemented important parts of this direction. This experiment focuses on understandable publication and stewardship for a citizen-science group.",
+        "whatWasBuilt": "Hypercore provides signed, verifiable data logs, selective replication, and APIs for data updates and snapshots. Its documentation explicitly notes incompatibility with older releases and supports truncation; it should not be described as an automatically immutable archive.",
+        "whatRemains": "Add a publication workflow that binds an analysis to an explicit version, records corrections without confusing readers, separates observations from interpretations, and transfers mirroring responsibilities when a publisher leaves. Test those behaviors using synthetic temperature observations before collecting real personal or location-sensitive data.",
+        "sourceIds": [
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "Volunteer monitoring projects need others to inspect how a chart was produced and to retain useful data after a project changes hands. Versioned publication could make correction and independent reanalysis easier. The proposed benefit is reproducibility and continuity; signatures establish who controlled a publishing key, not whether a sensor reading is scientifically valid.",
+        "beneficiaries": [
+          "Citizen-science groups",
+          "Community environmental monitors",
+          "Independent researchers"
+        ],
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Publish three revisions of a synthetic temperature dataset, reproduce one chart from each, and serve the selected revisions from a second publisher-independent mirror.",
+        "steps": [
+          {
+            "title": "Define the publication unit",
+            "description": "Package observations with units, collection method, schema version, contributor key, and a dataset license. Choose explicit snapshot identifiers rather than treating the latest state as a stable citation.",
+            "deliverable": "A dataset manifest and three reproducible sample releases."
+          },
+          {
+            "title": "Make correction traceable",
+            "description": "Build a release comparison showing added records, corrected values, and the stated reason for each change. Keep analyses attached to the release they actually used.",
+            "deliverable": "A version browser and chart-generation example."
+          },
+          {
+            "title": "Exercise independent custody",
+            "description": "Replicate selected releases to a second node, disconnect the original publisher, and rerun the analyses. Document how the group replaces a lost signing key and preserves earlier citations.",
+            "deliverable": "A mirror recovery report and key-succession procedure."
+          }
+        ],
+        "successCriteria": [
+          "A chart can be regenerated from its named release without the original publisher.",
+          "Corrections identify affected records and preserve the meaning of earlier citations.",
+          "Mirrors show which release data they actually retain."
+        ],
+        "nonGoals": [
+          "A global scientific repository",
+          "Automatic validation of measurements or guaranteed compatibility with historical Dat software"
+        ],
+        "roles": [
+          {
+            "name": "Data engineer",
+            "contribution": "Define manifests, releases, and reproducible analysis."
+          },
+          {
+            "name": "Peer-to-peer developer",
+            "contribution": "Implement replication and version retention."
+          },
+          {
+            "name": "Community scientist",
+            "contribution": "Review units, correction rules, and practical publication needs."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "A log can still change",
+          "description": "Current Hypercore supports truncation and forks. The application must specify release retention and snapshot policy rather than assuming an append-only description guarantees that every old version remains available."
+        },
+        {
+          "title": "Open data needs deliberate boundaries",
+          "description": "Publishing a dataset can reveal households, exact sites, or contributors. Use synthetic data first and agree on aggregation, attribution, and reuse terms before releasing real observations."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Archived Dat whitepaper",
+          "url": "https://github.com/dat-ecosystem-archive/whitepaper",
+          "relationship": "Historical publication vision; the proposed prototype uses the separately licensed later Hypercore implementation."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Dat Protocol — archived protocol vision and whitepaper",
+          "url": "https://www.datprotocol.com/",
+          "kind": "historical-document",
+          "supports": "The 2017 distributed archive vision, signed updates, version logs, and publisher-independent hosting."
+        },
+        {
+          "id": "paper",
+          "title": "Dat — Distributed Dataset Synchronization and Versioning",
+          "url": "https://github.com/dat-ecosystem-archive/whitepaper/blob/bcaa3703ac0df22f3e2fa13d47416f1078811eb8/source/dat-paper.md",
+          "kind": "research-paper",
+          "supports": "Archived whitepaper and original research lineage; it is historical material rather than a current implementation specification."
+        },
+        {
+          "id": "implementation",
+          "title": "Hypercore — pinned source",
+          "url": "https://github.com/holepunchto/hypercore/tree/3eebb294216e914b7c402575da07f6b3500d0381",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "Hypercore — reuse license",
+          "url": "https://github.com/holepunchto/hypercore/blob/3eebb294216e914b7c402575da07f6b3500d0381/LICENSE",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "community-owned-search",
+    "title": "Search governed by the community it serves",
+    "summary": "Help people find useful public knowledge through a small, inspectable search index they can maintain together.",
+    "opportunity": "Build a library-run search portal for a deliberately selected collection of open technical learning resources, with transparent inclusion rules, explainable ranking, and local-only query processing.",
+    "domain": "Knowledge commons",
+    "tags": [
+      "Search",
+      "Privacy",
+      "Public-interest software"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "YaCy — Philosophy",
+        "url": "https://old.yacy.net/en/Philosophy.html"
+      },
+      {
+        "title": "A Web Search Appliance with Solr and YaCy — ApacheCon 2012",
+        "url": "https://yacy.net/material/YaCy_ApacheCon_20121108.pdf"
+      },
+      {
+        "title": "YaCy search server — pinned source",
+        "url": "https://github.com/yacy/yacy_search_server/tree/d05db9e6bb5d2f6a12bf2baf33a35d25f71a4454"
+      }
+    ],
+    "existingWork": "YaCy already includes a crawler, an index, a search interface, administration tools, and optional peer-to-peer index exchange. Its repository documents local-only searches and operation without participating in the public cluster.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "YaCy search server",
+      "codeUrl": "https://github.com/yacy/yacy_search_server/tree/d05db9e6bb5d2f6a12bf2baf33a35d25f71a4454",
+      "licenseUrl": "https://github.com/yacy/yacy_search_server/blob/d05db9e6bb5d2f6a12bf2baf33a35d25f71a4454/gpl.txt",
+      "license": "GNU GPL 2.0 or later",
+      "licenseId": "GPL-2.0-or-later",
+      "notice": "Retain individual YaCy authors’ copyright notices; the project’s COPYRIGHT file grants GPL version 2 or later for its main code.",
+      "scope": "The named reference implementation's own code at the linked revision. Papers, external data, brands, and third-party dependencies retain their separate rights. YaCy’s COPYRIGHT file designates source/net/yacy/cora as LGPL and its other own code as GPL version 2 or later unless a file says otherwise. Bundled libraries retain their own licenses; crawled content is not relicensed by the software.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "When distributing a modified program or binaries, provide the corresponding source under GPL terms and retain notices. Commercial use is allowed. YaCy permits GPL version 2 or later; its designated library files use LGPL terms.",
+      "commit": "d05db9e6bb5d2f6a12bf2baf33a35d25f71a4454",
+      "licenseText": "\t\t    GNU GENERAL PUBLIC LICENSE\n\t\t       Version 2, June 1991\n\n Copyright (C) 1989, 1991 Free Software Foundation, Inc.\n                       59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n Everyone is permitted to copy and distribute verbatim copies\n of this license document, but changing it is not allowed.\n\n\t\t\t    Preamble\n\n  The licenses for most software are designed to take away your\nfreedom to share and change it.  By contrast, the GNU General Public\nLicense is intended to guarantee your freedom to share and change free\nsoftware--to make sure the software is free for all its users.  This\nGeneral Public License applies to most of the Free Software\nFoundation's software and to any other program whose authors commit to\nusing it.  (Some other Free Software Foundation software is covered by\nthe GNU Library General Public License instead.)  You can apply it to\nyour programs, too.\n\n  When we speak of free software, we are referring to freedom, not\nprice.  Our General Public Licenses are designed to make sure that you\nhave the freedom to distribute copies of free software (and charge for\nthis service if you wish), that you receive source code or can get it\nif you want it, that you can change the software or use pieces of it\nin new free programs; and that you know you can do these things.\n\n  To protect your rights, we need to make restrictions that forbid\nanyone to deny you these rights or to ask you to surrender the rights.\nThese restrictions translate to certain responsibilities for you if you\ndistribute copies of the software, or if you modify it.\n\n  For example, if you distribute copies of such a program, whether\ngratis or for a fee, you must give the recipients all the rights that\nyou have.  You must make sure that they, too, receive or can get the\nsource code.  And you must show them these terms so they know their\nrights.\n\n  We protect your rights with two steps: (1) copyright the software, and\n(2) offer you this license which gives you legal permission to copy,\ndistribute and/or modify the software.\n\n  Also, for each author's protection and ours, we want to make certain\nthat everyone understands that there is no warranty for this free\nsoftware.  If the software is modified by someone else and passed on, we\nwant its recipients to know that what they have is not the original, so\nthat any problems introduced by others will not reflect on the original\nauthors' reputations.\n\n  Finally, any free program is threatened constantly by software\npatents.  We wish to avoid the danger that redistributors of a free\nprogram will individually obtain patent licenses, in effect making the\nprogram proprietary.  To prevent this, we have made it clear that any\npatent must be licensed for everyone's free use or not licensed at all.\n\n  The precise terms and conditions for copying, distribution and\nmodification follow.\n\f\n\t\t    GNU GENERAL PUBLIC LICENSE\n   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION\n\n  0. This License applies to any program or other work which contains\na notice placed by the copyright holder saying it may be distributed\nunder the terms of this General Public License.  The \"Program\", below,\nrefers to any such program or work, and a \"work based on the Program\"\nmeans either the Program or any derivative work under copyright law:\nthat is to say, a work containing the Program or a portion of it,\neither verbatim or with modifications and/or translated into another\nlanguage.  (Hereinafter, translation is included without limitation in\nthe term \"modification\".)  Each licensee is addressed as \"you\".\n\nActivities other than copying, distribution and modification are not\ncovered by this License; they are outside its scope.  The act of\nrunning the Program is not restricted, and the output from the Program\nis covered only if its contents constitute a work based on the\nProgram (independent of having been made by running the Program).\nWhether that is true depends on what the Program does.\n\n  1. You may copy and distribute verbatim copies of the Program's\nsource code as you receive it, in any medium, provided that you\nconspicuously and appropriately publish on each copy an appropriate\ncopyright notice and disclaimer of warranty; keep intact all the\nnotices that refer to this License and to the absence of any warranty;\nand give any other recipients of the Program a copy of this License\nalong with the Program.\n\nYou may charge a fee for the physical act of transferring a copy, and\nyou may at your option offer warranty protection in exchange for a fee.\n\n  2. You may modify your copy or copies of the Program or any portion\nof it, thus forming a work based on the Program, and copy and\ndistribute such modifications or work under the terms of Section 1\nabove, provided that you also meet all of these conditions:\n\n    a) You must cause the modified files to carry prominent notices\n    stating that you changed the files and the date of any change.\n\n    b) You must cause any work that you distribute or publish, that in\n    whole or in part contains or is derived from the Program or any\n    part thereof, to be licensed as a whole at no charge to all third\n    parties under the terms of this License.\n\n    c) If the modified program normally reads commands interactively\n    when run, you must cause it, when started running for such\n    interactive use in the most ordinary way, to print or display an\n    announcement including an appropriate copyright notice and a\n    notice that there is no warranty (or else, saying that you provide\n    a warranty) and that users may redistribute the program under\n    these conditions, and telling the user how to view a copy of this\n    License.  (Exception: if the Program itself is interactive but\n    does not normally print such an announcement, your work based on\n    the Program is not required to print an announcement.)\n\f\nThese requirements apply to the modified work as a whole.  If\nidentifiable sections of that work are not derived from the Program,\nand can be reasonably considered independent and separate works in\nthemselves, then this License, and its terms, do not apply to those\nsections when you distribute them as separate works.  But when you\ndistribute the same sections as part of a whole which is a work based\non the Program, the distribution of the whole must be on the terms of\nthis License, whose permissions for other licensees extend to the\nentire whole, and thus to each and every part regardless of who wrote it.\n\nThus, it is not the intent of this section to claim rights or contest\nyour rights to work written entirely by you; rather, the intent is to\nexercise the right to control the distribution of derivative or\ncollective works based on the Program.\n\nIn addition, mere aggregation of another work not based on the Program\nwith the Program (or with a work based on the Program) on a volume of\na storage or distribution medium does not bring the other work under\nthe scope of this License.\n\n  3. You may copy and distribute the Program (or a work based on it,\nunder Section 2) in object code or executable form under the terms of\nSections 1 and 2 above provided that you also do one of the following:\n\n    a) Accompany it with the complete corresponding machine-readable\n    source code, which must be distributed under the terms of Sections\n    1 and 2 above on a medium customarily used for software interchange; or,\n\n    b) Accompany it with a written offer, valid for at least three\n    years, to give any third party, for a charge no more than your\n    cost of physically performing source distribution, a complete\n    machine-readable copy of the corresponding source code, to be\n    distributed under the terms of Sections 1 and 2 above on a medium\n    customarily used for software interchange; or,\n\n    c) Accompany it with the information you received as to the offer\n    to distribute corresponding source code.  (This alternative is\n    allowed only for noncommercial distribution and only if you\n    received the program in object code or executable form with such\n    an offer, in accord with Subsection b above.)\n\nThe source code for a work means the preferred form of the work for\nmaking modifications to it.  For an executable work, complete source\ncode means all the source code for all modules it contains, plus any\nassociated interface definition files, plus the scripts used to\ncontrol compilation and installation of the executable.  However, as a\nspecial exception, the source code distributed need not include\nanything that is normally distributed (in either source or binary\nform) with the major components (compiler, kernel, and so on) of the\noperating system on which the executable runs, unless that component\nitself accompanies the executable.\n\nIf distribution of executable or object code is made by offering\naccess to copy from a designated place, then offering equivalent\naccess to copy the source code from the same place counts as\ndistribution of the source code, even though third parties are not\ncompelled to copy the source along with the object code.\n\f\n  4. You may not copy, modify, sublicense, or distribute the Program\nexcept as expressly provided under this License.  Any attempt\notherwise to copy, modify, sublicense or distribute the Program is\nvoid, and will automatically terminate your rights under this License.\nHowever, parties who have received copies, or rights, from you under\nthis License will not have their licenses terminated so long as such\nparties remain in full compliance.\n\n  5. You are not required to accept this License, since you have not\nsigned it.  However, nothing else grants you permission to modify or\ndistribute the Program or its derivative works.  These actions are\nprohibited by law if you do not accept this License.  Therefore, by\nmodifying or distributing the Program (or any work based on the\nProgram), you indicate your acceptance of this License to do so, and\nall its terms and conditions for copying, distributing or modifying\nthe Program or works based on it.\n\n  6. Each time you redistribute the Program (or any work based on the\nProgram), the recipient automatically receives a license from the\noriginal licensor to copy, distribute or modify the Program subject to\nthese terms and conditions.  You may not impose any further\nrestrictions on the recipients' exercise of the rights granted herein.\nYou are not responsible for enforcing compliance by third parties to\nthis License.\n\n  7. If, as a consequence of a court judgment or allegation of patent\ninfringement or for any other reason (not limited to patent issues),\nconditions are imposed on you (whether by court order, agreement or\notherwise) that contradict the conditions of this License, they do not\nexcuse you from the conditions of this License.  If you cannot\ndistribute so as to satisfy simultaneously your obligations under this\nLicense and any other pertinent obligations, then as a consequence you\nmay not distribute the Program at all.  For example, if a patent\nlicense would not permit royalty-free redistribution of the Program by\nall those who receive copies directly or indirectly through you, then\nthe only way you could satisfy both it and this License would be to\nrefrain entirely from distribution of the Program.\n\nIf any portion of this section is held invalid or unenforceable under\nany particular circumstance, the balance of the section is intended to\napply and the section as a whole is intended to apply in other\ncircumstances.\n\nIt is not the purpose of this section to induce you to infringe any\npatents or other property right claims or to contest validity of any\nsuch claims; this section has the sole purpose of protecting the\nintegrity of the free software distribution system, which is\nimplemented by public license practices.  Many people have made\ngenerous contributions to the wide range of software distributed\nthrough that system in reliance on consistent application of that\nsystem; it is up to the author/donor to decide if he or she is willing\nto distribute software through any other system and a licensee cannot\nimpose that choice.\n\nThis section is intended to make thoroughly clear what is believed to\nbe a consequence of the rest of this License.\n\f\n  8. If the distribution and/or use of the Program is restricted in\ncertain countries either by patents or by copyrighted interfaces, the\noriginal copyright holder who places the Program under this License\nmay add an explicit geographical distribution limitation excluding\nthose countries, so that distribution is permitted only in or among\ncountries not thus excluded.  In such case, this License incorporates\nthe limitation as if written in the body of this License.\n\n  9. The Free Software Foundation may publish revised and/or new versions\nof the General Public License from time to time.  Such new versions will\nbe similar in spirit to the present version, but may differ in detail to\naddress new problems or concerns.\n\nEach version is given a distinguishing version number.  If the Program\nspecifies a version number of this License which applies to it and \"any\nlater version\", you have the option of following the terms and conditions\neither of that version or of any later version published by the Free\nSoftware Foundation.  If the Program does not specify a version number of\nthis License, you may choose any version ever published by the Free Software\nFoundation.\n\n  10. If you wish to incorporate parts of the Program into other free\nprograms whose distribution conditions are different, write to the author\nto ask for permission.  For software which is copyrighted by the Free\nSoftware Foundation, write to the Free Software Foundation; we sometimes\nmake exceptions for this.  Our decision will be guided by the two goals\nof preserving the free status of all derivatives of our free software and\nof promoting the sharing and reuse of software generally.\n\n\t\t\t    NO WARRANTY\n\n  11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY\nFOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN\nOTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES\nPROVIDE THE PROGRAM \"AS IS\" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED\nOR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF\nMERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS\nTO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE\nPROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING,\nREPAIR OR CORRECTION.\n\n  12. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING\nWILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR\nREDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,\nINCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING\nOUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED\nTO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY\nYOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER\nPROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGES.\n\n\t\t     END OF TERMS AND CONDITIONS\n\f\n\t    How to Apply These Terms to Your New Programs\n\n  If you develop a new program, and you want it to be of the greatest\npossible use to the public, the best way to achieve this is to make it\nfree software which everyone can redistribute and change under these terms.\n\n  To do so, attach the following notices to the program.  It is safest\nto attach them to the start of each source file to most effectively\nconvey the exclusion of warranty; and each file should have at least\nthe \"copyright\" line and a pointer to where the full notice is found.\n\n    <one line to give the program's name and a brief idea of what it does.>\n    Copyright (C) <year>  <name of author>\n\n    This program is free software; you can redistribute it and/or modify\n    it under the terms of the GNU General Public License as published by\n    the Free Software Foundation; either version 2 of the License, or\n    (at your option) any later version.\n\n    This program is distributed in the hope that it will be useful,\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n    GNU General Public License for more details.\n\n    You should have received a copy of the GNU General Public License\n    along with this program; if not, write to the Free Software\n    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n\n\nAlso add information on how to contact you by electronic and paper mail.\n\nIf the program is interactive, make it output a short notice like this\nwhen it starts in an interactive mode:\n\n    Gnomovision version 69, Copyright (C) year name of author\n    Gnomovision comes with ABSOLUTELY NO WARRANTY; for details type `show w'.\n    This is free software, and you are welcome to redistribute it\n    under certain conditions; type `show c' for details.\n\nThe hypothetical commands `show w' and `show c' should show the appropriate\nparts of the General Public License.  Of course, the commands you use may\nbe called something other than `show w' and `show c'; they could even be\nmouse-clicks or menu items--whatever suits your program.\n\nYou should also get your employer (if you work as a programmer) or your\nschool, if any, to sign a \"copyright disclaimer\" for the program, if\nnecessary.  Here is a sample; alter the names:\n\n  Yoyodyne, Inc., hereby disclaims all copyright interest in the program\n  `Gnomovision' (which makes passes at compilers) written by James Hacker.\n\n  <signature of Ty Coon>, 1 April 1989\n  Ty Coon, President of Vice\n\nThis General Public License does not permit incorporating your program into\nproprietary programs.  If your program is a subroutine library, you may\nconsider it more useful to permit linking proprietary applications with the\nlibrary.  If this is what you want to do, use the GNU Library General\nPublic License instead of this License.\n",
+      "licenseTextSha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994"
+    },
+    "details": {
+      "origin": {
+        "title": "YaCy’s search commons vision",
+        "people": [
+          "Michael Christen",
+          "YaCy contributors"
+        ],
+        "year": 2012,
+        "summary": "YaCy’s philosophy argues that access to open information also depends on transparent search. Its author’s 2012 presentation described a complete search appliance combining crawling, indexing, administration, and a user interface, alongside a wider peer-to-peer search ambition. The historical vision includes communities choosing what they index and how results are ranked.",
+        "sourceIds": [
+          "origin",
+          "presentation"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "YaCy is a working search engine. The proposed unfinished direction is a well-governed, usable search commons for a bounded public-interest collection.",
+        "whatWasBuilt": "YaCy already includes a crawler, an index, a search interface, administration tools, and optional peer-to-peer index exchange. Its repository documents local-only searches and operation without participating in the public cluster.",
+        "whatRemains": "Create a community editorial and operating layer: members propose sources, maintainers document acceptance or rejection, readers see why a result appears, and changes to ranking can be compared. Start with a small set of public technical learning resources and make the limits of the collection explicit.",
+        "sourceIds": [
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A public library or community computing group could help readers discover useful resources without making each query depend on an external search account. A bounded corpus allows volunteers to evaluate coverage and errors. Privacy depends on deployment and logging choices, so this proposal specifically tests local-only processing rather than repeating claims of universal anonymity.",
+        "beneficiaries": [
+          "Public libraries",
+          "Community computing groups",
+          "Learners using open educational resources"
+        ],
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Index a consented set of 50 open learning sites and evaluate 40 realistic questions through a locally operated search portal.",
+        "steps": [
+          {
+            "title": "Define the collection and permissions",
+            "description": "Ask librarians and educators to nominate sources, record why each belongs, and check indexing permissions and content terms. Configure crawl limits and exclude private network discovery.",
+            "deliverable": "A public collection policy and a reviewed source list."
+          },
+          {
+            "title": "Expose useful ranking evidence",
+            "description": "Present source, document date when known, matched terms, and collection context. Allow a reader to report stale or misleading results and publish a history of editorial changes.",
+            "deliverable": "A search interface with source explanations and correction requests."
+          },
+          {
+            "title": "Evaluate quality and query handling",
+            "description": "Run the agreed questions, compare ranking adjustments, and inspect network requests and logs. Keep results processing local and measure gaps with librarians rather than claiming general-web coverage.",
+            "deliverable": "A relevance report and a documented query-data lifecycle."
+          }
+        ],
+        "successCriteria": [
+          "Readers can see the search collection’s boundaries and propose corrections.",
+          "At least two maintainers can reproduce indexing and ranking changes.",
+          "The pilot sends no search queries to external engines or the public peer network."
+        ],
+        "nonGoals": [
+          "Replacing general web search",
+          "Copying or redistributing source documents merely because they are publicly accessible"
+        ],
+        "roles": [
+          {
+            "name": "Search developer",
+            "contribution": "Configure crawling and implement result explanations."
+          },
+          {
+            "name": "Librarian or curator",
+            "contribution": "Define inclusion rules and judge retrieval quality."
+          },
+          {
+            "name": "Operations engineer",
+            "contribution": "Verify local query handling, updates, and recovery."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Community selection still creates bias",
+          "description": "An open index is not automatically representative. Publish selection criteria, rejected-source reasons, and evaluation failures; provide a route for the people served to challenge the collection."
+        },
+        {
+          "title": "Discovery does not transfer rights",
+          "description": "Public access and permission to index are different from permission to republish complete documents. Keep attribution and content terms visible and design the pilot around sources that allow its intended use."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "YaCy search server",
+          "url": "https://github.com/yacy/yacy_search_server",
+          "relationship": "The existing full search application; this proposal builds a local community collection and governance workflow around it."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "YaCy — Philosophy",
+          "url": "https://old.yacy.net/en/Philosophy.html",
+          "kind": "project-manifesto",
+          "supports": "The project’s historical argument for transparent, decentralized, user-governed search; its broad promises are treated as aspirations, not proven outcomes."
+        },
+        {
+          "id": "presentation",
+          "title": "A Web Search Appliance with Solr and YaCy — ApacheCon 2012",
+          "url": "https://yacy.net/material/YaCy_ApacheCon_20121108.pdf",
+          "kind": "presentation",
+          "supports": "Author’s description of the implemented search appliance and privately defined search portals."
+        },
+        {
+          "id": "scope",
+          "title": "YaCy — copyright and license scope",
+          "url": "https://github.com/yacy/yacy_search_server/blob/d05db9e6bb5d2f6a12bf2baf33a35d25f71a4454/COPYRIGHT",
+          "kind": "license",
+          "supports": "GPL version 2 or later for main code, designated LGPL library files, and individual-file exceptions."
+        },
+        {
+          "id": "implementation",
+          "title": "YaCy search server — pinned source",
+          "url": "https://github.com/yacy/yacy_search_server/tree/d05db9e6bb5d2f6a12bf2baf33a35d25f71a4454",
+          "kind": "implementation",
+          "supports": "Existing implementation, its documented capabilities, and the starting point for this proposed experiment."
+        },
+        {
+          "id": "license",
+          "title": "YaCy search server — reuse license",
+          "url": "https://github.com/yacy/yacy_search_server/blob/d05db9e6bb5d2f6a12bf2baf33a35d25f71a4454/gpl.txt",
+          "kind": "license",
+          "supports": "Permissions and conditions for the named implementation at the reviewed revision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  }
+]

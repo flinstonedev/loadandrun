@@ -1,0 +1,1803 @@
+[
+  {
+    "id": "1a",
+    "details": {
+      "origin": {
+        "title": "Knowledge-Domain Interoperability and an Open Hyperdocument System",
+        "people": [
+          "Douglas Engelbart"
+        ],
+        "year": 1990,
+        "summary": "Engelbart proposed a common document infrastructure spanning organizations and software vendors. Documents would contain individually addressable objects, support different views of the same material, and expose incoming links. His concern was the continuity of collective knowledge: a decision, its evidence, and later revisions should remain connected when people change tools or work across organizational boundaries.",
+        "sourceIds": [
+          "ohs-paper"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "AUGMENT and HyperScope implemented parts of the OHS vision. Shared document addressing and views across independent tools remain the direction to explore.",
+        "whatWasBuilt": "The 1990 paper explicitly draws on AUGMENT and workplace pilots. HyperScope later reproduced selected navigation and viewing capabilities in a browser: paragraph addresses, adjustable outlines, and links that encode a chosen view. It used OPML and was presented by its creators as an initial step toward OHS.",
+        "whatRemains": "Build a small environment for reviewing specifications across tools: the same passage can be cited from a discussion, inspected alongside its history, and opened in another compatible reader. Start by testing that workflow across two independent tools.",
+        "sourceIds": [
+          "ohs-paper",
+          "hyperscope-features",
+          "hyperscope-story"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposed benefit is easier handover in volunteer technical projects. A new contributor could follow a decision to the exact requirement and evidence instead of reconstructing context from several documents. HyperScope supplies a concrete interface and format to study; the community still needs to test whether durable references improve real review work.",
+        "beneficiaries": [
+          "Open-source maintainers explaining long-lived design decisions",
+          "Standards and civic-technology groups reviewing complex proposals",
+          "New contributors joining a project after its initial discussions"
+        ],
+        "sourceIds": [
+          "hyperscope-features"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Two independently implemented readers exchange a 100-paragraph specification and preserve citations while authors reorganize it.",
+        "steps": [
+          {
+            "title": "Define what an address promises",
+            "description": "Distinguish a stable object identifier from its current outline position. Specify what happens after a move, split, deletion, or revision; retain a tombstone and previous version when a cited object disappears.",
+            "deliverable": "A small document format, address rules, and an annotated example specification."
+          },
+          {
+            "title": "Build two views of one document",
+            "description": "Implement an outline reader and a review reader against the same exported data. Include keyboard navigation and a way to expand cited passages without losing surrounding context.",
+            "deliverable": "Two working readers and an interoperability fixture set."
+          },
+          {
+            "title": "Connect decisions to evidence",
+            "description": "Let reviewers attach a reason and a typed relationship to a passage. Show incoming references and distinguish a quotation of a historical revision from a link to the current text.",
+            "deliverable": "A review session with requirements, objections, and decision links."
+          },
+          {
+            "title": "Run a handover study",
+            "description": "Ask contributors unfamiliar with the specification to recover the reasons behind five changes. Compare completion time and interpretation errors with a normal linked document, then publish the anonymized results.",
+            "deliverable": "A reproducible comparison and prioritized usability findings."
+          }
+        ],
+        "successCriteria": [
+          "All 30 preselected citations remain resolvable or explicitly marked deleted after 50 structural edits and export/import through both readers.",
+          "At least four of five new reviewers correctly identify the evidence behind four of five sampled decisions.",
+          "Keyboard-only participants can open, inspect, and return from a citation without losing their reading position."
+        ],
+        "nonGoals": [
+          "Rebuilding all of NLS/AUGMENT or replacing every project tool",
+          "Claiming permanent availability for content the group does not control"
+        ],
+        "roles": [
+          {
+            "name": "Document-format engineer",
+            "contribution": "Define identity, revision, and interchange behavior."
+          },
+          {
+            "name": "Interaction designer",
+            "contribution": "Make deep references and multiple views understandable."
+          },
+          {
+            "name": "Project historian or maintainer",
+            "contribution": "Supply real decision trails and assess the handover experiment."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Identity through editing",
+          "description": "A paragraph number describes location, not necessarily lasting identity. Splits and merges need explicit policies so a link cannot silently begin citing a different claim."
+        },
+        {
+          "title": "Useful structure without clerical work",
+          "description": "If authors must manually classify every sentence, the tool may cost more effort than it saves. Start with a few meaningful relationship types and observe actual use."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "HyperScope",
+          "url": "https://hyperscope.org/about/features.html",
+          "relationship": "A working partial realization of OHS navigation and view control, and the licensed foundation linked by this entry."
+        }
+      ],
+      "references": [
+        {
+          "id": "ohs-paper",
+          "title": "Engelbart: Knowledge-Domain Interoperability and an OHS (1990)",
+          "url": "https://dougengelbart.org/content/view/114/",
+          "kind": "original-paper",
+          "supports": "Original interoperability proposal, addressable objects, backlinks, views, and existing AUGMENT pilots."
+        },
+        {
+          "id": "hyperscope-features",
+          "title": "HyperScope: Features",
+          "url": "https://hyperscope.org/about/features.html",
+          "kind": "project-docs",
+          "supports": "Implemented paragraph addressing, view specifications, browser architecture, and OPML format."
+        },
+        {
+          "id": "hyperscope-story",
+          "title": "HyperScope: The Story",
+          "url": "https://hyperscope.org/about/story.html",
+          "kind": "retrospective",
+          "supports": "The project's own account of its relationship to AUGMENT and the wider OHS vision."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "1c",
+    "details": {
+      "origin": {
+        "title": "Evolutionary documents and transclusion",
+        "people": [
+          "Ted Nelson"
+        ],
+        "year": 1965,
+        "summary": "Nelson's 1965 paper proposed a file structure for changing personal documents and unresolved alternatives. His later xanalogical model made shared content and its origins visible across documents and versions. Transclusion is more than inserting a remote fragment: readers should be able to recognize the reused material and inspect its relationship to the source.",
+        "sourceIds": [
+          "nelson-1965",
+          "nelson-1999"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Transclusion has been implemented. The opportunity is to carry its provenance-preserving behavior into a focused, usable collaboration tool.",
+        "whatWasBuilt": "The Udanax Green release contains a C backend and a Python front end for viewing and editing documents, with known bugs documented by its authors. Nelson and collaborators also demonstrated links and transclusions in XanaduSpace.",
+        "whatRemains": "Build an evidence notebook in which a research group assembles an argument from permitted source passages, compares the original context beside each quotation, and receives an explicit choice when a source changes. Treat exact-version citations and intentionally updating inclusions as different user actions.",
+        "sourceIds": [
+          "udanax-release",
+          "xanaduspace"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our hypothesis is that groups writing explainers, technical proposals, or community research could avoid context loss if quotations remained connected to the exact material they used. Nelson's model supplies the provenance concept. The proposed benefit must be tested with readers; preserving a connection does not itself establish that the source is trustworthy or that an argument is sound.",
+        "beneficiaries": [
+          "Community researchers assembling evidence from several documents",
+          "Technical writers maintaining explanations across changing specifications",
+          "Readers checking whether a quotation supports a claim"
+        ],
+        "sourceIds": [
+          "nelson-1999"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Publish one jointly written explainer using 20 reusable passages from ten permission-cleared documents, with every passage traceable to its exact source version.",
+        "steps": [
+          {
+            "title": "Make an explicit source record",
+            "description": "Store source location, revision identity, selected span, surrounding context, and reuse permission. Begin with team-authored or openly licensed text so the prototype has a small, auditable corpus.",
+            "deliverable": "A source registry and portable document package."
+          },
+          {
+            "title": "Compose with visible provenance",
+            "description": "Let writers include a passage by reference and inspect the source alongside the draft. Clearly separate the original words from commentary, omissions, and edited paraphrases.",
+            "deliverable": "A two-pane editor with source-linked excerpts and readable export."
+          },
+          {
+            "title": "Handle change without rewriting history",
+            "description": "Keep the version originally cited, detect available updates, and let a reviewer accept or reject each replacement. When retrieval fails, label the retained snapshot rather than presenting it as a live original.",
+            "deliverable": "An update review flow covering changes, deletion, and unavailable sources."
+          },
+          {
+            "title": "Test whether readers recover context",
+            "description": "Give readers deliberate examples of misleading omissions and changed definitions. Compare how reliably they identify the problem using connected passages versus ordinary copied quotations.",
+            "deliverable": "A small reader study and a public set of provenance edge cases."
+          }
+        ],
+        "successCriteria": [
+          "Every displayed excerpt resolves to its stored source revision after the original is edited or moved.",
+          "Five independent readers can locate the surrounding context of at least 18 of 20 excerpts within two actions each.",
+          "No source update changes the published explainer without a recorded review decision."
+        ],
+        "nonGoals": [
+          "Recreating a universal publishing or micropayment network",
+          "Granting reuse rights to third-party text merely because it can be linked or retrieved"
+        ],
+        "roles": [
+          {
+            "name": "Hypertext engineer",
+            "contribution": "Design stable spans, version references, and content interchange."
+          },
+          {
+            "name": "Writer or editor",
+            "contribution": "Exercise quotations, revisions, and context comparison in an actual explainer."
+          },
+          {
+            "name": "Information designer",
+            "contribution": "Make source identity and changes legible without obscuring the argument."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "A source is not just a URL",
+          "description": "URLs can change their contents or disappear. The data model needs version identity and clear snapshot semantics, including what happens when a source should no longer be retained."
+        },
+        {
+          "title": "Different meanings of reuse",
+          "description": "An exact quotation, translation, paraphrase, and edited excerpt require different provenance labels. One universal visual treatment would conceal meaningful differences."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "XanaduSpace",
+          "url": "https://www.xanadu.net/XanaduSpace/btf.htm",
+          "relationship": "Its creators describe and illustrate a working implementation of side-by-side links and transclusions."
+        },
+        {
+          "title": "Udanax Green",
+          "url": "https://github.com/dotmpe/udanax-1999-09-29",
+          "relationship": "Historic source release with a backend, front end, and preserved original rights-holder grant."
+        }
+      ],
+      "references": [
+        {
+          "id": "nelson-1965",
+          "title": "Nelson: A file structure for the complex, the changing and the indeterminate (1965)",
+          "url": "https://doi.org/10.1145/800197.806036",
+          "kind": "original-paper",
+          "supports": "Early proposal for evolving personal documents and flexible linked file structures."
+        },
+        {
+          "id": "nelson-1999",
+          "title": "Nelson: Xanalogical Structure, Now More Than Ever (1999)",
+          "url": "https://www.xanadu.com/NOWMORETHANEVER/XuSum99.html",
+          "kind": "original-paper",
+          "supports": "Author's detailed explanation of transclusion, provenance, parallel documents, and versions."
+        },
+        {
+          "id": "udanax-release",
+          "title": "Udanax Green: original distribution README",
+          "url": "https://github.com/dotmpe/udanax-1999-09-29",
+          "kind": "source-code",
+          "supports": "Existing implementation, backend/frontend architecture, acknowledged bugs, and 1999 release."
+        },
+        {
+          "id": "xanaduspace",
+          "title": "Back to the Future: XanaduSpace",
+          "url": "https://www.xanadu.net/XanaduSpace/btf.htm",
+          "kind": "project-docs",
+          "supports": "Researchers' description of implemented transclusion and parallel-document displays."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "offline-field-notebook",
+    "details": {
+      "origin": {
+        "title": "Local-first software: collaboration with a usable local copy",
+        "people": [
+          "Martin Kleppmann",
+          "Adam Wiggins",
+          "Peter van Hardenberg",
+          "Mark McGranaghan"
+        ],
+        "year": 2019,
+        "summary": "The local-first research agenda argues that collaboration need not make a remote service the sole keeper of a user's work. Its authors proposed applications that remain useful offline, synchronize across devices, and preserve long-term user control. Their prototypes explored conflict-free replicated data types as one technical foundation for combining those properties.",
+        "sourceIds": [
+          "local-first-paper"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Local-first collaboration is an implemented approach. This entry proposes a fieldwork workflow whose recovery and reconciliation behavior can be understood by people collecting observations.",
+        "whatWasBuilt": "Automerge stores independently editable document copies, synchronizes changes, retains history, and supports branching and merging. Its conflict API can expose competing property values instead of hiding them behind the default visible value. That machinery provides consistency, but the application still has to explain what conflicting observations mean.",
+        "whatRemains": "The proposed notebook should distinguish a new observation from a correction to an existing one, preserve attribution, and show which device has backed up which records. After a week apart, a team should reconcile conflicting labels or counts without mistaking automatic convergence for agreement about the field evidence.",
+        "sourceIds": [
+          "automerge-docs",
+          "automerge-conflicts"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposed use is a small ecological survey or community infrastructure audit where connectivity cannot be assumed. Automerge already supplies synchronization and local histories, letting a team concentrate on confidence, recovery, and a usable handover. Whether this improves fieldwork is a hypothesis to test with an actual group and its existing record-keeping practice.",
+        "beneficiaries": [
+          "Volunteer environmental monitoring groups",
+          "Field researchers collecting observations away from reliable networks",
+          "Community teams surveying local infrastructure"
+        ],
+        "sourceIds": [
+          "automerge-docs"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Three collectors record and edit 100 observations over seven offline days, then reconcile their copies and recover from one deliberately lost device.",
+        "steps": [
+          {
+            "title": "Model evidence separately from interpretation",
+            "description": "Give observations stable identifiers and append corrections with attribution. Keep a measured value, its units, an observer's interpretation, and optional attachments separate so a changed label cannot silently replace the underlying evidence.",
+            "deliverable": "An observation schema and realistic, permission-cleared sample survey."
+          },
+          {
+            "title": "Make offline confidence visible",
+            "description": "Provide an explicit local-save indicator, a pending-transfer count, and export to an ordinary file. Show which observations exist only on this device and explain what a backup actually contains.",
+            "deliverable": "A notebook that restarts offline and exports a recoverable package."
+          },
+          {
+            "title": "Design the reunion",
+            "description": "Group concurrent changes by observation. Show conflicting values and their authors, allow both accounts to remain, and record a later reconciliation as a new decision rather than deleting its alternatives.",
+            "deliverable": "A reconciliation screen with conflict, duplicate, and attachment cases."
+          },
+          {
+            "title": "Rehearse failure with collectors",
+            "description": "Run the seven-day exercise with interrupted transfers, clock differences, and a device removed after backup. Ask collectors to explain what was recovered, what is still uncertain, and whose records need another copy.",
+            "deliverable": "A loss report, usability observations, and a recovery runbook."
+          }
+        ],
+        "successCriteria": [
+          "All acknowledged observations with a second copy survive the simulated device loss; any records that lacked a second copy are explicitly identified.",
+          "The three replicas converge after transfers are repeated in different orders, with all 12 seeded disagreements still inspectable.",
+          "Each collector correctly identifies whether a sample observation is saved locally, backed up, or awaiting another person's review."
+        ],
+        "nonGoals": [
+          "Guaranteeing recovery of information that existed only on a lost device",
+          "Providing scientific validation or automatic resolution of contradictory observations"
+        ],
+        "roles": [
+          {
+            "name": "Synchronization engineer",
+            "contribution": "Handle persistence, transfers, and recovery scenarios."
+          },
+          {
+            "name": "Fieldwork partner",
+            "contribution": "Define observations and run the disconnected collection exercise."
+          },
+          {
+            "name": "Product designer",
+            "contribution": "Explain save state, uncertainty, attribution, and reconciliation."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Convergence is not agreement",
+          "description": "Two observers may report incompatible values even when every device has identical data. Preserve that disagreement until someone records a reasoned resolution."
+        },
+        {
+          "title": "Large attachments and partial backup",
+          "description": "A synchronized note may refer to a photo that has not transferred. The interface must distinguish complete records from metadata-only copies."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Automerge",
+          "url": "https://automerge.org/docs/hello/",
+          "relationship": "Existing synchronization and history infrastructure; the proposed work concerns field observation semantics and recovery."
+        }
+      ],
+      "references": [
+        {
+          "id": "local-first-paper",
+          "title": "Local-first software: You own your data, in spite of the cloud (2019)",
+          "url": "https://www.inkandswitch.com/essay/local-first/",
+          "kind": "original-paper",
+          "supports": "Original research agenda, authors, date, local ownership, offline work, and CRDT prototypes."
+        },
+        {
+          "id": "automerge-docs",
+          "title": "Automerge: Welcome and design principles",
+          "url": "https://automerge.org/docs/hello/",
+          "kind": "project-docs",
+          "supports": "Implemented local copies, network-independent synchronization, history, and branching."
+        },
+        {
+          "id": "automerge-conflicts",
+          "title": "Automerge: Conflicts",
+          "url": "https://automerge.org/docs/reference/documents/conflicts/",
+          "kind": "project-docs",
+          "supports": "Competing property values remain available through the conflict API; default display is a deterministic choice."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "evolving-data-formats",
+    "details": {
+      "origin": {
+        "title": "Project Cambria: Translate your data with lenses",
+        "people": [
+          "Geoffrey Litt",
+          "Peter van Hardenberg",
+          "Orion Henry"
+        ],
+        "year": 2020,
+        "summary": "Cambria explored a translation layer between evolving data schemas. Developers describe a change with a bidirectional lens, allowing related versions of an application to exchange documents and edits. The larger ambition was software that people could customize independently while continuing to collaborate, including communities without one authority deciding everybody's data format.",
+        "sourceIds": [
+          "cambria-research"
+        ]
+      },
+      "history": {
+        "status": "research-prototype",
+        "summary": "The research included a working library and an issue-tracker experiment. A community continuation could explore how people understand compatibility between tools with different data formats.",
+        "whatWasBuilt": "Cambria translates JSON documents, patches, and schema descriptions. Its researchers demonstrated issue-tracker clients using different schema versions together, but documented limitations such as translating multiple assignees into a single-assignee view. The repository describes the library as immature rather than production-ready.",
+        "whatRemains": "Build three independently customized project trackers: one uses a simple completed flag, one tracks stages, and one adds community-specific review fields. Each team should see what another tool cannot represent, keep hidden information recoverable, and decide when a translation is no longer good enough.",
+        "sourceIds": [
+          "cambria-research",
+          "cambria-code"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposal is to make customization affordable for small organizations sharing work without sharing identical processes. The existing research provides a testable translation mechanism and examples of its limits. A community experiment could establish which kinds of format divergence are worth supporting, instead of assuming that unrestricted customization always improves collaboration.",
+        "beneficiaries": [
+          "Volunteer organizations coordinating across different project trackers",
+          "Maintainers supporting old and new application versions",
+          "Teams adapting shared software to local terminology"
+        ],
+        "sourceIds": [
+          "cambria-code"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Three small trackers exchange 200 tasks and updates through five schema changes, with documented treatment of every value a destination cannot display.",
+        "steps": [
+          {
+            "title": "Define a compatibility contract",
+            "description": "List the shared meanings of status, assignee, review, and deletion. Write examples where representations differ, including a multi-assignee task viewed by a tool that permits one person.",
+            "deliverable": "Three schemas, representative records, and an explicit information-preservation policy."
+          },
+          {
+            "title": "Build and explain the translations",
+            "description": "Implement a small graph of lenses for renames, defaults, enumerated values, and nested fields. Show users the path taken and a concise list of information absent from their current view.",
+            "deliverable": "A translator with inspectable before-and-after examples."
+          },
+          {
+            "title": "Keep updates reversible where possible",
+            "description": "Retain the richer source record while applying edits from a simpler client. Mark irreducibly ambiguous changes for review and distinguish unsupported fields from intentionally deleted values.",
+            "deliverable": "An update bridge with loss reports and a reconciliation queue."
+          },
+          {
+            "title": "Let teams diverge deliberately",
+            "description": "Ask three groups to change their tracker independently during a two-week trial. Run delayed and reordered updates through every client, then document where shared vocabulary or an upgrade was preferable to another translation.",
+            "deliverable": "An interoperability report and a reusable compatibility test corpus."
+          }
+        ],
+        "successCriteria": [
+          "After 1,000 replayed updates, no value disappears without a corresponding explicit deletion or recorded translation limitation.",
+          "All clients can read the shared subset after each of five schema changes without a coordinated upgrade.",
+          "At least four of five reviewers correctly predict the result of each lossy example using the displayed translation explanation."
+        ],
+        "nonGoals": [
+          "Automatically inferring that two similarly named fields mean the same thing",
+          "Promising lossless translation between arbitrary schemas"
+        ],
+        "roles": [
+          {
+            "name": "Data-model engineer",
+            "contribution": "Implement lenses and preservation rules."
+          },
+          {
+            "name": "Community organizer",
+            "contribution": "Provide real workflow differences and evaluate shared meanings."
+          },
+          {
+            "name": "Test engineer",
+            "contribution": "Exercise divergent histories and unexpected edit orders."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Reversible syntax, irreversible meaning",
+          "description": "Mapping three statuses onto a boolean may be technically defined while discarding a distinction people depend on. Preservation and explanation policies must accompany the transformation."
+        },
+        {
+          "title": "Translation paths may disagree",
+          "description": "Two routes through a schema graph can produce different interpretations. Detect disagreement using fixtures and require a chosen policy instead of silently selecting a convenient path."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Cambria",
+          "url": "https://github.com/inkandswitch/cambria-project",
+          "relationship": "The implemented research foundation, including document, edit, and schema translation."
+        }
+      ],
+      "references": [
+        {
+          "id": "cambria-research",
+          "title": "Project Cambria: Translate your data with lenses (2020)",
+          "url": "https://www.inkandswitch.com/cambria/",
+          "kind": "original-paper",
+          "supports": "Research authors and date, bidirectional lenses, issue-tracker prototype, and examples of imperfect translation."
+        },
+        {
+          "id": "cambria-code",
+          "title": "Cambria: source and implementation documentation",
+          "url": "https://github.com/inkandswitch/cambria-project",
+          "kind": "source-code",
+          "supports": "Implemented JSON, JSON Patch and JSON Schema translations, example usage, and maturity limitation."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "living-diagram-assumptions",
+    "details": {
+      "origin": {
+        "title": "Apparatus and diagrams as a medium for thinking",
+        "people": [
+          "Toby Schachman",
+          "Joshua Horowitz"
+        ],
+        "year": 2015,
+        "summary": "Apparatus joined a drawing interface to a dataflow programming environment. In his 2015 presentation, Schachman argued that interactive diagrams could communicate relationships and causality while also helping authors develop their own understanding. He wanted the transition from exploring a diagram to modifying it to feel continuous, without repeatedly translating spatial ideas into drawing code.",
+        "sourceIds": [
+          "apparatus-talk",
+          "apparatus-history"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Apparatus demonstrated a working editor for interactive diagrams and influenced the later commercial design tool Cuttle. The proposed continuation adds shared evidence and review to that editing model.",
+        "whatWasBuilt": "The browser editor includes expressions, manipulable graphics, examples, and tutorials. Published demonstrations include geometry, tides, and mechanical relationships. Its repository provides the implementation under MIT terms.",
+        "whatRemains": "Build a reviewable layer around each model: where an input came from, which simplifying assumptions it encodes, when the model stops applying, and what changes under another interpretation. Test whether this helps a group inspect and revise a shared explanation.",
+        "sourceIds": [
+          "apparatus-history",
+          "apparatus-docs",
+          "apparatus-code"
+        ]
+      },
+      "whyNow": {
+        "summary": "A useful first community could be a repair cooperative comparing spare-parts inventory policies. Our hypothesis is that a shared diagram with visible assumptions would make disagreement more productive than comparing unexplained totals. The existing editor provides a concrete starting point; the community can spend its effort on comprehensibility, evidence, and review rather than inventing a graphics engine.",
+        "beneficiaries": [
+          "Repair cooperatives explaining operational choices",
+          "Teachers building models with learners",
+          "Community groups comparing alternatives"
+        ],
+        "sourceIds": [
+          "apparatus-docs"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Publish one portable inventory model whose five inputs each have units, a source or explicit estimate, an explanation, and an editable range.",
+        "steps": [
+          {
+            "title": "Model one real decision",
+            "description": "Work with a cooperative to define a restocking question. Implement two competing assumptions about repair demand, label invented example data, and document what the model deliberately leaves out.",
+            "deliverable": "A runnable diagram and a short decision brief."
+          },
+          {
+            "title": "Make reasoning inspectable",
+            "description": "Connect every output to its dependencies. Let readers select an assumption, inspect its evidence, change its value, and compare the resulting alternatives side by side.",
+            "deliverable": "An assumption inspector and saved scenario comparison."
+          },
+          {
+            "title": "Review and publish",
+            "description": "Allow a reviewer to propose a changed assumption with a reason. Export the accepted version with its model, sources, and interaction code, then test it on a fresh device.",
+            "deliverable": "A versioned example that works without the author's account."
+          }
+        ],
+        "successCriteria": [
+          "Four of five first-time readers correctly identify which assumption caused an output difference.",
+          "Every numeric output can be traced to its formula and documented inputs.",
+          "An exported scenario reproduces the same results on a second browser."
+        ],
+        "nonGoals": [
+          "Certifying that a model predicts real outcomes.",
+          "A general simulation suite or replacement for specialist engineering tools."
+        ],
+        "roles": [
+          {
+            "name": "Model author",
+            "contribution": "Works with the cooperative to describe inputs, units, and limits."
+          },
+          {
+            "name": "Interaction builder",
+            "contribution": "Implements inspection, comparison, and portable publishing."
+          },
+          {
+            "name": "Community reviewer",
+            "contribution": "Tests whether the explanations help people challenge the model."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Persuasive graphics",
+          "description": "A smooth animation can make a weak assumption seem convincing. Keep uncertainty and applicability visible beside the controls, and separate measured values from estimates."
+        },
+        {
+          "title": "Executable documents",
+          "description": "Shared expressions are code. Constrain execution and network access, preserve the exact model version, and design a readable fallback for people who cannot use the interactive view."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Apparatus examples and tutorials",
+          "url": "https://aprt.us/",
+          "relationship": "Working examples establish the baseline to extend and offer models for direct manipulation."
+        },
+        {
+          "title": "Apparatus project history",
+          "url": "https://dynamicland.org/archive/2015/Apparatus",
+          "relationship": "Documents the original experiments and the later connection to Cuttle; the lineage has continued beyond the prototype."
+        }
+      ],
+      "references": [
+        {
+          "id": "apparatus-talk",
+          "title": "Apparatus at Future Programming Workshop — Toby Schachman, 2015",
+          "url": "https://dynamicland.org/2015/Apparatus_at_Future_Programming_Workshop/",
+          "kind": "project-docs",
+          "supports": "Original motivations, dataflow editing, and continuity between viewing and authoring."
+        },
+        {
+          "id": "apparatus-history",
+          "title": "Apparatus — Dynamicland project archive",
+          "url": "https://dynamicland.org/archive/2015/Apparatus",
+          "kind": "retrospective",
+          "supports": "2015 launch, attribution, related experiments, and relationship to Cuttle."
+        },
+        {
+          "id": "apparatus-docs",
+          "title": "Apparatus examples, tutorials, and documentation",
+          "url": "https://aprt.us/",
+          "kind": "project-docs",
+          "supports": "Existing browser editor, expressions, demonstrations, and research origin."
+        },
+        {
+          "id": "apparatus-code",
+          "title": "Apparatus reference implementation",
+          "url": "https://github.com/cdglabs/apparatus/tree/107e0c2db5a0adf0f1c3b49f16f7625cff4e523b",
+          "kind": "source-code",
+          "supports": "The already built implementation; reuse terms remain in the linked license panel."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "personal-web-repair-kit",
+    "details": {
+      "origin": {
+        "title": "Wildcard's spreadsheet-driven website customization",
+        "people": [
+          "Geoffrey Litt",
+          "Daniel Jackson",
+          "Tyler Millis",
+          "Jessica Quaye"
+        ],
+        "year": 2020,
+        "summary": "Wildcard investigated whether people could adapt existing websites through a synchronized table. Programmers supplied adapters that exposed a site's data; users could then sort, filter, annotate, or combine that data. The research separated the work of maintaining an adapter from the everyday act of changing a website to suit a personal need.",
+        "sourceIds": [
+          "wildcard-paper",
+          "wildcard-onward"
+        ]
+      },
+      "history": {
+        "status": "research-prototype",
+        "summary": "Wildcard demonstrated website customization through a synchronized table. Its authors identified adapter maintenance and broader use as open research questions.",
+        "whatWasBuilt": "Demonstrations included sorting listings, adding private annotations, enriching results with another data source, and making a task list support snoozing. The project exposes source code and development installation instructions.",
+        "whatRemains": "Develop a dependable library of local adaptations for a small set of cooperating sites, with understandable permissions, regression examples, and an easy way to report a broken recipe. The proposed contribution is the maintenance and trust workflow around customization.",
+        "sourceIds": [
+          "wildcard-paper",
+          "wildcard-project",
+          "wildcard-code"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposed pilot pairs a library or community organization with members who struggle to compare information on its website. A shared adaptation could reduce repetitive work while providing concrete evidence for the site's own maintainers. Starting with cooperating sites also makes updates and evaluation practical. Whether people find this easier than asking for a native website change is a question for the pilot.",
+        "beneficiaries": [
+          "People who need alternative ways to organize web information",
+          "Community technology volunteers",
+          "Website maintainers learning from repeated usability problems"
+        ],
+        "sourceIds": [
+          "wildcard-project"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Ship three reversible, locally stored adaptations for one consenting partner site: sorting a list, hiding irrelevant rows, and adding private notes.",
+        "steps": [
+          {
+            "title": "Choose a narrow repair",
+            "description": "Observe five people completing a repeated task. Agree on the information to expose and create test pages with representative content, including missing values and changed layouts.",
+            "deliverable": "A task brief, a site adapter, and reproducible page fixtures."
+          },
+          {
+            "title": "Package an inspectable recipe",
+            "description": "Record the exact sites and fields a recipe needs. Show a preview, store notes separately from shared recipes, and provide one-action disable and reset controls.",
+            "deliverable": "A recipe format with a permission summary and working undo."
+          },
+          {
+            "title": "Build shared maintenance",
+            "description": "Run adapters against the fixtures on every change. Let users attach a redacted failure report and pin a known version until they choose an update.",
+            "deliverable": "A small recipe directory with compatibility results and repair instructions."
+          }
+        ],
+        "successCriteria": [
+          "Four of five participants complete the chosen task without help after a short introduction.",
+          "Sharing a recipe never includes personal annotations or page content.",
+          "Every tested website change either passes the fixtures or produces an explicit unsupported-state message."
+        ],
+        "nonGoals": [
+          "Bypassing logins, paywalls, or website access restrictions.",
+          "Automatic support for arbitrary websites or a claim of universal accessibility."
+        ],
+        "roles": [
+          {
+            "name": "Site adapter developer",
+            "contribution": "Maintains extraction rules and compatibility fixtures."
+          },
+          {
+            "name": "Accessibility partner",
+            "contribution": "Defines the real task and evaluates alternative interactions."
+          },
+          {
+            "name": "Recipe steward",
+            "contribution": "Reviews updates, documents permissions, and triages breakage."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Pages keep changing",
+          "description": "A selector can silently point at the wrong data. Validate expected fields and identities, and stop applying a recipe when its assumptions no longer hold."
+        },
+        {
+          "title": "Local changes versus remote actions",
+          "description": "Reordering a view is different from submitting a form. Keep the first release limited to reversible presentation changes and make any future server-changing action explicit."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Wildcard research collection",
+          "url": "https://www.geoffreylitt.com/wildcard/",
+          "relationship": "Includes the later scraping and Joker interaction-model investigations, useful starting points before designing new adapter-authoring tools."
+        }
+      ],
+      "references": [
+        {
+          "id": "wildcard-paper",
+          "title": "Wildcard: Spreadsheet-Driven Customization of Web Applications — 2020",
+          "url": "https://www.geoffreylitt.com/wildcard/salon2020/",
+          "kind": "original-paper",
+          "supports": "Prototype architecture, demonstrations, division between adapter authors and users, and maintenance questions."
+        },
+        {
+          "id": "wildcard-onward",
+          "title": "End-User Software Customization by Direct Manipulation of Tabular Data — 2020",
+          "url": "https://www.geoffreylitt.com/wildcard/Wildcard-Onward-2020.pdf",
+          "kind": "original-paper",
+          "supports": "Research authorship and the tabular customization approach."
+        },
+        {
+          "id": "wildcard-project",
+          "title": "Wildcard project and research",
+          "url": "https://www.geoffreylitt.com/wildcard/",
+          "kind": "project-docs",
+          "supports": "Research lineage, public demonstrations, prototype availability, and later related work."
+        },
+        {
+          "id": "wildcard-code",
+          "title": "Wildcard reference implementation",
+          "url": "https://github.com/geoffreylitt/wildcard/tree/dd81d9b4a34729887e86b2e5de0c3e8ecdc94b03",
+          "kind": "source-code",
+          "supports": "The available implementation used as this idea's licensed starting point."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "reshape-your-workspace",
+    "details": {
+      "origin": {
+        "title": "Lively Kernel's self-modifying browser environment",
+        "people": [
+          "Sun Microsystems Laboratories Lively Kernel team",
+          "lively.next contributors"
+        ],
+        "year": 2008,
+        "summary": "The Lively Kernel technical overview described a browser environment that contained its own tools for making and changing applications. Its central ambition was to let people alter running software from within that software, using graphical manipulation alongside programming. The environment could export created objects and applications rather than requiring an external development toolchain for every change.",
+        "sourceIds": [
+          "lively-original"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Lively Kernel combined live coding and graphical editing in a working browser environment. lively.next continues that work with collaboration and a personal programming kit; this proposal focuses on reviewing changes to shared tools.",
+        "whatWasBuilt": "The original system included graphical objects, an inspector, a code browser, and editing tools. The present lively.next repository supplies an extensible implementation, while warning that it remains beta software with changing APIs.",
+        "whatRemains": "Make tool changes understandable and recoverable for a small group whose everyday work depends on them. The specific experiment is a review process for changing a shared board or calculator while preserving both its records and a known working version.",
+        "sourceIds": [
+          "lively-original",
+          "lively-current"
+        ]
+      },
+      "whyNow": {
+        "summary": "A volunteer workshop could use this approach to adapt its equipment booking board as local practices change. Our hypothesis is that members will make useful improvements when experimentation is separated from the shared working version and recovery is obvious. The existing implementation lets a community concentrate on that social workflow. The experiment should measure maintenance burden as carefully as the number of customizations made.",
+        "beneficiaries": [
+          "Volunteer workshops maintaining shared equipment",
+          "Cooperatives with unusual operational workflows",
+          "Small teams that want control over their own tools"
+        ],
+        "sourceIds": [
+          "lively-current"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "A five-person workshop uses one booking board, proposes a changed booking rule, reviews it, and restores the previous behavior without losing bookings.",
+        "steps": [
+          {
+            "title": "Separate records and behavior",
+            "description": "Build a minimal board with stable booking identifiers and explicit rule versions. Document which edits affect presentation, validation, or stored data so later recovery has a clear meaning.",
+            "deliverable": "A working board with exportable records and three example rules."
+          },
+          {
+            "title": "Make a change reviewable",
+            "description": "Give members a private trial copy using sample records. Show a before-and-after example for every proposed rule change, and require an authorized member to adopt it for the group.",
+            "deliverable": "A proposal screen with behavior examples and attribution."
+          },
+          {
+            "title": "Rehearse recovery",
+            "description": "Introduce an intentionally broken rule and a conflicting change. Practice rejecting, correcting, and restoring behavior, then repeat with a member who did not develop the board.",
+            "deliverable": "A recovery demonstration and a short guide the group can follow."
+          }
+        ],
+        "successCriteria": [
+          "A member without programming experience can explain a proposed rule change from its examples.",
+          "Restoring the previous rule preserves all valid bookings created since the change.",
+          "Two non-author members successfully perform recovery in under five minutes."
+        ],
+        "nonGoals": [
+          "Replacing the group's entire operating system or office suite.",
+          "Allowing arbitrary unreviewed code to execute with shared credentials."
+        ],
+        "roles": [
+          {
+            "name": "Live-programming developer",
+            "contribution": "Builds versioned behaviors and integrates the running environment."
+          },
+          {
+            "name": "Workshop partner",
+            "contribution": "Supplies real booking rules and tests how changes affect work."
+          },
+          {
+            "name": "Recovery designer",
+            "contribution": "Makes reviews, examples, and restoration understandable."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Undoing code is not undoing data",
+          "description": "A reverted rule cannot automatically reverse records it already changed. Keep a migration log and explain any record repair separately from restoring a previous tool version."
+        },
+        {
+          "title": "Shared authority",
+          "description": "A popular customization can still exclude another member. Preserve a stable default, document who may adopt changes, and support keyboard operation in customized views."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "lively.next",
+          "url": "https://github.com/LivelyKernel/lively.next",
+          "relationship": "An existing continuation of live programming and direct manipulation, and the reference implementation to extend."
+        },
+        {
+          "title": "The Sun Labs Lively Kernel technical overview",
+          "url": "https://www.lively-kernel.org/development/media/LivelyKernel-TechnicalOverview.pdf",
+          "relationship": "Explains the original self-contained editing model and its Morphic object composition."
+        }
+      ],
+      "references": [
+        {
+          "id": "lively-original",
+          "title": "The Sun Labs Lively Kernel: A Technical Overview — February 2008",
+          "url": "https://www.lively-kernel.org/development/media/LivelyKernel-TechnicalOverview.pdf",
+          "kind": "original-paper",
+          "supports": "Original ambition, browser editing tools, graphical objects, and application export."
+        },
+        {
+          "id": "lively-current",
+          "title": "lively.next project documentation",
+          "url": "https://github.com/LivelyKernel/lively.next",
+          "kind": "project-docs",
+          "supports": "Existing live programming and direct manipulation environment, collaboration goal, and beta status."
+        },
+        {
+          "id": "lively-code",
+          "title": "lively.next reference implementation",
+          "url": "https://github.com/LivelyKernel/lively.next/tree/028dbf1bd17277be113ef3ca83c0be32703d7ede",
+          "kind": "source-code",
+          "supports": "Pinned implementation to which the catalog's reuse review applies."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "portable-project-passport",
+    "details": {
+      "origin": {
+        "title": "Solid and the decentralized social Web",
+        "people": [
+          "Essam Mansour",
+          "Andrei Vlad Sambra",
+          "Sandro Hawke",
+          "Maged Zereba",
+          "Sarven Capadisli",
+          "Abdurrahman Ghanem",
+          "Ashraf Aboulnaga",
+          "Tim Berners-Lee"
+        ],
+        "year": 2016,
+        "summary": "The Solid demonstration described social applications working on personal data stored independently of the applications themselves. A person could choose a data provider and use multiple applications over the same information. An earlier 2008 proposal from the Southampton and MIT researchers explored this separation for profiles, relationships, access control, and activity streams.",
+        "sourceIds": [
+          "solid-demo",
+          "decentralization-paper"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Personal data stores and Solid applications already exist. The proposed continuation is a portable record of community participation with understandable sharing and provenance.",
+        "whatWasBuilt": "Community Solid Server implements Pods, identity, persistence options, and configurable server components. The Solid Protocol describes how applications read and write externally stored resources with authentication and authorization; its published report explicitly identifies itself as a Community Group specification, not a W3C Standard.",
+        "whatRemains": "A builder should be able to bring a project profile and selected contributions to a second community without re-entering them or automatically exposing every past affiliation. The application must distinguish a person's own claims from statements confirmed by a project, and make changes in sharing visible.",
+        "sourceIds": [
+          "solid-server",
+          "solid-protocol"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposed benefit is continuity for people whose useful work spans several small communities. A portable profile could preserve a person's chosen project context while leaving each community free to set its own membership rules. Existing server and protocol implementations allow a focused trial; they do not prove that users will want portable participation records or understand the permissions without careful design.",
+        "beneficiaries": [
+          "Builders contributing to several open-source communities",
+          "Volunteer groups whose membership changes over time",
+          "People wishing to share selected work without a universal public profile"
+        ],
+        "sourceIds": [
+          "solid-server"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "A builder moves a profile and ten selected contribution records between two independent community applications, then revokes the first application's future access.",
+        "steps": [
+          {
+            "title": "Agree on a small participation vocabulary",
+            "description": "Describe projects, roles, contribution links, dates, and who made each claim. Keep private affiliations and public work in separate resources. Make optional fields genuinely optional rather than inventing a universal reputation score.",
+            "deliverable": "A documented data shape and synthetic profiles covering different sharing choices."
+          },
+          {
+            "title": "Build two independent clients",
+            "description": "Have one client edit a profile and another render a portfolio from the same permitted data. The second client must discover supported fields without relying on the first application's private database.",
+            "deliverable": "Two clients and a self-hosted test Pod."
+          },
+          {
+            "title": "Explain and withdraw access",
+            "description": "Show the exact records and operations requested before granting access. Demonstrate revocation of future reads and writes, and explain that information already downloaded cannot be recalled by changing a permission.",
+            "deliverable": "A sharing review, revocation flow, and recorded access checks."
+          },
+          {
+            "title": "Rehearse a community transition",
+            "description": "Ask contributors to choose which records to bring to a new group. Include a withdrawn claim, a renamed project, and an unavailable confirmation source; observe where the receiving community needs context rather than automatic trust.",
+            "deliverable": "A migration walkthrough and a list of unresolved governance decisions."
+          }
+        ],
+        "successCriteria": [
+          "All ten selected records appear in the second application with original attribution, and no unselected resource becomes readable.",
+          "After revocation, the first client cannot perform new authorized reads or writes with its previous access.",
+          "Four of five participants correctly explain which data a client can currently access and which previously downloaded copies may remain."
+        ],
+        "nonGoals": [
+          "Creating a universal reputation score or automatically granting membership",
+          "Guaranteeing erasure of copies already obtained by another party"
+        ],
+        "roles": [
+          {
+            "name": "Solid developer",
+            "contribution": "Implement resource discovery and permissioned client access."
+          },
+          {
+            "name": "Community moderator",
+            "contribution": "Define how contribution claims are accepted, corrected, or disputed."
+          },
+          {
+            "name": "Privacy interaction researcher",
+            "contribution": "Test whether sharing choices match participants' understanding."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Portability is not credibility",
+          "description": "A valid data record can contain an unsupported claim. Preserve the issuer, evidence, and verification status without treating personal storage as proof of achievement."
+        },
+        {
+          "title": "Consent across contexts",
+          "description": "A contribution acceptable in one group may reveal an unwanted affiliation elsewhere. Use selective disclosure and avoid copying entire participation histories by default."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Community Solid Server",
+          "url": "https://github.com/CommunitySolidServer/CommunitySolidServer",
+          "relationship": "Existing Pod and identity implementation used as the licensed foundation for the proposed experiment."
+        }
+      ],
+      "references": [
+        {
+          "id": "solid-demo",
+          "title": "A Demonstration of the Solid Platform for Social Web Applications (2016)",
+          "url": "https://doi.org/10.1145/2872518.2890529",
+          "kind": "original-paper",
+          "supports": "Research authors, publication date, separation of applications and personal data, and working demonstrations."
+        },
+        {
+          "id": "decentralization-paper",
+          "title": "Decentralization: The Future of Online Social Networking (2008)",
+          "url": "https://dig.csail.mit.edu/2008/Papers/MSNWS/",
+          "kind": "original-paper",
+          "supports": "Earlier decentralized social-network vision, profile portability, access control, and implemented components."
+        },
+        {
+          "id": "solid-server",
+          "title": "Community Solid Server: source and documentation",
+          "url": "https://github.com/CommunitySolidServer/CommunitySolidServer",
+          "kind": "source-code",
+          "supports": "Existing Pods, identity, persistence, modular configuration, and development support."
+        },
+        {
+          "id": "solid-protocol",
+          "title": "Solid Protocol, version 0.11.0",
+          "url": "https://solidproject.org/TR/2024/protocol-20240512",
+          "kind": "project-docs",
+          "supports": "Resource access, authentication, authorization, interoperability, and published specification status."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "shared-writing-disagreement",
+    "details": {
+      "origin": {
+        "title": "Peritext: rich-text collaboration across independent drafts",
+        "people": [
+          "Geoffrey Litt",
+          "Slim Lim",
+          "Martin Kleppmann",
+          "Peter van Hardenberg"
+        ],
+        "year": 2021,
+        "summary": "Peritext studied how writers can edit independent rich-text drafts and later merge them while preserving formatting intentions. Its researchers described demand for private drafting and asynchronous collaboration, then developed an algorithm and prototype addressing concurrent text and formatting edits. The 2021 research article was revised for a 2022 CSCW publication.",
+        "sourceIds": [
+          "peritext-research"
+        ]
+      },
+      "history": {
+        "status": "research-prototype",
+        "summary": "Peritext implemented rich-text merging across independent drafts. The proposed continuation gives writers a way to review the resulting arguments and preserve unresolved alternatives.",
+        "whatWasBuilt": "The project supplies an algorithm, interactive demonstrations, editor integration, and tests. Its research focuses on inline rich-text behavior and explicitly separates the algorithm from a complete workflow, noting that version comparison interfaces were outside the presented system.",
+        "whatRemains": "Develop a review layer that keeps competing explanations visible after drafts reunite. Writers should be able to accept a wording, keep two alternatives open, or record a disagreement without losing authorship. The merge supplies a common document state; an editorial decision supplies meaning and consent.",
+        "sourceIds": [
+          "peritext-research",
+          "peritext-code"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposal targets groups writing research notes, technical recommendations, or collaborative explainers across different schedules. The existing prototype provides difficult text-merging behavior to study and reuse. A community can test whether explicit alternatives reduce pressure to accept an accidental merged wording, while measuring the extra review effort the interface creates.",
+        "beneficiaries": [
+          "Distributed editorial and research groups",
+          "Technical communities preparing proposals with competing positions",
+          "Contributors who need time to draft privately before sharing"
+        ],
+        "sourceIds": [
+          "peritext-code"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Three writers independently revise a short technical proposal, then produce a reviewed edition that preserves five unresolved disagreements alongside its accepted text.",
+        "steps": [
+          {
+            "title": "Define the editorial record",
+            "description": "Give a proposed passage its author, source draft, rationale, and review state. Separate suggestions from direct edits and specify who may accept a change or mark an issue unresolved.",
+            "deliverable": "A compact proposal-and-decision model with worked editorial examples."
+          },
+          {
+            "title": "Make private drafts rejoin visibly",
+            "description": "Show paragraph-level differences, formatting changes, and alternative passages before publishing. Preserve the original draft references so a writer can inspect what happened to their contribution after review.",
+            "deliverable": "A branch comparison and reunion screen."
+          },
+          {
+            "title": "Keep disagreement attached to the text",
+            "description": "Allow an editor to retain alternatives, explain a chosen version, and reopen a decision when its paragraph changes. Ensure that rejecting a proposal does not rewrite what its author actually submitted.",
+            "deliverable": "A reviewed edition with inspectable alternatives and decision history."
+          },
+          {
+            "title": "Evaluate a real writing cycle",
+            "description": "Recruit a small group with a genuine technical disagreement. Compare the reviewed edition with a simple automatically merged draft, asking each writer to identify accepted changes, unresolved points, and their own contribution.",
+            "deliverable": "A documented writing exercise and an anonymized comprehension study."
+          }
+        ],
+        "successCriteria": [
+          "All three writers can recover the exact wording of their original submissions after the review cycle.",
+          "Readers correctly distinguish accepted text from all five seeded unresolved alternatives without consulting the authors.",
+          "Repeated synchronization in different orders preserves the same document and review records, including an edit that reopens a resolved issue."
+        ],
+        "nonGoals": [
+          "Automatically judging the truth or quality of competing arguments",
+          "Implementing a complete desktop publishing system or silently resolving political disagreements"
+        ],
+        "roles": [
+          {
+            "name": "Collaborative-editor engineer",
+            "contribution": "Connect stable text positions with branch and review records."
+          },
+          {
+            "name": "Editor or facilitator",
+            "contribution": "Design real review decisions and evaluate whether consent is represented accurately."
+          },
+          {
+            "name": "Interaction designer",
+            "contribution": "Keep alternatives discoverable while preserving a readable main text."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Stable comments on changing passages",
+          "description": "A disagreement can outlive the words that triggered it. Anchor review records to revisions and show when later edits have made their subject ambiguous."
+        },
+        {
+          "title": "Too much history can obscure reading",
+          "description": "The document needs a clear accepted edition as well as a complete review record. Progressive disclosure should hide visual complexity without hiding that a dispute exists."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Peritext",
+          "url": "https://github.com/inkandswitch/peritext",
+          "relationship": "Existing rich-text merge research; the proposed contribution is an editorial review layer around its behavior."
+        }
+      ],
+      "references": [
+        {
+          "id": "peritext-research",
+          "title": "Peritext: A CRDT for Rich-Text Collaboration (2021; revised 2022)",
+          "url": "https://www.inkandswitch.com/peritext/",
+          "kind": "original-paper",
+          "supports": "Research origin, authors, asynchronous drafting motivation, algorithm, demonstrations, and stated workflow limitations."
+        },
+        {
+          "id": "peritext-code",
+          "title": "Peritext: source, editor integration, and tests",
+          "url": "https://github.com/inkandswitch/peritext",
+          "kind": "source-code",
+          "supports": "Existing implementation and project materials for independent rich-text editing and merging."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "community-small-languages",
+    "details": {
+      "origin": {
+        "title": "Ohm and modular language construction",
+        "people": [
+          "Alessandro Warth",
+          "Patrick Dubroy",
+          "Tony Garnock-Jones"
+        ],
+        "year": 2016,
+        "summary": "Ohm's research contribution was to separate a language's grammar from the operations that give its sentences meaning. A grammar could support several interpretations, and either part could be extended independently. That makes a useful starting point for a community that wants to express recurring work in its own vocabulary: one workshop recipe could produce a checklist, a materials estimate, and an explanation of its steps.",
+        "sourceIds": [
+          "ohm-paper"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Ohm provides a working language toolkit. The proposed continuation helps a community maintain its own vocabulary, review language changes, and keep older recipes usable.",
+        "whatWasBuilt": "Ohm already supplies grammar matching, separate semantics, browser use, an interactive editor, and textual and graphical parsing traces. Its documentation demonstrates arithmetic and other examples. These mechanisms can explain how text is recognized, but builders must still design the community's vocabulary and domain feedback.",
+        "whatRemains": "Explore whether makerspace members can maintain their own recipe language over time: proposing a new instruction, seeing which old recipes it affects, and agreeing on a change without relying on the original developer. The experiment needs comprehensible errors and a shared change process as much as a parser.",
+        "sourceIds": [
+          "ohm-paper",
+          "ohm-guide"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposal is to use an existing browser-capable toolkit to put more effort into participation and less into parser construction. Start with instructions for preparing a workshop, such as collecting materials and assigning tasks. A small, inspectable language could help groups preserve practical knowledge while making its interpretation visible to newcomers. This benefit remains a hypothesis to test with one community.",
+        "beneficiaries": [
+          "Volunteer makerspace coordinators",
+          "Workshop facilitators sharing repeatable activities",
+          "New members learning local practices"
+        ],
+        "sourceIds": [
+          "ohm-guide"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Five members can adapt ten workshop preparation recipes and explain the resulting checklist without editing JavaScript.",
+        "steps": [
+          {
+            "title": "Collect the community's examples",
+            "description": "Observe one recurring workshop and gather ten real preparation lists. Agree on five to eight instructions, expected results, and examples that should be rejected. Keep physical machine operation outside the language.",
+            "deliverable": "A reviewed vocabulary and example test collection."
+          },
+          {
+            "title": "Make interpretation visible",
+            "description": "Implement the grammar and a checklist interpretation separately. Highlight the instruction behind each generated task; explain missing quantities and unknown names in workshop terms. Show a plain-language trace alongside the technical parse tree.",
+            "deliverable": "An editor with live checklist preview and understandable errors."
+          },
+          {
+            "title": "Practice changing the language",
+            "description": "Let a member propose one new instruction and preview its effect on every example. Store recipe and grammar versions together, then run a second workshop using the changed version and record where members need help.",
+            "deliverable": "A versioned recipe library and a documented community change trial."
+          }
+        ],
+        "successCriteria": [
+          "At least four of five participants correctly explain the output of three unfamiliar recipes.",
+          "All ten original recipes retain their expected output after an approved compatible change.",
+          "A member other than the developer publishes a recipe and corrects one error independently."
+        ],
+        "nonGoals": [
+          "A universal programming language or automatic translation of unrestricted natural language.",
+          "Direct control of workshop machinery or certification that a procedure is safe."
+        ],
+        "roles": [
+          {
+            "name": "Community facilitator",
+            "contribution": "Collect examples and negotiate vocabulary with members."
+          },
+          {
+            "name": "Language engineer",
+            "contribution": "Implement grammar, interpretations, and compatibility checks."
+          },
+          {
+            "name": "Interaction designer",
+            "contribution": "Test explanations with people who do not program."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "A familiar word can hide disagreement",
+          "description": "Members may interpret the same instruction differently. Keep worked examples attached to definitions and record contested meanings before adding syntax."
+        },
+        {
+          "title": "A small language can grow into a maintenance burden",
+          "description": "Require a real recurring example for each extension. Preserve a readable export and a migration path when vocabulary changes."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Ohm interactive editor and guides",
+          "url": "https://ohmjs.org/docs/intro",
+          "relationship": "Existing parsing tools to build upon; the proposed contribution is community ownership of vocabulary and change review."
+        }
+      ],
+      "references": [
+        {
+          "id": "ohm-paper",
+          "title": "Modular Semantic Actions (2016)",
+          "url": "https://ohmjs.org/pubs/dls2016/modular-semantic-actions.pdf",
+          "kind": "original-paper",
+          "supports": "Authors, date, separation of grammars and semantics, and independent extension. The paper is linked as reading material; the code license does not grant republication rights to the paper."
+        },
+        {
+          "id": "ohm-guide",
+          "title": "Ohm introduction and debugging guide",
+          "url": "https://ohmjs.org/docs/intro",
+          "kind": "project-docs",
+          "supports": "Existing browser integration, interactive editor, examples, and parsing traces."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "documents-become-tools",
+    "details": {
+      "origin": {
+        "title": "Webstrates: Shareable Dynamic Media",
+        "people": [
+          "Clemens N. Klokmose",
+          "James R. Eagan",
+          "Siemen Baader",
+          "Wendy Mackay",
+          "Michel Beaudouin-Lafon"
+        ],
+        "year": 2015,
+        "summary": "Webstrates explored software in which documents and applications can change roles. A shared page can contain information, interaction, and computation, and its users can reshape these together. The vision matters when a group's ordinary notes acquire structure: a list of options might become a decision board without leaving the document that explains why those options exist.",
+        "sourceIds": [
+          "webstrates-origin"
+        ]
+      },
+      "history": {
+        "status": "research-prototype",
+        "summary": "Webstrates was built and has supported further research. This entry proposes a focused community decision workflow within that broader direction.",
+        "whatWasBuilt": "The platform persists changes to a web page and synchronizes them among clients. Codestrates subsequently combined prose and code with collaborative authoring and the ability to modify the environment itself.",
+        "whatRemains": "Test whether a nontechnical group can promote selected meeting content into an interactive tool, revise the tool's rules, and later recover a readable explanation of a decision. Focus on who may change behavior, how changes are previewed, and what survives when a tool is removed.",
+        "sourceIds": [
+          "webstrates-origin",
+          "codestrates-project"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposed application is a decision document for a volunteer association choosing a small project. Starting from a functioning research platform lets a team test the difficult transition from writing together to changing behavior together. The hoped-for benefit is fewer disconnected copies of minutes, votes, and action lists, with the reasoning behind a decision still visible after a meeting.",
+        "beneficiaries": [
+          "Volunteer associations coordinating small projects",
+          "Cooperatives documenting shared decisions",
+          "Facilitators supporting participants with different technical skills"
+        ],
+        "sourceIds": [
+          "webstrates-origin",
+          "codestrates-project"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "A five-person group turns its meeting options into a decision board, changes one rule, and exports a readable decision record.",
+        "steps": [
+          {
+            "title": "Begin with the meeting",
+            "description": "Use one group's actual agenda to define options, supporting arguments, and owners. Keep the first document readable without interactive elements, and assign stable identifiers so later transformations preserve links to the original discussion.",
+            "deliverable": "A shared meeting document with a plain-text export."
+          },
+          {
+            "title": "Promote content into behavior",
+            "description": "Let a facilitator select the options and apply one reviewed decision-board template. Preview how choices are counted before activating it. Preserve the originating text and show which rule produced each result.",
+            "deliverable": "A reversible transformation from notes to a working decision board."
+          },
+          {
+            "title": "Make changes accountable",
+            "description": "Separate editing the discussion from changing the counting rule. Save a version before each behavioral change, require a preview, and record the author and reason. Test recovery from a broken template with participants.",
+            "deliverable": "Version history, behavior permissions, and a demonstrated recovery path."
+          },
+          {
+            "title": "Follow the next meeting",
+            "description": "Have the group reuse the document without its developer present. Observe whether participants can explain the result and distinguish later edits from the record of the original decision.",
+            "deliverable": "A reusable template and a report of observed failures."
+          }
+        ],
+        "successCriteria": [
+          "All five participants find the original discussion behind a decision in under two minutes.",
+          "Changing a template preserves all written options and participant contributions.",
+          "A facilitator restores the previous working version without developer assistance."
+        ],
+        "nonGoals": [
+          "A general replacement for office suites or a marketplace of arbitrary executable plugins.",
+          "Legally binding elections or formal governance guarantees."
+        ],
+        "roles": [
+          {
+            "name": "Collaborative software developer",
+            "contribution": "Implement transformations, history, and synchronization."
+          },
+          {
+            "name": "Community facilitator",
+            "contribution": "Specify a real decision process and run the trial."
+          },
+          {
+            "name": "Interaction designer",
+            "contribution": "Make rule changes, provenance, and recovery understandable."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Editing content and running code confer different powers",
+          "description": "Use reviewed templates for the first trial. Give participants visible control over behavior changes and isolate executable content from account credentials."
+        },
+        {
+          "title": "History must retain meaning",
+          "description": "A sequence of page mutations may not explain a decision. Save the relevant content, rule version, and outcome as a human-readable record."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Codestrates",
+          "url": "https://github.com/Webstrates/Codestrates",
+          "relationship": "Already demonstrates collaborative literate computing and self-modification. This proposal narrows the experience to group decision documents and reviewable rule changes."
+        }
+      ],
+      "references": [
+        {
+          "id": "webstrates-origin",
+          "title": "Webstrates: project overview and original research",
+          "url": "https://webstrates.net/",
+          "kind": "original-paper",
+          "supports": "The 2015 paper's authors and vision, persistent synchronized pages, and subsequent computational-media research."
+        },
+        {
+          "id": "codestrates-project",
+          "title": "Codestrates: Literate Computing with Webstrates",
+          "url": "https://github.com/Webstrates/Codestrates",
+          "kind": "project-docs",
+          "supports": "Existing collaborative authoring, persistent applications, and reprogrammable environment. Related-work links do not extend the entry's code-license approval to separate repositories."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "inspectable-automation-recipes",
+    "details": {
+      "origin": {
+        "title": "Blockly and programming through a domain's own vocabulary",
+        "people": [
+          "Erik Pasternak",
+          "Rachel Fenichel",
+          "Andrew N. Marshall",
+          "Blockly contributors"
+        ],
+        "year": 2017,
+        "summary": "In their 2017 Blockly design paper, Pasternak, Fenichel, and Marshall explained that a block editor is only part of a programming system: each application must choose its own vocabulary, audience, and execution behavior. Blockly had already been released in 2012. The paper encouraged small, comprehensible sets of blocks rather than exposing every possible operation.",
+        "sourceIds": [
+          "blockly-paper"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Blockly provides an open-source editor for block-based programming and is maintained by the Raspberry Pi Foundation. The proposed continuation lets community organizers inspect an automation's effects before approving them.",
+        "whatWasBuilt": "Blockly supplies customizable visual blocks, connections, and code generation. Its documentation makes clear that the application developer decides what the generated program does. The library alone does not define the community's permissions or the semantics of a safe preview.",
+        "whatRemains": "Create a deliberately restricted language whose operations declare the records they read, the changes they request, and the authority they need. Connect those declarations to an enforceable execution model, rather than treating a human-readable description as a guarantee.",
+        "sourceIds": [
+          "blockly-overview",
+          "blockly-paper"
+        ]
+      },
+      "whyNow": {
+        "summary": "A community garden could start with a recipe that reads volunteer availability, identifies uncovered shifts, and prepares a draft schedule. Our hypothesis is that showing exact proposed changes would let more organizers inspect and maintain the recipe. Existing visual-editor components lower the cost of this focused experiment. Whether the preview is actually understood needs testing with organizers, including people who did not create the recipe.",
+        "beneficiaries": [
+          "Volunteer coordinators sharing administrative work",
+          "Cooperatives reviewing repeatable operations",
+          "Members who inherit another person's automation"
+        ],
+        "sourceIds": [
+          "blockly-overview"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "An organizer builds and previews a recipe that proposes a draft rota from sample availability; another organizer accurately predicts its reads and writes.",
+        "steps": [
+          {
+            "title": "Define a small language",
+            "description": "Offer six operations covering reading availability, filtering, grouping, checking coverage, proposing assignments, and saving a draft. Specify input types, record scope, and effects for each operation.",
+            "deliverable": "A block vocabulary and executable examples for every operation."
+          },
+          {
+            "title": "Make execution match the preview",
+            "description": "Evaluate recipes against a versioned snapshot. Display affected records and proposed changes. On approval, verify the inputs are unchanged and stop if the request exceeds the organizer's permissions.",
+            "deliverable": "A preview-to-approval flow with enforced permissions and stale-data handling."
+          },
+          {
+            "title": "Share with evidence",
+            "description": "Package each recipe with sample inputs, expected outcomes, its author, and a change history. Ask a second group to adapt it, deliberately including missing availability and duplicate submissions.",
+            "deliverable": "Three inspectable recipes with reproducible demonstrations."
+          }
+        ],
+        "successCriteria": [
+          "Four of five organizers identify all affected data categories and proposed write actions before running a recipe.",
+          "A changed input invalidates the preview and requires a fresh approval.",
+          "Rerunning an approved request never creates duplicate assignments."
+        ],
+        "nonGoals": [
+          "Arbitrary JavaScript, unrestricted third-party connectors, or autonomous decision making.",
+          "Sending messages, making payments, or publishing schedules in the first milestone."
+        ],
+        "roles": [
+          {
+            "name": "Language designer",
+            "contribution": "Defines understandable blocks and precise effect semantics."
+          },
+          {
+            "name": "Runtime developer",
+            "contribution": "Enforces record scopes, approvals, and repeat-safe execution."
+          },
+          {
+            "name": "Community organizer",
+            "contribution": "Supplies real cases and tests whether another person can maintain the recipes."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Accurate declarations",
+          "description": "A plugin that claims to read one field may execute broader code. Keep the initial runtime closed to arbitrary plugins and derive the preview from the same operations used to execute."
+        },
+        {
+          "title": "Changing reality",
+          "description": "An accurate preview can become outdated before approval. Detect record changes, explain the conflict, and preserve a record of what the organizer actually approved."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Blockly developer documentation",
+          "url": "https://docs.blockly.com/guides/get-started/what-is-blockly/",
+          "relationship": "Provides the existing editor foundation; the proposed permissions and preview behavior belong in the application built around it."
+        }
+      ],
+      "references": [
+        {
+          "id": "blockly-paper",
+          "title": "Tips for Creating a Block Language with Blockly — 2017",
+          "url": "https://docs.blockly.com/publications/papers/TipsForCreatingABlockLanguage.pdf",
+          "kind": "original-paper",
+          "supports": "Authorship, 2012 release history, audience-specific vocabulary, scope, and separation between editor and runtime."
+        },
+        {
+          "id": "blockly-overview",
+          "title": "What is Blockly? — official developer documentation",
+          "url": "https://docs.blockly.com/guides/get-started/what-is-blockly/",
+          "kind": "project-docs",
+          "supports": "Current editor capabilities, application-defined behavior, and Raspberry Pi Foundation stewardship."
+        },
+        {
+          "id": "blockly-code",
+          "title": "Blockly reference implementation",
+          "url": "https://github.com/RaspberryPiFoundation/blockly/tree/b38681883738b7808ec591afe2905a40ad17702a",
+          "kind": "source-code",
+          "supports": "The existing implementation reviewed under the catalog's Apache 2.0 license terms."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "shared-system-hypotheses",
+    "details": {
+      "origin": {
+        "title": "LOOPY and conversations through simulations",
+        "people": [
+          "Nicky Case"
+        ],
+        "year": 2017,
+        "summary": "Nicky Case released LOOPY in March 2017 to let people construct educational simulations by drawing. Its circles and arrows make feedback relationships interactive, while sharing and remixing let one person's model become the starting point for another's response. The underlying ambition is participatory systems thinking: people should be able to construct and challenge an explanation, rather than only consume one.",
+        "sourceIds": [
+          "loopy-release",
+          "loopy-overview"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "LOOPY provides drawable, shareable simulations. The proposed continuation adds evidence to model relationships and lets groups compare competing explanations.",
+        "whatWasBuilt": "The published tool supports interactive models, remixes, links, files, and embedding. Its examples span ecology and social feedback. These are accessible qualitative explanations; the appearance of an animated relationship does not establish that the modeled causal claim is true.",
+        "whatRemains": "Add a workflow in which every important connection carries its rationale, evidence, and uncertainty, and two branches can be compared using the same starting scenario. A group should be able to preserve disagreement, including a missing connection, without forcing everyone into one supposedly authoritative diagram.",
+        "sourceIds": [
+          "loopy-overview",
+          "loopy-editor",
+          "loopy-examples"
+        ]
+      },
+      "whyNow": {
+        "summary": "A repair collective could use this workshop tool to investigate why donated devices wait for repair. Members could compare explanations involving spare parts, volunteer availability, and intake practices, then decide which observations to collect. The aim is to make assumptions easier to discuss and test.",
+        "beneficiaries": [
+          "Repair collectives reviewing bottlenecks",
+          "Community educators teaching feedback",
+          "Local groups trying to document competing explanations"
+        ],
+        "sourceIds": [
+          "loopy-overview"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "One group compares two explanations of a repair backlog and agrees on three observations that could distinguish them.",
+        "steps": [
+          {
+            "title": "Build a small shared model",
+            "description": "Limit the first diagram to eight variables. Give each a plain-language definition and distinguish measured observations from participants' assumptions. Record the time period and context to which the model is intended to apply.",
+            "deliverable": "A readable model and glossary reviewed by the participants."
+          },
+          {
+            "title": "Attach reasons to connections",
+            "description": "Add evidence links, authorship, uncertainty notes, and a counterargument field to each relationship. Permit an explicitly unsupported hypothesis; avoid assigning numeric confidence unless the group can explain what that number means.",
+            "deliverable": "Inspectable relationship cards and an evidence export."
+          },
+          {
+            "title": "Compare competing branches",
+            "description": "Fork a disputed model and replay the same qualitative input in both. Highlight which relationships differ and invite participants to write their expected outcome before running either branch.",
+            "deliverable": "A side-by-side comparison with recorded predictions."
+          },
+          {
+            "title": "Turn uncertainty into a next action",
+            "description": "Run one facilitated session and select observations that would challenge each explanation. Revisit the diagrams after collecting those observations; retain the earlier versions and the reasons for revisions.",
+            "deliverable": "A revised model with a short record of what the group learned."
+          }
+        ],
+        "successCriteria": [
+          "Every displayed relationship has an author, rationale, and explicit evidence or hypothesis label.",
+          "Participants can identify the changed assumptions between two branches without inspecting source code.",
+          "The group records at least three observations that could disconfirm its preferred explanation."
+        ],
+        "nonGoals": [
+          "Quantitative forecasting, automatic causal discovery, or an official policy recommendation.",
+          "Ranking community members by the apparent correctness of their models."
+        ],
+        "roles": [
+          {
+            "name": "Visualization developer",
+            "contribution": "Implement relationship evidence, branching, and comparison."
+          },
+          {
+            "name": "Facilitator",
+            "contribution": "Keep disagreement explicit and include quieter participants."
+          },
+          {
+            "name": "Domain participant",
+            "contribution": "Supply operational knowledge and collect follow-up observations."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Animation can imply more certainty than evidence supports",
+          "description": "Keep the model's qualitative assumptions visible during playback. Do not label pulses as predicted quantities or imply that arrows demonstrate causality."
+        },
+        {
+          "title": "Evidence can be selectively attached",
+          "description": "Make contrary evidence as easy to add as supporting links. Preserve minority branches and distinguish a group agreement from external validation."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "LOOPY community examples",
+          "url": "https://ncase.me/loopy/v1/pages/examples/",
+          "relationship": "Demonstrate existing educational uses; the proposed contribution is an explicit evidence and disagreement workflow around models."
+        }
+      ],
+      "references": [
+        {
+          "id": "loopy-release",
+          "title": "Nicky Case: LOOPY release announcement, March 23, 2017",
+          "url": "https://www.patreon.com/ncase/posts/its-out-loopy-in-8539662",
+          "kind": "project-docs",
+          "supports": "Creator, release date, and intention to let people build educational simulations."
+        },
+        {
+          "id": "loopy-overview",
+          "title": "LOOPY: a tool for thinking in systems",
+          "url": "https://ncase.me/loopy/",
+          "kind": "project-docs",
+          "supports": "Drawing, interactive exploration, remixing, and conversation through simulations."
+        },
+        {
+          "id": "loopy-editor",
+          "title": "LOOPY 1.1 editor",
+          "url": "https://ncase.me/loopy/v1.1/",
+          "kind": "project-docs",
+          "supports": "Existing link, file, embedding, and remix features."
+        },
+        {
+          "id": "loopy-examples",
+          "title": "LOOPY examples",
+          "url": "https://ncase.me/loopy/v1/pages/examples/",
+          "kind": "project-docs",
+          "supports": "Existing examples across ecological and social topics."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "inspectable-neural-network-lab",
+    "details": {
+      "origin": {
+        "title": "micrograd: learning from a complete small implementation",
+        "people": [
+          "Andrej Karpathy"
+        ],
+        "year": 2020,
+        "summary": "micrograd implements automatic differentiation over scalar operations and places a small neural-network library on top. Its small size makes the relationship between ordinary arithmetic, a computation graph, and backpropagation available for direct study. The educational direction is compelling: a learner can examine a complete working mechanism instead of treating training as a call to an opaque service.",
+        "sourceIds": [
+          "micrograd-project",
+          "micrograd-license"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "The engine, demonstration notebooks, and graph tracing already exist. The proposed addition is a shared investigation process around tiny models.",
+        "whatWasBuilt": "micrograd's repository demonstrates binary classification and computation-graph tracing. TensorFlow Playground separately lets people change network settings and inspect neurons, weights, and training results in a browser.",
+        "whatRemains": "Explore a classroom or study-group lab in which participants state a prediction, fork the same model, change one assumption, and compare reproducible results. Keep explanations next to the exact data, parameters, and training state they refer to, so disagreements can be tested rather than lost in a chat thread.",
+        "sourceIds": [
+          "micrograd-project",
+          "tensorflow-playground"
+        ]
+      },
+      "whyNow": {
+        "summary": "Our proposal is to make shared experimental habits the centerpiece of a compact learning tool. A small synthetic problem can keep every calculation available for inspection and avoid needing an external model API. The potential benefit is a stronger understanding of what a network actually computes and of the limits of an explanation based on a single successful run. Learning improvement must be measured, not assumed.",
+        "beneficiaries": [
+          "Community study groups learning machine learning",
+          "Teachers introducing gradients and training",
+          "Software builders seeking a concrete foundation before using larger libraries"
+        ],
+        "sourceIds": [
+          "micrograd-project"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Four learners investigate one tiny classifier, reproduce each other's experiment, and trace one prediction and one gradient through the full graph.",
+        "steps": [
+          {
+            "title": "Make one run fully reproducible",
+            "description": "Use a small synthetic dataset and fixed initial parameters. Save input points, labels, model structure, learning rate, and update count in a portable experiment file. Include a reset that returns to exactly the same initial state.",
+            "deliverable": "A deterministic baseline with a downloadable experiment record."
+          },
+          {
+            "title": "Expose arithmetic at two scales",
+            "description": "Let learners switch between the network diagram and its scalar operations. Show intermediate values and gradients, and link each selected operation to the corresponding implementation. Add numerical checks for the gradients on the teaching examples.",
+            "deliverable": "A traceable forward and backward pass with verified examples."
+          },
+          {
+            "title": "Record predictions before changes",
+            "description": "Ask each learner to predict the effect of changing one weight, one mislabeled point, or the learning rate. Fork from the same saved state, run both branches, and attach a short explanation of where the prediction held or failed.",
+            "deliverable": "A shared comparison of hypotheses and reproducible outcomes."
+          },
+          {
+            "title": "Test transfer of understanding",
+            "description": "Give learners a different tiny graph after the session. Ask them to explain a gradient and identify an experiment that would challenge their account of the classifier, without following the original walkthrough.",
+            "deliverable": "An anonymized learning evaluation and revised activities."
+          }
+        ],
+        "successCriteria": [
+          "Imported experiment files reproduce the same outputs and update sequence within a documented numerical tolerance.",
+          "All teaching examples pass independent finite-difference gradient checks away from nondifferentiable points.",
+          "At least three of four learners explain an unfamiliar gradient path and propose a meaningful counterexperiment."
+        ],
+        "nonGoals": [
+          "Training large models, interpreting commercial model internals, or predicting real people's attributes.",
+          "Claiming that a visible computation graph by itself establishes fairness or explains learned behavior completely."
+        ],
+        "roles": [
+          {
+            "name": "Machine-learning educator",
+            "contribution": "Design misconceptions, teaching examples, and learning evaluation."
+          },
+          {
+            "name": "Numerical software developer",
+            "contribution": "Keep computation, gradient checks, and replay trustworthy."
+          },
+          {
+            "name": "Visualization designer",
+            "contribution": "Connect arithmetic detail with the broader network behavior."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Complete visibility can still overwhelm",
+          "description": "Keep the initial graph deliberately small and reveal one path at a time. Preserve access to all operations without presenting them simultaneously."
+        },
+        {
+          "title": "A tidy demonstration can teach the wrong generalization",
+          "description": "Include a failed prediction and an unstable training run. Separate observations about this saved experiment from claims about neural networks in general."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "TensorFlow Playground",
+          "url": "https://playground.tensorflow.org/",
+          "relationship": "Already offers visual network experimentation. This proposal emphasizes shared hypotheses, complete scalar traces, and exact experiment replay."
+        }
+      ],
+      "references": [
+        {
+          "id": "micrograd-project",
+          "title": "micrograd source repository and educational examples",
+          "url": "https://github.com/karpathy/micrograd",
+          "kind": "source-code",
+          "supports": "Scalar automatic differentiation, small neural-network library, classification demo, and graph tracing."
+        },
+        {
+          "id": "micrograd-license",
+          "title": "micrograd MIT license at the reviewed revision",
+          "url": "https://github.com/karpathy/micrograd/blob/7bc720e951fe422b8f8814aa5aa1b64121d26b4c/LICENSE",
+          "kind": "license",
+          "supports": "Named author and 2020 copyright date; reuse is governed by the separate license panel."
+        },
+        {
+          "id": "tensorflow-playground",
+          "title": "A Neural Network Playground",
+          "url": "https://playground.tensorflow.org/",
+          "kind": "project-docs",
+          "supports": "Existing browser-based inspection of network features, weights, neurons, and training results."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  }
+]

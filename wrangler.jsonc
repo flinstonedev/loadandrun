@@ -1,0 +1,112 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "load-and-run",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-09-04",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": true
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "WORKSPACES",
+        "class_name": "Workspace"
+      },
+      {
+        "name": "SPACES",
+        "class_name": "Space"
+      },
+      {
+        "name": "WIDGETS",
+        "class_name": "Widget"
+      },
+      {
+        "name": "SPACE_DIRECTORIES",
+        "class_name": "SpaceDirectory"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "Workspace"
+      ]
+    },
+    {
+      "tag": "v2-spaces",
+      "new_sqlite_classes": [
+        "Space",
+        "Widget",
+        "SpaceDirectory"
+      ]
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "ENVIRONMENT": "production",
+    "WORKSPACE_ID": "load-and-run",
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": "",
+    "SPACES_ENABLED": "true",
+    "AUTH_PROVIDER": "workos",
+    "WORKOS_CLIENT_ID": "",
+    "WORKOS_ALLOWED_ORIGINS": "",
+    "WORKOS_ISSUER": "",
+    "SPACES_AI_ENABLED": "false",
+    "AI_MODEL": "@cf/google/gemma-4-26b-a4b-it",
+    "WORKOS_ENVIRONMENT": "staging"
+  },
+  "env": {
+    "local": {
+      "name": "load-and-run-local",
+      "workers_dev": false,
+      "preview_urls": false,
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "WORKSPACES",
+            "class_name": "Workspace"
+          },
+          {
+            "name": "SPACES",
+            "class_name": "Space"
+          },
+          {
+            "name": "WIDGETS",
+            "class_name": "Widget"
+          },
+          {
+            "name": "SPACE_DIRECTORIES",
+            "class_name": "SpaceDirectory"
+          }
+        ]
+      },
+      "vars": {
+        "ENVIRONMENT": "local",
+        "WORKSPACE_ID": "local",
+        "ACCESS_TEAM_DOMAIN": "",
+        "ACCESS_AUD": "",
+        "SPACES_ENABLED": "true",
+        "AUTH_PROVIDER": "workos",
+        "WORKOS_CLIENT_ID": "",
+        "WORKOS_ALLOWED_ORIGINS": "http://127.0.0.1:4173,http://127.0.0.1:4185,http://localhost:4173,http://localhost:4185",
+        "WORKOS_ISSUER": "",
+        "SPACES_AI_ENABLED": "false",
+        "AI_MODEL": "@cf/google/gemma-4-26b-a4b-it",
+        "WORKOS_ENVIRONMENT": "staging"
+      }
+    }
+  }
+}

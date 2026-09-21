@@ -1,0 +1,529 @@
+[
+  {
+    "id": "offline-field-notebook",
+    "title": "A notebook that reunites after a week offline",
+    "summary": "Collect observations together even when nobody has a reliable connection.",
+    "opportunity": "Build a fieldwork notebook where three people collect observations offline for seven days, then merge their notes with a clear explanation of conflicting edits and authorship.",
+    "domain": "Collaboration",
+    "tags": [
+      "Local-first",
+      "Offline",
+      "Shared knowledge"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Automerge: implementation guide and examples",
+        "url": "https://github.com/automerge/automerge/blob/1618c976ca23fca8282c4a69ebbb0bb0c3f27ab1/README.md"
+      }
+    ],
+    "implementation": {
+      "name": "Automerge",
+      "codeUrl": "https://github.com/automerge/automerge/tree/1618c976ca23fca8282c4a69ebbb0bb0c3f27ab1",
+      "licenseUrl": "https://github.com/automerge/automerge/blob/1618c976ca23fca8282c4a69ebbb0bb0c3f27ab1/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2019-2021 the Automerge contributors",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "1618c976ca23fca8282c4a69ebbb0bb0c3f27ab1",
+      "licenseText": "Copyright (c) 2019-2021 the Automerge contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+      "licenseTextSha256": "7a06f577e39ec132eb8657abc3471f81f668ff3810a160db79b9b18a9568242b"
+    },
+    "existingWork": "Automerge already provides conflict-free data structures, persistence, and a synchronization protocol for local-first applications. This experiment focuses on understandable reconciliation and recovery for a fieldwork team.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "evolving-data-formats",
+    "title": "Software that survives its own data format",
+    "summary": "Let collaborators customize their tools without losing the ability to exchange information.",
+    "opportunity": "Connect three independently evolving project trackers through reversible schema translations. Let a team rename or split fields without requiring every collaborator to upgrade at once.",
+    "domain": "Data portability",
+    "tags": [
+      "Interoperability",
+      "Data schemas",
+      "Local-first"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Cambria: implementation guide and examples",
+        "url": "https://github.com/inkandswitch/cambria-project/blob/da8961440cac7eba1c3113488f5bcbc26046620f/README.md"
+      },
+      {
+        "title": "Cambria: research overview",
+        "url": "https://www.inkandswitch.com/project/cambria/"
+      }
+    ],
+    "implementation": {
+      "name": "Cambria",
+      "codeUrl": "https://github.com/inkandswitch/cambria-project/tree/da8961440cac7eba1c3113488f5bcbc26046620f",
+      "licenseUrl": "https://github.com/inkandswitch/cambria-project/blob/da8961440cac7eba1c3113488f5bcbc26046620f/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2021 Ink & Switch LLC",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "da8961440cac7eba1c3113488f5bcbc26046620f",
+      "licenseText": "MIT License\n\nCopyright (c) 2021 Ink & Switch LLC\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+      "licenseTextSha256": "a7cbc0708b7f953153467e33826494536e2b0861d384dbda06c27797147f831d"
+    },
+    "existingWork": "Cambria already implements bidirectional schema lenses and was used in an experimental issue tracker. Its repository describes it as immature software. This proposal tests compatibility across tools that different teams customize independently.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "living-diagram-assumptions",
+    "title": "Living diagrams that explain their assumptions",
+    "summary": "Turn a model into something people can manipulate, question, and explain together.",
+    "opportunity": "Build a diagram editor where a group can manipulate a model, inspect the assumptions behind each formula, compare alternatives, and publish a portable interactive explanation.",
+    "domain": "Visual computing",
+    "tags": [
+      "Interactive diagrams",
+      "Explorable explanations",
+      "Modeling"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Apparatus: implementation guide and examples",
+        "url": "https://github.com/cdglabs/apparatus/blob/107e0c2db5a0adf0f1c3b49f16f7625cff4e523b/readme.md"
+      }
+    ],
+    "implementation": {
+      "name": "Apparatus",
+      "codeUrl": "https://github.com/cdglabs/apparatus/tree/107e0c2db5a0adf0f1c3b49f16f7625cff4e523b",
+      "licenseUrl": "https://github.com/cdglabs/apparatus/blob/107e0c2db5a0adf0f1c3b49f16f7625cff4e523b/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2015 Tobias Schachman",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "107e0c2db5a0adf0f1c3b49f16f7625cff4e523b",
+      "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015 Tobias Schachman\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+      "licenseTextSha256": "42e4d487bd57e2c7764732f3bb2deac47b9b9efcc51f7259ec73d5ae10c06a38"
+    },
+    "existingWork": "Apparatus already combines graphics editing and programming to create interactive diagrams. This experiment adds inspectable assumptions, alternative models, and a review workflow for teams.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "personal-web-repair-kit",
+    "title": "A personal web repair kit",
+    "summary": "Reshape a website around your own needs and share the adaptation with others.",
+    "opportunity": "Let someone reorganize a difficult website using a spreadsheet view, save the adaptation locally, and share a recipe that explains the browser permissions it needs.",
+    "domain": "Personal computing",
+    "tags": [
+      "Malleable software",
+      "Browser tools",
+      "Accessibility"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Wildcard: implementation guide and examples",
+        "url": "https://github.com/geoffreylitt/wildcard/blob/dd81d9b4a34729887e86b2e5de0c3e8ecdc94b03/README.md"
+      },
+      {
+        "title": "Wildcard: project and research",
+        "url": "https://www.geoffreylitt.com/wildcard/"
+      }
+    ],
+    "implementation": {
+      "name": "Wildcard",
+      "codeUrl": "https://github.com/geoffreylitt/wildcard/tree/dd81d9b4a34729887e86b2e5de0c3e8ecdc94b03",
+      "licenseUrl": "https://github.com/geoffreylitt/wildcard/blob/dd81d9b4a34729887e86b2e5de0c3e8ecdc94b03/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2025 Geoffrey Litt",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "dd81d9b4a34729887e86b2e5de0c3e8ecdc94b03",
+      "licenseText": "MIT License\n\nCopyright (c) 2025 Geoffrey Litt\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+      "licenseTextSha256": "b62a3563251acb436634e2da3a6f50d45b5ebac9606e3c6aef49a2e90abffb0f"
+    },
+    "existingWork": "Wildcard already explores website customization through tabular views and browser extensions. Its repository describes prerelease software with incomplete features. This experiment focuses on adaptations that people can inspect, maintain, and share.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "reshape-your-workspace",
+    "title": "A workspace whose tools members can reshape",
+    "summary": "Give a group room to change the software they use while they are using it.",
+    "opportunity": "Build a workspace where a member can change a board or calculator directly, submit the change for review, and restore an earlier version without leaving the workspace.",
+    "domain": "Personal computing",
+    "tags": [
+      "Live programming",
+      "Malleable software",
+      "Team tools"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "lively.next: implementation guide and examples",
+        "url": "https://github.com/LivelyKernel/lively.next/blob/028dbf1bd17277be113ef3ca83c0be32703d7ede/README.md"
+      }
+    ],
+    "implementation": {
+      "name": "lively.next",
+      "codeUrl": "https://github.com/LivelyKernel/lively.next/tree/028dbf1bd17277be113ef3ca83c0be32703d7ede",
+      "licenseUrl": "https://github.com/LivelyKernel/lively.next/blob/028dbf1bd17277be113ef3ca83c0be32703d7ede/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright 2009-2021 Lively Kernel contributors",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "028dbf1bd17277be113ef3ca83c0be32703d7ede",
+      "licenseText": "Copyright 2009-2021 Lively Kernel contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to\ndeal in the Software without restriction, including without limitation the\nrights to use, copy, modify, merge, publish, distribute, sublicense, and/or\nsell copies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS\nIN THE SOFTWARE.\n",
+      "licenseTextSha256": "dec3676f5a35551aaa0bc94b0226ab3826f11abb71cfad29850994bf6e620afd"
+    },
+    "existingWork": "lively.next already combines live programming, direct manipulation, and collaboration, and is developed as beta software. This proposal explores review and recovery when a group changes its everyday tools.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "portable-project-passport",
+    "title": "A project passport you can take between communities",
+    "summary": "Keep your project profile and contribution record when you move to a different community.",
+    "opportunity": "Store a builder's project profile and contribution records in their own data space. Demonstrate moving between two community applications without recreating the information or granting both applications permanent access.",
+    "domain": "Data portability",
+    "tags": [
+      "Personal data",
+      "Interoperability",
+      "Identity"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Community Solid Server: implementation guide and examples",
+        "url": "https://github.com/CommunitySolidServer/CommunitySolidServer/blob/506dcf07ba4ca2ef326bbc81eb99f60748350c89/README.md"
+      }
+    ],
+    "implementation": {
+      "name": "Community Solid Server",
+      "codeUrl": "https://github.com/CommunitySolidServer/CommunitySolidServer/tree/506dcf07ba4ca2ef326bbc81eb99f60748350c89",
+      "licenseUrl": "https://github.com/CommunitySolidServer/CommunitySolidServer/blob/506dcf07ba4ca2ef326bbc81eb99f60748350c89/LICENSE.md",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright © 2019–2025 Inrupt Inc. and imec",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "506dcf07ba4ca2ef326bbc81eb99f60748350c89",
+      "licenseText": "MIT License\n\nCopyright © 2019–2025 Inrupt Inc. and imec\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included\nin all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nWHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF\nOR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+      "licenseTextSha256": "f1c844e5131c20745d4437003af304e9f7bfa28144897f50a5c8183700ebd465"
+    },
+    "existingWork": "Community Solid Server already provides Solid Pods, identity, and modular personal storage. This experiment applies that foundation to portable community participation and understandable permissions.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "shared-writing-disagreement",
+    "title": "Shared writing that preserves disagreement",
+    "summary": "Let drafts converge while keeping competing explanations visible.",
+    "opportunity": "Extend a collaborative editor so independently edited passages retain authorship, competing alternatives, and review decisions when writers merge their offline work.",
+    "domain": "Collaboration",
+    "tags": [
+      "Rich text",
+      "Offline",
+      "Version history"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Peritext: implementation guide and examples",
+        "url": "https://github.com/inkandswitch/peritext/blob/89c162d3c1ae02c426c9002419aef0814e779ed8/README.md"
+      },
+      {
+        "title": "Peritext: A CRDT for Rich-Text Collaboration",
+        "url": "https://www.inkandswitch.com/peritext/"
+      }
+    ],
+    "implementation": {
+      "name": "Peritext",
+      "codeUrl": "https://github.com/inkandswitch/peritext/tree/89c162d3c1ae02c426c9002419aef0814e779ed8",
+      "licenseUrl": "https://github.com/inkandswitch/peritext/blob/89c162d3c1ae02c426c9002419aef0814e779ed8/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2021 Ink & Switch LLC",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "89c162d3c1ae02c426c9002419aef0814e779ed8",
+      "licenseText": "MIT License\n\nCopyright (c) 2021 Ink & Switch LLC\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+      "licenseTextSha256": "a7cbc0708b7f953153467e33826494536e2b0861d384dbda06c27797147f831d"
+    },
+    "existingWork": "Peritext already implements a rich-text collaboration algorithm, an editor integration, demonstrations, and tests. This experiment explores editorial intent and review decisions around merged passages.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "community-small-languages",
+    "title": "Small languages for everyday work",
+    "summary": "Let a community describe its work in a language that fits what it does.",
+    "opportunity": "Give a makerspace a simple language for workshop recipes, with live feedback, examples, and a visual trace explaining how each instruction is interpreted.",
+    "domain": "Programming tools",
+    "tags": [
+      "End-user programming",
+      "Learning",
+      "Domain languages"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Ohm: implementation guide and examples",
+        "url": "https://github.com/ohmjs/ohm/blob/43c345b920c98b3eb13ce6b12df2b6ebd400b63b/README.md"
+      }
+    ],
+    "implementation": {
+      "name": "Ohm",
+      "codeUrl": "https://github.com/ohmjs/ohm/tree/43c345b920c98b3eb13ce6b12df2b6ebd400b63b",
+      "licenseUrl": "https://github.com/ohmjs/ohm/blob/43c345b920c98b3eb13ce6b12df2b6ebd400b63b/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2014-2022 Alessandro Warth and the Ohm project contributors.",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "43c345b920c98b3eb13ce6b12df2b6ebd400b63b",
+      "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014-2022 Alessandro Warth and the Ohm project contributors.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+      "licenseTextSha256": "082749795be5c96a76e99878b6ede8068e475b257fd540227a1a876a9d6f574a"
+    },
+    "existingWork": "Ohm already provides extensible grammars, separate semantic actions, and an interactive editor. Its documented applications include Seymour, Shadama, and turtle.audio. This proposal explores a community-owned language for workshop recipes.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "documents-become-tools",
+    "title": "Documents that become shared tools",
+    "summary": "Let a useful document grow into an interactive tool as a group needs more from it.",
+    "opportunity": "Start with a group's meeting document and let members turn part of it into an interactive decision board while preserving its history and shared editing.",
+    "domain": "Collaboration",
+    "tags": [
+      "Computational media",
+      "Malleable software",
+      "Shared documents"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Webstrates: implementation guide and examples",
+        "url": "https://github.com/Webstrates/Webstrates/blob/e28dfa464123d390ea367f3b3b05fa834cc7f8e0/README.md"
+      },
+      {
+        "title": "Webstrates: overview and research papers",
+        "url": "https://webstrates.net/"
+      }
+    ],
+    "implementation": {
+      "name": "Webstrates",
+      "codeUrl": "https://github.com/Webstrates/Webstrates/tree/e28dfa464123d390ea367f3b3b05fa834cc7f8e0",
+      "licenseUrl": "https://github.com/Webstrates/Webstrates/blob/e28dfa464123d390ea367f3b3b05fa834cc7f8e0/LICENSE",
+      "license": "Apache License 2.0",
+      "licenseId": "Apache-2.0",
+      "notice": "Copyright 2017 Clemens Nylandsted Klokmose and Kristian Borup Antonsen, Aarhus University.",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Include the license, retain applicable attribution notices, and mark modified files. Preserve any required NOTICE content. The license does not grant trademark rights.",
+      "commit": "e28dfa464123d390ea367f3b3b05fa834cc7f8e0",
+      "licenseText": "Copyright 2017 Clemens Nylandsted Klokmose and Kristian Borup Antonsen,\nAarhus University\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+      "licenseTextSha256": "458ec62ea16ade2e0b9bc0bf95c1185f7fc6df2d38cd05fabca2043934f72ef0",
+      "licenseTermsUrl": "https://www.apache.org/licenses/LICENSE-2.0",
+      "licenseTermsText": "\n                                 Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS\n\n   APPENDIX: How to apply the Apache License to your work.\n\n      To apply the Apache License to your work, attach the following\n      boilerplate notice, with the fields enclosed by brackets \"[]\"\n      replaced with your own identifying information. (Don't include\n      the brackets!)  The text should be enclosed in the appropriate\n      comment syntax for the file format. We also recommend that a\n      file or class name and description of purpose be included on the\n      same \"printed page\" as the copyright notice for easier\n      identification within third-party archives.\n\n   Copyright [yyyy] [name of copyright owner]\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n"
+    },
+    "existingWork": "Webstrates already synchronizes persistent changes to web pages and explores software as computational media. Codestrates and Varv are related projects. This experiment focuses on a meeting document growing into a group's decision tool.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "inspectable-automation-recipes",
+    "title": "Automation recipes people can inspect",
+    "summary": "Show people what an automation will read and change before it runs.",
+    "opportunity": "Build a visual automation editor for community operations where every block declares the data it reads, the changes it makes, and the permissions it needs, with a preview before execution.",
+    "domain": "Programming tools",
+    "tags": [
+      "Visual programming",
+      "Automation",
+      "Permissions"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Blockly: implementation guide and examples",
+        "url": "https://github.com/RaspberryPiFoundation/blockly/blob/b38681883738b7808ec591afe2905a40ad17702a/README.md"
+      }
+    ],
+    "implementation": {
+      "name": "Blockly",
+      "codeUrl": "https://github.com/RaspberryPiFoundation/blockly/tree/b38681883738b7808ec591afe2905a40ad17702a",
+      "licenseUrl": "https://github.com/RaspberryPiFoundation/blockly/blob/b38681883738b7808ec591afe2905a40ad17702a/LICENSE",
+      "license": "Apache License 2.0",
+      "licenseId": "Apache-2.0",
+      "notice": "Retain the copyright and attribution notices in the Blockly files you reuse.",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Include the license, retain applicable attribution notices, and mark modified files. Preserve any required NOTICE content. The license does not grant trademark rights.",
+      "commit": "b38681883738b7808ec591afe2905a40ad17702a",
+      "licenseText": "\n                                 Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS\n\n   APPENDIX: How to apply the Apache License to your work.\n\n      To apply the Apache License to your work, attach the following\n      boilerplate notice, with the fields enclosed by brackets \"[]\"\n      replaced with your own identifying information. (Don't include\n      the brackets!)  The text should be enclosed in the appropriate\n      comment syntax for the file format. We also recommend that a\n      file or class name and description of purpose be included on the\n      same \"printed page\" as the copyright notice for easier\n      identification within third-party archives.\n\n   Copyright [yyyy] [name of copyright owner]\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n",
+      "licenseTextSha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "licenseTermsUrl": "https://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "existingWork": "Blockly already provides an extensible visual programming editor maintained by the Raspberry Pi Foundation. This experiment adds an understandable account of an automation's effects and permissions.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "shared-system-hypotheses",
+    "title": "A shared map of how a system might change",
+    "summary": "Compare explanations of a system and see what follows from different assumptions.",
+    "opportunity": "Let a group build a causal model, attach evidence and uncertainty to its connections, fork competing hypotheses, and compare what happens when an assumption changes.",
+    "domain": "Visual computing",
+    "tags": [
+      "Systems thinking",
+      "Simulation",
+      "Shared knowledge"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "LOOPY: implementation guide and examples",
+        "url": "https://github.com/ncase/loopy/blob/2d8e13f0a006f4024f27ad1712d7f9c2c1ad7cd9/README.md"
+      },
+      {
+        "title": "LOOPY: interactive systems-thinking tool",
+        "url": "https://ncase.me/loopy/"
+      }
+    ],
+    "implementation": {
+      "name": "LOOPY",
+      "codeUrl": "https://github.com/ncase/loopy/tree/2d8e13f0a006f4024f27ad1712d7f9c2c1ad7cd9",
+      "licenseUrl": "https://github.com/ncase/loopy/blob/2d8e13f0a006f4024f27ad1712d7f9c2c1ad7cd9/LICENSE.txt",
+      "license": "CC0 1.0 Universal",
+      "licenseId": "CC0-1.0",
+      "notice": "LOOPY is dedicated to the public domain under CC0 1.0 by Nicky Case. Third-party components retain their own terms.",
+      "scope": "The creator's LOOPY material dedicated under CC0 at the linked revision. Third-party code, user-made models, attached evidence, patents, and trademarks are outside this approval.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "CC0 does not require attribution for the creator's dedicated material. Preserve the separate notices and licenses of third-party components. Patent and trademark rights are outside CC0.",
+      "commit": "2d8e13f0a006f4024f27ad1712d7f9c2c1ad7cd9",
+      "licenseText": "CC0 1.0 Universal\n\nStatement of Purpose\n\nThe laws of most jurisdictions throughout the world automatically confer\nexclusive Copyright and Related Rights (defined below) upon the creator and\nsubsequent owner(s) (each and all, an \"owner\") of an original work of\nauthorship and/or a database (each, a \"Work\").\n\nCertain owners wish to permanently relinquish those rights to a Work for the\npurpose of contributing to a commons of creative, cultural and scientific\nworks (\"Commons\") that the public can reliably and without fear of later\nclaims of infringement build upon, modify, incorporate in other works, reuse\nand redistribute as freely as possible in any form whatsoever and for any\npurposes, including without limitation commercial purposes. These owners may\ncontribute to the Commons to promote the ideal of a free culture and the\nfurther production of creative, cultural and scientific works, or to gain\nreputation or greater distribution for their Work in part through the use and\nefforts of others.\n\nFor these and/or other purposes and motivations, and without any expectation\nof additional consideration or compensation, the person associating CC0 with a\nWork (the \"Affirmer\"), to the extent that he or she is an owner of Copyright\nand Related Rights in the Work, voluntarily elects to apply CC0 to the Work\nand publicly distribute the Work under its terms, with knowledge of his or her\nCopyright and Related Rights in the Work and the meaning and intended legal\neffect of CC0 on those rights.\n\n1. Copyright and Related Rights. A Work made available under CC0 may be\nprotected by copyright and related or neighboring rights (\"Copyright and\nRelated Rights\"). Copyright and Related Rights include, but are not limited\nto, the following:\n\n  i. the right to reproduce, adapt, distribute, perform, display, communicate,\n  and translate a Work;\n\n  ii. moral rights retained by the original author(s) and/or performer(s);\n\n  iii. publicity and privacy rights pertaining to a person's image or likeness\n  depicted in a Work;\n\n  iv. rights protecting against unfair competition in regards to a Work,\n  subject to the limitations in paragraph 4(a), below;\n\n  v. rights protecting the extraction, dissemination, use and reuse of data in\n  a Work;\n\n  vi. database rights (such as those arising under Directive 96/9/EC of the\n  European Parliament and of the Council of 11 March 1996 on the legal\n  protection of databases, and under any national implementation thereof,\n  including any amended or successor version of such directive); and\n\n  vii. other similar, equivalent or corresponding rights throughout the world\n  based on applicable law or treaty, and any national implementations thereof.\n\n2. Waiver. To the greatest extent permitted by, but not in contravention of,\napplicable law, Affirmer hereby overtly, fully, permanently, irrevocably and\nunconditionally waives, abandons, and surrenders all of Affirmer's Copyright\nand Related Rights and associated claims and causes of action, whether now\nknown or unknown (including existing as well as future claims and causes of\naction), in the Work (i) in all territories worldwide, (ii) for the maximum\nduration provided by applicable law or treaty (including future time\nextensions), (iii) in any current or future medium and for any number of\ncopies, and (iv) for any purpose whatsoever, including without limitation\ncommercial, advertising or promotional purposes (the \"Waiver\"). Affirmer makes\nthe Waiver for the benefit of each member of the public at large and to the\ndetriment of Affirmer's heirs and successors, fully intending that such Waiver\nshall not be subject to revocation, rescission, cancellation, termination, or\nany other legal or equitable action to disrupt the quiet enjoyment of the Work\nby the public as contemplated by Affirmer's express Statement of Purpose.\n\n3. Public License Fallback. Should any part of the Waiver for any reason be\njudged legally invalid or ineffective under applicable law, then the Waiver\nshall be preserved to the maximum extent permitted taking into account\nAffirmer's express Statement of Purpose. In addition, to the extent the Waiver\nis so judged Affirmer hereby grants to each affected person a royalty-free,\nnon transferable, non sublicensable, non exclusive, irrevocable and\nunconditional license to exercise Affirmer's Copyright and Related Rights in\nthe Work (i) in all territories worldwide, (ii) for the maximum duration\nprovided by applicable law or treaty (including future time extensions), (iii)\nin any current or future medium and for any number of copies, and (iv) for any\npurpose whatsoever, including without limitation commercial, advertising or\npromotional purposes (the \"License\"). The License shall be deemed effective as\nof the date CC0 was applied by Affirmer to the Work. Should any part of the\nLicense for any reason be judged legally invalid or ineffective under\napplicable law, such partial invalidity or ineffectiveness shall not\ninvalidate the remainder of the License, and in such case Affirmer hereby\naffirms that he or she will not (i) exercise any of his or her remaining\nCopyright and Related Rights in the Work or (ii) assert any associated claims\nand causes of action with respect to the Work, in either case contrary to\nAffirmer's express Statement of Purpose.\n\n4. Limitations and Disclaimers.\n\n  a. No trademark or patent rights held by Affirmer are waived, abandoned,\n  surrendered, licensed or otherwise affected by this document.\n\n  b. Affirmer offers the Work as-is and makes no representations or warranties\n  of any kind concerning the Work, express, implied, statutory or otherwise,\n  including without limitation warranties of title, merchantability, fitness\n  for a particular purpose, non infringement, or the absence of latent or\n  other defects, accuracy, or the present or absence of errors, whether or not\n  discoverable, all to the greatest extent permissible under applicable law.\n\n  c. Affirmer disclaims responsibility for clearing rights of other persons\n  that may apply to the Work or any use thereof, including without limitation\n  any person's Copyright and Related Rights in the Work. Further, Affirmer\n  disclaims responsibility for obtaining any necessary consents, permissions\n  or other rights required for any use of the Work.\n\n  d. Affirmer understands and acknowledges that Creative Commons is not a\n  party to this document and has no duty or obligation with respect to this\n  CC0 or use of the Work.\n\nFor more information, please see\n<http://creativecommons.org/publicdomain/zero/1.0/>\n",
+      "licenseTextSha256": "36ffd9dc085d529a7e60e1276d73ae5a030b020313e6c5408593a6ae2af39673"
+    },
+    "existingWork": "LOOPY already provides an interactive tool for thinking in systems. This proposal adds evidence, uncertainty, and a workflow for comparing competing models.",
+    "originalityStatus": "proposed-experiment"
+  },
+  {
+    "id": "inspectable-neural-network-lab",
+    "title": "A neural network you can argue with",
+    "summary": "Make a tiny neural network small enough to inspect and discuss together.",
+    "opportunity": "Create a collaborative learning lab where people change a tiny neural network's inputs or weights, inspect the complete computation graph, and record competing explanations of its behavior.",
+    "domain": "Learning technology",
+    "tags": [
+      "Machine learning",
+      "Explorable explanations",
+      "Collaboration"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "micrograd: implementation guide and examples",
+        "url": "https://github.com/karpathy/micrograd/blob/7bc720e951fe422b8f8814aa5aa1b64121d26b4c/README.md"
+      }
+    ],
+    "implementation": {
+      "name": "micrograd",
+      "codeUrl": "https://github.com/karpathy/micrograd/tree/7bc720e951fe422b8f8814aa5aa1b64121d26b4c",
+      "licenseUrl": "https://github.com/karpathy/micrograd/blob/7bc720e951fe422b8f8814aa5aa1b64121d26b4c/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "The MIT License (MIT) Copyright (c) 2020 Andrej Karpathy",
+      "scope": "The named reference implementation's own code and associated documentation at the linked revision. Linked papers, videos, images, brands, external data, and third-party components have separate rights.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Keep the copyright and permission notices in copies or substantial portions of the licensed software. You may use your own license for original additions.",
+      "commit": "7bc720e951fe422b8f8814aa5aa1b64121d26b4c",
+      "licenseText": "The MIT License (MIT) Copyright (c) 2020 Andrej Karpathy\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+      "licenseTextSha256": "f372f582c99dc5b0e8dcf5ca5542183a735365468857ec6416af628490187cc1"
+    },
+    "existingWork": "micrograd already implements a small automatic differentiation engine and neural-network library. This experiment builds a shared learning experience around inspectable models and testable explanations.",
+    "originalityStatus": "proposed-experiment"
+  }
+]

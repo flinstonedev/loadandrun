@@ -1,0 +1,199 @@
+{
+  "reviewedOn": "2026-09-05",
+  "scope": "Nine catalog blueprints. Conservative publication rule: identified released source code with explicit royalty-free commercial use, modification and redistribution rights, plus source material. Conditions apply; this is not worldwide freedom-to-operate clearance.",
+  "entries": {
+    "1a": {
+      "name": "Open Hyperdocument System",
+      "finding": "Publish only with the HyperScope 1.1 implementation path. The official project download page links to Brad Neuberg’s archive; the release contains GPL-2.0. Bundled Dojo offers modified BSD or AFL-2.1; Sarissa 0.9.7 offers GPL-2-or-later, LGPL-2.1-or-later or Apache-2-or-later. License conditions and per-module notices remain. No independent patent search is represented as comprehensive.",
+      "rightsSources": [
+        "https://dougengelbart.org/content/view/210/",
+        "https://hyperscope.org/download/index.html",
+        "https://github.com/BradNeuberg/hyperscope/blob/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1/LICENSE",
+        "https://github.com/BradNeuberg/hyperscope/blob/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1/src/client/lib/dojo/LICENSE",
+        "https://github.com/BradNeuberg/hyperscope/blob/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1/src/client/lib/sarissa/core.js"
+      ],
+      "addSources": [
+        {
+          "title": "HyperScope 1.1: released source code",
+          "url": "https://github.com/BradNeuberg/hyperscope/tree/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1",
+          "supports": "Specific GPL-2.0 implementation of parts of the OHS vision."
+        }
+      ],
+      "decision": "publish",
+      "implementation": {
+        "name": "HyperScope 1.1",
+        "license": "GPL-2.0",
+        "codeUrl": "https://github.com/BradNeuberg/hyperscope/tree/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1",
+        "licenseUrl": "https://github.com/BradNeuberg/hyperscope/blob/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1/LICENSE",
+        "notice": "Use and modify the released software, including commercially. If you distribute a derivative, follow GPL-2.0 and provide its corresponding source. Retain applicable dependency notices.",
+        "scope": "Applies to the released software. Historic papers, demo documents, media and branding have separate rights.",
+        "reviewedOn": "2026-09-05",
+        "reviewStatus": "approved",
+        "permissions": {
+          "use": true,
+          "modify": true,
+          "redistribute": true,
+          "commercial": true,
+          "royaltyFree": true
+        },
+        "shareRequirement": "Share distributed derivatives under GPL-2.0."
+      }
+    },
+    "1b": {
+      "name": "Trails",
+      "finding": "An independently implemented associative-trails concept differs from copying the article. The W3C reproduction states publisher permission; it does not grant a general reuse license to readers. No original reusable code package was identified.",
+      "rightsSources": [
+        "https://www.w3.org/History/1945/vbush/vbush.shtml"
+      ],
+      "addSources": [
+        {
+          "title": "Bush: As We May Think (1945), authorized reproduction",
+          "url": "https://www.w3.org/History/1945/vbush/vbush.txt",
+          "supports": "Original essay introducing the memex and associative trails."
+        }
+      ],
+      "decision": "hold",
+      "reason": "Published concept and permissioned essay, but no identified original software release with a commercial reuse grant. Independent implementation may be possible; insufficient for the selected publication standard."
+    },
+    "1c": {
+      "name": "Transclusion",
+      "finding": "Publish with the original Udanax Green release rather than relying on the later Java translation’s root license. The archived original rights-holder statement explicitly covers Green/Gold copyrights under MIT X-11 and states that it used trade secrets rather than patents during its proprietary phase. Commercial modification and redistribution are allowed with notices; trademarks and third-party content are excluded. No guarantee about unrelated third-party patents is made.",
+      "rightsSources": [
+        "https://github.com/jonesd/udanax-gold2java/blob/master/LICENSE.TXT",
+        "https://github.com/jonesd/udanax-gold2java",
+        "https://xanadu.com/xuTco.html",
+        "https://www.xanadu.net/",
+        "https://github.com/dotmpe/udanax-1999-09-29/blob/5e9fce82cf89e6ed09034c6e01e77228a6c8429b/license.html",
+        "https://github.com/dotmpe/udanax-1999-09-29/blob/5e9fce82cf89e6ed09034c6e01e77228a6c8429b/README"
+      ],
+      "addSources": [
+        {
+          "title": "Udanax Green: original source release, documentation and build instructions",
+          "url": "https://github.com/dotmpe/udanax-1999-09-29/tree/5e9fce82cf89e6ed09034c6e01e77228a6c8429b",
+          "supports": "1999 source release and the original rights-holder grant."
+        }
+      ],
+      "decision": "publish",
+      "implementation": {
+        "name": "Udanax Green (1999 release)",
+        "license": "MIT X-11 / Udanax",
+        "codeUrl": "https://github.com/dotmpe/udanax-1999-09-29/tree/5e9fce82cf89e6ed09034c6e01e77228a6c8429b",
+        "licenseUrl": "https://github.com/dotmpe/udanax-1999-09-29/blob/5e9fce82cf89e6ed09034c6e01e77228a6c8429b/license.html",
+        "notice": "Use, modify and sell the released code while retaining its copyright and permission notices. Use your own branding; the license restricts promotional use of Udanax names and logos.",
+        "scope": "Applies to the released code and covered documentation. It does not grant rights to third-party content you display or to Xanadu branding.",
+        "reviewedOn": "2026-09-05",
+        "reviewStatus": "approved",
+        "permissions": {
+          "use": true,
+          "modify": true,
+          "redistribute": true,
+          "commercial": true,
+          "royaltyFree": true
+        },
+        "shareRequirement": "Keep the notices and use your own branding."
+      }
+    },
+    "2a": {
+      "name": "Conversational teaching machines",
+      "finding": "The identified 1956-priority teaching-apparatus patent is reported expired by Google Patents, whose status is not a legal opinion. A 2024 research article is CC BY 4.0; that grant covers the article, not every historic machine or implementation. No blanket original-code license was established.",
+      "rightsSources": [
+        "https://patents.google.com/patent/US2984017A/en",
+        "https://discovery.ucl.ac.uk/id/eprint/10196048/"
+      ],
+      "addSources": [
+        {
+          "title": "Pask: Apparatus for assisting an operator in performing a skill (1961 patent)",
+          "url": "https://patents.google.com/patent/US2984017A/en",
+          "supports": "Primary technical description of adaptive skill instruction, with 1956 priority."
+        },
+        {
+          "title": "Tilak et al.: Gordon Pask’s Conversation Theory and Interaction of Actors Theory (2024)",
+          "url": "https://discovery.ucl.ac.uk/id/eprint/10196048/",
+          "supports": "Research article on conversation theory, learning systems and applications; open access under CC BY 4.0."
+        }
+      ],
+      "decision": "hold",
+      "reason": "An expired apparatus patent and an open-access article do not establish reuse rights for the broad collection of original teaching-machine implementations. The catalog entry also combines early skill instruction with later conversation theory."
+    },
+    "2b": {
+      "name": "Dynabook",
+      "finding": "The original 1972 paper is available to read. No blanket grant for original assets or code was established. Dynabook is an existing commercial trademark; independently implementing an educational-computing concept does not grant branding rights.",
+      "rightsSources": [
+        "https://shop.us.dynabook.com/pages/terms-of-service",
+        "https://mprove.de/visionreality/media/kay72.html",
+        "https://squeak.org/license/"
+      ],
+      "addSources": [
+        {
+          "title": "Kay: A Personal Computer for Children of All Ages (1972), transcription and scan links",
+          "url": "https://mprove.de/visionreality/media/kay72.html",
+          "supports": "Original paper describing the portable, programmable educational computer concept."
+        }
+      ],
+      "decision": "hold",
+      "reason": "Original proposal available, but no licensed implementation attached to this entry and existing Dynabook trademark rights. Squeak is a separately licensed possible future entry, not a blanket license to Dynabook assets."
+    },
+    "3a": {
+      "name": "Problem-Knowledge Couplers",
+      "finding": "The documented PKC implementation and clinical database were commercial assets acquired by Sharecare. No open license for that implementation or knowledge base was identified. Do not present the original system as freely reusable. Building a separate medical product also needs its own jurisdiction- and use-specific review.",
+      "rightsSources": [
+        "https://about.sharecare.com/press-releases/sharecare-announces-acquisition-pkc-corporation/",
+        "https://www.sharecare.com/faq/privacy/ai-safety"
+      ],
+      "addSources": [
+        {
+          "title": "McGowan & Winstead-Fry: Problem Knowledge Couplers (1999)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC226622/",
+          "supports": "Published research on the clinical decision-support system and its application."
+        },
+        {
+          "title": "Weed: Knowledge Coupling (1991)",
+          "url": "https://link.springer.com/book/10.1007/978-1-4612-3150-9",
+          "supports": "Original author’s book and bibliographic record; full text may require access."
+        }
+      ],
+      "decision": "hold",
+      "reason": "Original implementation and clinical knowledge base are commercial; no open-source grant established."
+    },
+    "4a": {
+      "name": "Pygmalion",
+      "finding": "Inspected the 198-page 1975 Stanford report, including its front matter and scanned cover. The public-release/unlimited-distribution stamp is not a general grant to modify or commercially redistribute the original software or illustrations. No original source release with an explicit software reuse license was established.",
+      "rightsSources": [
+        "https://worrydream.com/refs/Smith_DC_1975_-_Pygmalion.pdf"
+      ],
+      "addSources": [],
+      "decision": "hold",
+      "reason": "Technical source material exists, but original-software reuse rights are not established."
+    },
+    "4b": {
+      "name": "PIE",
+      "finding": "Inspected the 58-page CSL-81-3 report. Page 2 identifies Xerox Corporation 1981 copyright. No explicit software modification/commercial redistribution grant or original licensed source package was established.",
+      "rightsSources": [
+        "https://worrydream.com/refs/Goldstein_1981_-_PIE_four_reports.pdf"
+      ],
+      "addSources": [],
+      "decision": "hold",
+      "reason": "Technical reports exist; original source-code reuse permission is unresolved."
+    },
+    "4c": {
+      "name": "Play-in / play-out",
+      "finding": "Inspected the official 2016 ZIP: it contains Play-Engine.msi, not an openly licensed source tree. The update page removes activation-license requirements, not an express grant to modify and redistribute source. Google Patents lists US20040205703A1 as abandoned and related US7213230B2 as expired-fee-related with adjusted expiry 2022-03-19. These aggregator records are not official global legal clearance. The reason to hold is unresolved software reuse rights, not a claim that these identified US patents remain active.",
+      "rightsSources": [
+        "https://www.wisdom.weizmann.ac.il/~playbook/Updates/ComeLetsPlay.pdf",
+        "https://www.wisdom.weizmann.ac.il/~playbook/updates.html",
+        "https://patents.google.com/patent/US20040205703A1/en",
+        "https://patents.google.com/patent/US7213230B2/en",
+        "https://www.wisdom.weizmann.ac.il/~playbook/Updates/Play-Engine%204.6.0%20Full%20Version.zip"
+      ],
+      "addSources": [
+        {
+          "title": "Harel & Marelly: Come, Let’s Play — full book",
+          "url": "https://www.wisdom.weizmann.ac.il/~playbook/Updates/ComeLetsPlay.pdf",
+          "supports": "Full technical description, examples and historical software terms."
+        }
+      ],
+      "decision": "hold",
+      "reason": "Runnable installer available; source-code modification and redistribution rights not established."
+    }
+  }
+}

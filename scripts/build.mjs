@@ -1,0 +1,11 @@
+import {mkdir,copyFile,readFile,rm} from 'node:fs/promises';
+import {isFreeToUseEntry} from '../src/catalog-policy.js';
+import {hasDetailedBrief} from '../src/idea-details.js';
+const catalog=JSON.parse(await readFile('src/data.json','utf8'));
+if(!Array.isArray(catalog.blueprints)||catalog.blueprints.some(b=>!isFreeToUseEntry(b)))throw new Error('Catalog includes an entry without approved free-use rights and source material.');
+if(catalog.blueprints.some(b=>!hasDetailedBrief(b)))throw new Error('Catalog includes an incomplete idea brief.');
+if(catalog.people.some(p=>!catalog.blueprints.some(b=>b.addr===p.blueprint)))throw new Error('People directory links to an unpublished entry.');
+await rm('dist',{recursive:true,force:true});
+await mkdir('dist',{recursive:true});
+for(const file of ['index.html','auth-ui.js','idea-details.js','community.js','community.css','spaces.js','spaces.css','widget-schema.js','style.css','data.json','catalog-policy.js','license-ui.js','license-texts.js']) await copyFile('src/'+file,'dist/'+file);
+console.log('Built app with reviewed catalog entries in dist/');

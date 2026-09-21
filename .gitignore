@@ -1,0 +1,15 @@
+dist/
+node_modules
+.DS_Store
+.local-data/
+.wrangler/
+.dev.vars*
+.env*
+.private/
+*.private.jsonc
+!*.example
+!*.example.jsonc
+
+# Repository hygiene test caches
+__pycache__/
+*.py[cod]

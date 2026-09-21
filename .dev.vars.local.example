@@ -1,0 +1,7 @@
+# Copy to .dev.vars.local (ignored) for your OWN WorkOS Staging project.
+# Do not copy production data or enable AI for the offline demo.
+WORKOS_CLIENT_ID="client_REPLACE_WITH_YOUR_STAGING_CLIENT"
+WORKOS_ISSUER="https://api.workos.com/user_management/client_REPLACE_WITH_YOUR_STAGING_CLIENT"
+WORKOS_ALLOWED_ORIGINS="http://127.0.0.1:4173"
+SPACES_AI_ENABLED="false"
+# WORKOS_API_KEY belongs here only if your provider settings require one.

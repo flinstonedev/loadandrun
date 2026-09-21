@@ -1,0 +1,50 @@
+[
+  {
+    "url": "https://github.com/dotmpe/udanax-1999-09-29/blob/5e9fce82cf89e6ed09034c6e01e77228a6c8429b/license.html",
+    "retrievedOn": "2026-09-05",
+    "bytes": 7760,
+    "sha256": "611cb128885d6bbe9eeeb6226fba7441d85169643e3113eb70e86be681526f4e"
+  },
+  {
+    "url": "https://github.com/dotmpe/udanax-1999-09-29/blob/5e9fce82cf89e6ed09034c6e01e77228a6c8429b/README",
+    "retrievedOn": "2026-09-05",
+    "bytes": 3238,
+    "sha256": "3eab1a5628ecbccd4826a6edd4d8f8e43b7f0240452a370cdbc9ad4e8998fd42"
+  },
+  {
+    "url": "https://github.com/BradNeuberg/hyperscope/blob/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1/LICENSE",
+    "retrievedOn": "2026-09-05",
+    "bytes": 15122,
+    "sha256": "df84246204e3c54cd24aebbc23714235f5fc41d754d53b65444a2afbf070130f"
+  },
+  {
+    "url": "https://github.com/BradNeuberg/hyperscope/blob/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1/src/client/lib/dojo/LICENSE",
+    "retrievedOn": "2026-09-05",
+    "bytes": 11326,
+    "sha256": "b1c0e1a71577cb1e72ec5bb7bdd8861864b03a939747b4af6e159c31fc0ff969"
+  },
+  {
+    "url": "https://github.com/BradNeuberg/hyperscope/blob/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1/src/client/lib/sarissa/core.js",
+    "retrievedOn": "2026-09-05",
+    "bytes": 26553,
+    "sha256": "9aedbf80e2acf82636a0fa376bbadd22699d844718ecc4c61261239d23f2f8c7"
+  },
+  {
+    "url": "https://worrydream.com/refs/Smith_DC_1975_-_Pygmalion.pdf",
+    "retrievedOn": "2026-09-05",
+    "bytes": 34834319,
+    "sha256": "126c8d951a676205620d578f7a578f2b7f3eb2773426630f5a4b7e4303a4b707"
+  },
+  {
+    "url": "https://worrydream.com/refs/Goldstein_1981_-_PIE_four_reports.pdf",
+    "retrievedOn": "2026-09-05",
+    "bytes": 3340968,
+    "sha256": "61ae1404c21e43fecf670a74db0a8148dcd00f4f3c561c898d32bfcbed6bc080"
+  },
+  {
+    "url": "https://www.wisdom.weizmann.ac.il/~playbook/Updates/Play-Engine%204.6.0%20Full%20Version.zip",
+    "retrievedOn": "2026-09-05",
+    "bytes": 16306203,
+    "sha256": "a1a62431d4cf535bb051ce279303cff4ce1633d0aca07191ccf9ea6f4be4aa6d"
+  }
+]

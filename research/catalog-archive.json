@@ -1,0 +1,1017 @@
+{
+  "blueprints": [
+    {
+      "addr": "1a",
+      "name": "Open Hyperdocument System",
+      "who": "Douglas Engelbart",
+      "year": 1990,
+      "line": "Every paragraph addressable and linkable; typed links; the same document viewable at any resolution.",
+      "proposed": "A shared document layer where each paragraph has a permanent address, links carry a type, and any reader can set a viewspec to see the whole at the resolution they need.",
+      "stalled": "",
+      "changed": "",
+      "near": "",
+      "domain": "Knowledge & memory",
+      "evidence": "Proposal sourced",
+      "originality": "Engelbart treated documents as structured, interoperable working environments, with links to individual objects and adjustable views.",
+      "next": "",
+      "sources": [
+        {
+          "title": "Engelbart: Knowledge-Domain Interoperability and an OHS (1990)",
+          "url": "https://dougengelbart.org/content/view/114/",
+          "supports": "Proposal, structured objects, view control, backlinks and interoperability."
+        },
+        {
+          "title": "HyperScope 1.1: released source code",
+          "url": "https://github.com/BradNeuberg/hyperscope/tree/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1",
+          "supports": "Specific GPL-2.0 implementation of parts of the OHS vision."
+        }
+      ],
+      "reuse": {
+        "name": "HyperScope 1.1",
+        "license": "GPL-2.0",
+        "codeUrl": "https://github.com/BradNeuberg/hyperscope/tree/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1",
+        "licenseUrl": "https://github.com/BradNeuberg/hyperscope/blob/f979f3fb8014c162ecc1ff06ea2ec45a44c3cb32/release1_1/LICENSE",
+        "notice": "Use and modify the released software, including commercially. If you distribute a derivative, follow GPL-2.0 and provide its corresponding source. Retain applicable dependency notices.",
+        "scope": "Applies to the released software. Historic papers, demo documents, media and branding have separate rights.",
+        "reviewedOn": "2026-09-05",
+        "reviewStatus": "approved",
+        "permissions": {
+          "use": true,
+          "modify": true,
+          "redistribute": true,
+          "commercial": true,
+          "royaltyFree": true
+        },
+        "shareRequirement": "Share distributed derivatives under GPL-2.0."
+      },
+      "details": {
+        "origin": {
+          "title": "Knowledge-Domain Interoperability and an Open Hyperdocument System",
+          "people": [
+            "Douglas Engelbart"
+          ],
+          "year": 1990,
+          "summary": "Engelbart proposed a common document infrastructure spanning organizations and software vendors. Documents would contain individually addressable objects, support different views of the same material, and expose incoming links. His concern was the continuity of collective knowledge: a decision, its evidence, and later revisions should remain connected when people change tools or work across organizational boundaries.",
+          "sourceIds": [
+            "ohs-paper"
+          ]
+        },
+        "history": {
+          "status": "unfinished-direction",
+          "summary": "AUGMENT and HyperScope implemented parts of the OHS vision. Shared document addressing and views across independent tools remain the direction to explore.",
+          "whatWasBuilt": "The 1990 paper explicitly draws on AUGMENT and workplace pilots. HyperScope later reproduced selected navigation and viewing capabilities in a browser: paragraph addresses, adjustable outlines, and links that encode a chosen view. It used OPML and was presented by its creators as an initial step toward OHS.",
+          "whatRemains": "Build a small environment for reviewing specifications across tools: the same passage can be cited from a discussion, inspected alongside its history, and opened in another compatible reader. Start by testing that workflow across two independent tools.",
+          "sourceIds": [
+            "ohs-paper",
+            "hyperscope-features",
+            "hyperscope-story"
+          ]
+        },
+        "whyNow": {
+          "summary": "Our proposed benefit is easier handover in volunteer technical projects. A new contributor could follow a decision to the exact requirement and evidence instead of reconstructing context from several documents. HyperScope supplies a concrete interface and format to study; the community still needs to test whether durable references improve real review work.",
+          "beneficiaries": [
+            "Open-source maintainers explaining long-lived design decisions",
+            "Standards and civic-technology groups reviewing complex proposals",
+            "New contributors joining a project after its initial discussions"
+          ],
+          "sourceIds": [
+            "hyperscope-features"
+          ]
+        },
+        "buildPlan": {
+          "firstMilestone": "Two independently implemented readers exchange a 100-paragraph specification and preserve citations while authors reorganize it.",
+          "steps": [
+            {
+              "title": "Define what an address promises",
+              "description": "Distinguish a stable object identifier from its current outline position. Specify what happens after a move, split, deletion, or revision; retain a tombstone and previous version when a cited object disappears.",
+              "deliverable": "A small document format, address rules, and an annotated example specification."
+            },
+            {
+              "title": "Build two views of one document",
+              "description": "Implement an outline reader and a review reader against the same exported data. Include keyboard navigation and a way to expand cited passages without losing surrounding context.",
+              "deliverable": "Two working readers and an interoperability fixture set."
+            },
+            {
+              "title": "Connect decisions to evidence",
+              "description": "Let reviewers attach a reason and a typed relationship to a passage. Show incoming references and distinguish a quotation of a historical revision from a link to the current text.",
+              "deliverable": "A review session with requirements, objections, and decision links."
+            },
+            {
+              "title": "Run a handover study",
+              "description": "Ask contributors unfamiliar with the specification to recover the reasons behind five changes. Compare completion time and interpretation errors with a normal linked document, then publish the anonymized results.",
+              "deliverable": "A reproducible comparison and prioritized usability findings."
+            }
+          ],
+          "successCriteria": [
+            "All 30 preselected citations remain resolvable or explicitly marked deleted after 50 structural edits and export/import through both readers.",
+            "At least four of five new reviewers correctly identify the evidence behind four of five sampled decisions.",
+            "Keyboard-only participants can open, inspect, and return from a citation without losing their reading position."
+          ],
+          "nonGoals": [
+            "Rebuilding all of NLS/AUGMENT or replacing every project tool",
+            "Claiming permanent availability for content the group does not control"
+          ],
+          "roles": [
+            {
+              "name": "Document-format engineer",
+              "contribution": "Define identity, revision, and interchange behavior."
+            },
+            {
+              "name": "Interaction designer",
+              "contribution": "Make deep references and multiple views understandable."
+            },
+            {
+              "name": "Project historian or maintainer",
+              "contribution": "Supply real decision trails and assess the handover experiment."
+            }
+          ]
+        },
+        "challenges": [
+          {
+            "title": "Identity through editing",
+            "description": "A paragraph number describes location, not necessarily lasting identity. Splits and merges need explicit policies so a link cannot silently begin citing a different claim."
+          },
+          {
+            "title": "Useful structure without clerical work",
+            "description": "If authors must manually classify every sentence, the tool may cost more effort than it saves. Start with a few meaningful relationship types and observe actual use."
+          }
+        ],
+        "relatedWork": [
+          {
+            "title": "HyperScope",
+            "url": "https://hyperscope.org/about/features.html",
+            "relationship": "A working partial realization of OHS navigation and view control, and the licensed foundation linked by this entry."
+          }
+        ],
+        "references": [
+          {
+            "id": "ohs-paper",
+            "title": "Engelbart: Knowledge-Domain Interoperability and an OHS (1990)",
+            "url": "https://dougengelbart.org/content/view/114/",
+            "kind": "original-paper",
+            "supports": "Original interoperability proposal, addressable objects, backlinks, views, and existing AUGMENT pilots."
+          },
+          {
+            "id": "hyperscope-features",
+            "title": "HyperScope: Features",
+            "url": "https://hyperscope.org/about/features.html",
+            "kind": "project-docs",
+            "supports": "Implemented paragraph addressing, view specifications, browser architecture, and OPML format."
+          },
+          {
+            "id": "hyperscope-story",
+            "title": "HyperScope: The Story",
+            "url": "https://hyperscope.org/about/story.html",
+            "kind": "retrospective",
+            "supports": "The project's own account of its relationship to AUGMENT and the wider OHS vision."
+          }
+        ],
+        "reviewedOn": "2026-09-05"
+      },
+      "subdomain": "Documents and hypertext"
+    },
+    {
+      "addr": "1b",
+      "name": "Trails",
+      "who": "Vannevar Bush",
+      "year": 1945,
+      "line": "A curated path through documents as a shareable, forkable object.",
+      "proposed": "A reader records the sequence of documents and notes they used to reach an understanding, then hands that trail to someone else, who can follow or branch it.",
+      "stalled": "",
+      "changed": "",
+      "near": "",
+      "domain": "Documents and hypertext",
+      "evidence": "Research lead",
+      "originality": "",
+      "next": "",
+      "sources": [
+        {
+          "title": "Bush: As We May Think (1945), authorized reproduction",
+          "url": "https://www.w3.org/History/1945/vbush/vbush.txt",
+          "supports": "Original essay introducing the memex and associative trails."
+        }
+      ]
+    },
+    {
+      "addr": "1c",
+      "name": "Transclusion",
+      "who": "Ted Nelson",
+      "year": 1965,
+      "line": "Include a passage by reference so the source, its context and its history stay visible.",
+      "proposed": "Quote by pointing at the original rather than copying. The included passage remains live, attributed and traceable to its origin.",
+      "stalled": "",
+      "changed": "",
+      "near": "",
+      "domain": "Knowledge & memory",
+      "evidence": "Research lead",
+      "originality": "",
+      "next": "",
+      "sources": [
+        {
+          "title": "Udanax Green: original source release, documentation and build instructions",
+          "url": "https://github.com/dotmpe/udanax-1999-09-29/tree/5e9fce82cf89e6ed09034c6e01e77228a6c8429b",
+          "supports": "1999 source release and the original rights-holder grant."
+        }
+      ],
+      "reuse": {
+        "name": "Udanax Green (1999 release)",
+        "license": "MIT X-11 / Udanax",
+        "codeUrl": "https://github.com/dotmpe/udanax-1999-09-29/tree/5e9fce82cf89e6ed09034c6e01e77228a6c8429b",
+        "licenseUrl": "https://github.com/dotmpe/udanax-1999-09-29/blob/5e9fce82cf89e6ed09034c6e01e77228a6c8429b/license.html",
+        "notice": "Use, modify and sell the released code while retaining its copyright and permission notices. Use your own branding; the license restricts promotional use of Udanax names and logos.",
+        "scope": "Applies to the released code and covered documentation. It does not grant rights to third-party content you display or to Xanadu branding.",
+        "reviewedOn": "2026-09-05",
+        "reviewStatus": "approved",
+        "permissions": {
+          "use": true,
+          "modify": true,
+          "redistribute": true,
+          "commercial": true,
+          "royaltyFree": true
+        },
+        "shareRequirement": "Keep the notices and use your own branding."
+      },
+      "details": {
+        "origin": {
+          "title": "Evolutionary documents and transclusion",
+          "people": [
+            "Ted Nelson"
+          ],
+          "year": 1965,
+          "summary": "Nelson's 1965 paper proposed a file structure for changing personal documents and unresolved alternatives. His later xanalogical model made shared content and its origins visible across documents and versions. Transclusion is more than inserting a remote fragment: readers should be able to recognize the reused material and inspect its relationship to the source.",
+          "sourceIds": [
+            "nelson-1965",
+            "nelson-1999"
+          ]
+        },
+        "history": {
+          "status": "unfinished-direction",
+          "summary": "Transclusion has been implemented. The opportunity is to carry its provenance-preserving behavior into a focused, usable collaboration tool.",
+          "whatWasBuilt": "The Udanax Green release contains a C backend and a Python front end for viewing and editing documents, with known bugs documented by its authors. Nelson and collaborators also demonstrated links and transclusions in XanaduSpace.",
+          "whatRemains": "Build an evidence notebook in which a research group assembles an argument from permitted source passages, compares the original context beside each quotation, and receives an explicit choice when a source changes. Treat exact-version citations and intentionally updating inclusions as different user actions.",
+          "sourceIds": [
+            "udanax-release",
+            "xanaduspace"
+          ]
+        },
+        "whyNow": {
+          "summary": "Our hypothesis is that groups writing explainers, technical proposals, or community research could avoid context loss if quotations remained connected to the exact material they used. Nelson's model supplies the provenance concept. The proposed benefit must be tested with readers; preserving a connection does not itself establish that the source is trustworthy or that an argument is sound.",
+          "beneficiaries": [
+            "Community researchers assembling evidence from several documents",
+            "Technical writers maintaining explanations across changing specifications",
+            "Readers checking whether a quotation supports a claim"
+          ],
+          "sourceIds": [
+            "nelson-1999"
+          ]
+        },
+        "buildPlan": {
+          "firstMilestone": "Publish one jointly written explainer using 20 reusable passages from ten permission-cleared documents, with every passage traceable to its exact source version.",
+          "steps": [
+            {
+              "title": "Make an explicit source record",
+              "description": "Store source location, revision identity, selected span, surrounding context, and reuse permission. Begin with team-authored or openly licensed text so the prototype has a small, auditable corpus.",
+              "deliverable": "A source registry and portable document package."
+            },
+            {
+              "title": "Compose with visible provenance",
+              "description": "Let writers include a passage by reference and inspect the source alongside the draft. Clearly separate the original words from commentary, omissions, and edited paraphrases.",
+              "deliverable": "A two-pane editor with source-linked excerpts and readable export."
+            },
+            {
+              "title": "Handle change without rewriting history",
+              "description": "Keep the version originally cited, detect available updates, and let a reviewer accept or reject each replacement. When retrieval fails, label the retained snapshot rather than presenting it as a live original.",
+              "deliverable": "An update review flow covering changes, deletion, and unavailable sources."
+            },
+            {
+              "title": "Test whether readers recover context",
+              "description": "Give readers deliberate examples of misleading omissions and changed definitions. Compare how reliably they identify the problem using connected passages versus ordinary copied quotations.",
+              "deliverable": "A small reader study and a public set of provenance edge cases."
+            }
+          ],
+          "successCriteria": [
+            "Every displayed excerpt resolves to its stored source revision after the original is edited or moved.",
+            "Five independent readers can locate the surrounding context of at least 18 of 20 excerpts within two actions each.",
+            "No source update changes the published explainer without a recorded review decision."
+          ],
+          "nonGoals": [
+            "Recreating a universal publishing or micropayment network",
+            "Granting reuse rights to third-party text merely because it can be linked or retrieved"
+          ],
+          "roles": [
+            {
+              "name": "Hypertext engineer",
+              "contribution": "Design stable spans, version references, and content interchange."
+            },
+            {
+              "name": "Writer or editor",
+              "contribution": "Exercise quotations, revisions, and context comparison in an actual explainer."
+            },
+            {
+              "name": "Information designer",
+              "contribution": "Make source identity and changes legible without obscuring the argument."
+            }
+          ]
+        },
+        "challenges": [
+          {
+            "title": "A source is not just a URL",
+            "description": "URLs can change their contents or disappear. The data model needs version identity and clear snapshot semantics, including what happens when a source should no longer be retained."
+          },
+          {
+            "title": "Different meanings of reuse",
+            "description": "An exact quotation, translation, paraphrase, and edited excerpt require different provenance labels. One universal visual treatment would conceal meaningful differences."
+          }
+        ],
+        "relatedWork": [
+          {
+            "title": "XanaduSpace",
+            "url": "https://www.xanadu.net/XanaduSpace/btf.htm",
+            "relationship": "Its creators describe and illustrate a working implementation of side-by-side links and transclusions."
+          },
+          {
+            "title": "Udanax Green",
+            "url": "https://github.com/dotmpe/udanax-1999-09-29",
+            "relationship": "Historic source release with a backend, front end, and preserved original rights-holder grant."
+          }
+        ],
+        "references": [
+          {
+            "id": "nelson-1965",
+            "title": "Nelson: A file structure for the complex, the changing and the indeterminate (1965)",
+            "url": "https://doi.org/10.1145/800197.806036",
+            "kind": "original-paper",
+            "supports": "Early proposal for evolving personal documents and flexible linked file structures."
+          },
+          {
+            "id": "nelson-1999",
+            "title": "Nelson: Xanalogical Structure, Now More Than Ever (1999)",
+            "url": "https://www.xanadu.com/NOWMORETHANEVER/XuSum99.html",
+            "kind": "original-paper",
+            "supports": "Author's detailed explanation of transclusion, provenance, parallel documents, and versions."
+          },
+          {
+            "id": "udanax-release",
+            "title": "Udanax Green: original distribution README",
+            "url": "https://github.com/dotmpe/udanax-1999-09-29",
+            "kind": "source-code",
+            "supports": "Existing implementation, backend/frontend architecture, acknowledged bugs, and 1999 release."
+          },
+          {
+            "id": "xanaduspace",
+            "title": "Back to the Future: XanaduSpace",
+            "url": "https://www.xanadu.net/XanaduSpace/btf.htm",
+            "kind": "project-docs",
+            "supports": "Researchers' description of implemented transclusion and parallel-document displays."
+          }
+        ],
+        "reviewedOn": "2026-09-05"
+      },
+      "subdomain": "Documents and hypertext"
+    },
+    {
+      "addr": "2a",
+      "name": "Conversational teaching machines",
+      "who": "Gordon Pask",
+      "year": 1956,
+      "line": "A machine that adapts its teaching to how the learner is actually responding, in conversation.",
+      "proposed": "A tutor that models the learner from the exchange itself, adjusting pace and difficulty from moment to moment rather than from a fixed script.",
+      "stalled": "",
+      "changed": "",
+      "near": "",
+      "domain": "Learning",
+      "evidence": "Research lead",
+      "originality": "",
+      "next": "",
+      "sources": [
+        {
+          "title": "Pask: Apparatus for assisting an operator in performing a skill (1961 patent)",
+          "url": "https://patents.google.com/patent/US2984017A/en",
+          "supports": "Primary technical description of adaptive skill instruction, with 1956 priority."
+        },
+        {
+          "title": "Tilak et al.: Gordon Pask’s Conversation Theory and Interaction of Actors Theory (2024)",
+          "url": "https://discovery.ucl.ac.uk/id/eprint/10196048/",
+          "supports": "Research article on conversation theory, learning systems and applications; open access under CC BY 4.0."
+        }
+      ]
+    },
+    {
+      "addr": "2b",
+      "name": "Dynabook",
+      "who": "Alan Kay",
+      "year": 1972,
+      "line": "A personal computer for children of all ages, where the medium itself is the lesson.",
+      "proposed": "A portable machine a child could own and reprogram, with a language and tools designed so that making is the primary way of learning.",
+      "stalled": "",
+      "changed": "",
+      "near": "",
+      "domain": "Learning",
+      "evidence": "Research lead",
+      "originality": "",
+      "next": "",
+      "sources": [
+        {
+          "title": "Kay: A Personal Computer for Children of All Ages (1972), transcription and scan links",
+          "url": "https://mprove.de/visionreality/media/kay72.html",
+          "supports": "Original paper describing the portable, programmable educational computer concept."
+        }
+      ]
+    },
+    {
+      "addr": "3a",
+      "name": "Problem-Knowledge Couplers",
+      "who": "Lawrence Weed",
+      "year": 1968,
+      "line": "Couple a patient’s full set of findings to the literature and show what supports or refutes each possibility.",
+      "proposed": "Gather every finding for a patient, match the full set against the medical literature, and present each candidate diagnosis with what supports and what refutes it.",
+      "stalled": "",
+      "changed": "",
+      "near": "",
+      "domain": "Medicine",
+      "evidence": "Research lead",
+      "originality": "",
+      "next": "",
+      "sources": [
+        {
+          "title": "McGowan & Winstead-Fry: Problem Knowledge Couplers (1999)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC226622/",
+          "supports": "Published research on the clinical decision-support system and its application."
+        },
+        {
+          "title": "Weed: Knowledge Coupling (1991)",
+          "url": "https://link.springer.com/book/10.1007/978-1-4612-3150-9",
+          "supports": "Original author’s book and bibliographic record; full text may require access."
+        }
+      ]
+    },
+    {
+      "addr": "4a",
+      "who": "David Canfield Smith",
+      "name": "Pygmalion",
+      "year": 1975,
+      "domain": "Programming environments",
+      "evidence": "Prototype sourced",
+      "line": "Program by manipulating visual examples that the computer remembers.",
+      "originality": "Smith made editable visual objects and remembered actions central to a programming environment.",
+      "proposed": "Pygmalion was an implemented visual programming system. Icons represented data and operations; an editor could remember actions for later execution.",
+      "stalled": "",
+      "changed": "",
+      "near": "Henry Lieberman revisits Pygmalion in A Creative Programming Environment, Remixed (see Sources).",
+      "next": "Recreate one worked example from the thesis, then compare its behaviour with a current programming-by-demonstration tool.",
+      "sources": [
+        {
+          "title": "Smith: Pygmalion (1975 thesis)",
+          "url": "https://worrydream.com/refs/Smith_DC_1975_-_Pygmalion.pdf",
+          "supports": "Original implemented system, visual objects and remembering editor."
+        },
+        {
+          "title": "Lieberman: A Creative Programming Environment, Remixed",
+          "url": "https://web.media.mit.edu/~lieber/Publications/Pygmalion-Remixed.pdf",
+          "supports": "Retrospective and continuation of the ideas."
+        }
+      ]
+    },
+    {
+      "addr": "4b",
+      "who": "Ira Goldstein & Daniel Bobrow",
+      "name": "PIE",
+      "year": 1980,
+      "domain": "Programming environments",
+      "evidence": "Prototype sourced",
+      "line": "Keep multiple perspectives and alternative designs inside one programming environment.",
+      "originality": "Goldstein and Bobrow combined knowledge representation with interactive software design in Smalltalk.",
+      "proposed": "PIE used nodes, perspectives, contracts, contexts and layers to describe programmes and alternative designs. It was an experimental implementation.",
+      "stalled": "",
+      "changed": "",
+      "near": "",
+      "next": "Implement a small example where two design alternatives share a common base and retain their design constraints.",
+      "sources": [
+        {
+          "title": "Goldstein & Bobrow: Descriptions for a Programming Environment (1980)",
+          "url": "https://www.researchgate.net/publication/221604325_Descriptions_for_a_Programming_Environment",
+          "supports": "Author-uploaded paper describing PIE’s implementation and concepts."
+        },
+        {
+          "title": "Goldstein & Bobrow: PIE — Four Reports (1981)",
+          "url": "https://worrydream.com/refs/Goldstein_1981_-_PIE_four_reports.pdf",
+          "supports": "Original PARC research reports."
+        }
+      ]
+    },
+    {
+      "addr": "4c",
+      "who": "David Harel & Rami Marelly",
+      "name": "Play-in / play-out",
+      "year": 2003,
+      "domain": "Programming environments",
+      "evidence": "Prototype sourced",
+      "line": "Specify software by demonstrating scenarios, then execute those requirements.",
+      "originality": "Harel and Marelly connect interaction scenarios to formal, executable descriptions of system behaviour.",
+      "proposed": "The Play-Engine lets people enter scenarios through a graphical interface and execute them using live sequence charts.",
+      "stalled": "",
+      "changed": "",
+      "near": "",
+      "next": "Reproduce one simple scenario and compare the result with a conventional implementation and its tests.",
+      "sources": [
+        {
+          "title": "Harel & Marelly: Come, Let’s Play (2003)",
+          "url": "https://www.weizmann.ac.il/math/harel/come-lets-play",
+          "supports": "Book and implemented Play-Engine."
+        },
+        {
+          "title": "Integrating Scenarios with Statecharts (2019)",
+          "url": "https://arxiv.org/abs/1911.10691",
+          "supports": "Documented subsequent research, contradicting a never-built label."
+        },
+        {
+          "title": "Harel & Marelly: Come, Let’s Play — full book",
+          "url": "https://www.wisdom.weizmann.ac.il/~playbook/Updates/ComeLetsPlay.pdf",
+          "supports": "Full technical description, examples and historical software terms."
+        }
+      ]
+    }
+  ],
+  "people": [
+    {
+      "id": "p2",
+      "name": "Gottfried Leibniz",
+      "domain": "Knowledge, documents and information",
+      "summary": "Characteristica universalis and calculus ratiocinator (1679).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p5",
+      "name": "Emanuel Goldberg",
+      "domain": "Knowledge, documents and information",
+      "summary": "Statistical Machine (patented 1931).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p9",
+      "name": "Vannevar Bush",
+      "domain": "Knowledge, documents and information",
+      "summary": "Trails (1945).",
+      "evidence": "Research lead",
+      "blueprint": "1b"
+    },
+    {
+      "id": "p11",
+      "name": "Manfred Kochen",
+      "domain": "Knowledge, documents and information",
+      "summary": "WISE (1972).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p12",
+      "name": "Douglas Engelbart",
+      "domain": "Knowledge, documents and information",
+      "summary": "Open Hyperdocument System, viewspecs, the NLS Journal, the ABC model, Dynamic Knowledge Repositories (1962–1992).",
+      "evidence": "Research lead",
+      "blueprint": "1a"
+    },
+    {
+      "id": "p13",
+      "name": "Ted Nelson",
+      "domain": "Knowledge, documents and information",
+      "summary": "Xanadu (1960) and ZigZag (1996).",
+      "evidence": "Research lead",
+      "blueprint": "1c"
+    },
+    {
+      "id": "p14",
+      "name": "Andries van Dam",
+      "domain": "Knowledge, documents and information",
+      "summary": "FRESS (1969) and Intermedia (1985).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p15",
+      "name": "Wendy Hall",
+      "domain": "Knowledge, documents and information",
+      "summary": "Microcosm (1989).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p16",
+      "name": "Frank Halasz",
+      "domain": "Knowledge, documents and information",
+      "summary": "Seven Issues for hypertext (1988).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p17",
+      "name": "Cathy Marshall",
+      "domain": "Knowledge, documents and information",
+      "summary": "VIKI (1994).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p18",
+      "name": "Charles Goldfarb and Steven Newcomb",
+      "domain": "Knowledge, documents and information",
+      "summary": "HyTime (1992).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p19",
+      "name": "Steven DeRose",
+      "domain": "Knowledge, documents and information",
+      "summary": "Overlapping hierarchies (1990s).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p20",
+      "name": "George Furnas",
+      "domain": "Knowledge, documents and information",
+      "summary": "Generalized fisheye views (1986).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p21",
+      "name": "Stuart Card, Jock Mackinlay, George Robertson",
+      "domain": "Knowledge, documents and information",
+      "summary": "Information Visualizer (1991).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p22",
+      "name": "Ramana Rao",
+      "domain": "Knowledge, documents and information",
+      "summary": "Table Lens (1994) and Inxight.",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p23",
+      "name": "Tim Berners-Lee",
+      "domain": "Knowledge, documents and information",
+      "summary": "The read-write web (1990) and the Semantic Web (2001).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p24",
+      "name": "Bob Stein",
+      "domain": "Knowledge, documents and information",
+      "summary": "The networked \"social book\" (2005).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p25",
+      "name": "Danny Hillis",
+      "domain": "Knowledge, documents and information",
+      "summary": "Knowledge Web (2000).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p26",
+      "name": "Gordon Bell and Jim Gemmell",
+      "domain": "Knowledge, documents and information",
+      "summary": "MyLifeBits (2001).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p27",
+      "name": "David Gelernter",
+      "domain": "Knowledge, documents and information",
+      "summary": "Lifestreams (1996).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p28",
+      "name": "Ben Shneiderman",
+      "domain": "Knowledge, documents and information",
+      "summary": "Genex (1998).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p29",
+      "name": "Ward Cunningham",
+      "domain": "Knowledge, documents and information",
+      "summary": "Federated Wiki (2011).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p31",
+      "name": "J.C.R. Licklider and Robert Taylor",
+      "domain": "Communication, collaboration and community",
+      "summary": "OLIVER (1968).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p32",
+      "name": "Terry Winograd and Fernando Flores",
+      "domain": "Communication, collaboration and community",
+      "summary": "The Coordinator (1986).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p33",
+      "name": "Murray Turoff and Roxanne Hiltz",
+      "domain": "Communication, collaboration and community",
+      "summary": "EIES and computerized Delphi (1971).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p34",
+      "name": "Jacques Vallée",
+      "domain": "Communication, collaboration and community",
+      "summary": "FORUM and PLANET (1973).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p36",
+      "name": "Donald Bitzer",
+      "domain": "Communication, collaboration and community",
+      "summary": "PLATO (1960) and its community (Notes, TERM-talk, 1973).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p37",
+      "name": "Mark Stefik",
+      "domain": "Communication, collaboration and community",
+      "summary": "Colab (1987).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p38",
+      "name": "General Magic",
+      "domain": "Communication, collaboration and community",
+      "summary": "Telescript and Magic Cap (1994).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p39",
+      "name": "Bill Atkinson",
+      "domain": "Communication, collaboration and community",
+      "summary": "Networked HyperCard (1987).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p40",
+      "name": "Richard Bolt",
+      "domain": "Communication, collaboration and community",
+      "summary": "Put-That-There (1980).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p41",
+      "name": "Mark Weiser",
+      "domain": "Communication, collaboration and community",
+      "summary": "Calm technology (1995).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p42",
+      "name": "Michael Dertouzos",
+      "domain": "Communication, collaboration and community",
+      "summary": "The Information Marketplace (1991) and Project Oxygen (1999).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p47",
+      "name": "Gordon Pask",
+      "domain": "Education",
+      "summary": "Conversation Theory and adaptive teaching machines (1956–1976).",
+      "evidence": "Research lead",
+      "blueprint": "2a"
+    },
+    {
+      "id": "p48",
+      "name": "Patrick Suppes",
+      "domain": "Education",
+      "summary": "Computer-assisted instruction (1966).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p49",
+      "name": "Seymour Papert",
+      "domain": "Education",
+      "summary": "The Knowledge Machine (1993).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p50",
+      "name": "Alan Kay",
+      "domain": "Education",
+      "summary": "Dynabook (1972) and STEPS (2006).",
+      "evidence": "Research lead",
+      "blueprint": "2b"
+    },
+    {
+      "id": "p51",
+      "name": "Andrea diSessa",
+      "domain": "Education",
+      "summary": "Boxer (1985).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p52",
+      "name": "Roger Schank",
+      "domain": "Education",
+      "summary": "Goal-based scenarios and ASK systems (1990s).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p70",
+      "name": "Nicholas Negroponte",
+      "domain": "Design, architecture and physical space",
+      "summary": "The Architecture Machine (1970) and Dataland (1976).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p72",
+      "name": "Bret Victor",
+      "domain": "Design, architecture and physical space",
+      "summary": "Drawing Dynamic Visualizations (2013) and Dynamicland (2018).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p76",
+      "name": "Lawrence Weed",
+      "domain": "Health",
+      "summary": "Problem-Knowledge Couplers (1968).",
+      "evidence": "Research lead",
+      "blueprint": "3a"
+    },
+    {
+      "id": "p77",
+      "name": "Warner Slack",
+      "domain": "Health",
+      "summary": "Patient-computer dialogue (1966).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p79",
+      "name": "Homer Warner",
+      "domain": "Health",
+      "summary": "HELP (1967).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p80",
+      "name": "Charles Babbage",
+      "domain": "Programming, machines and systems",
+      "summary": "Analytical Engine (1837).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p81",
+      "name": "Charles Sanders Peirce",
+      "domain": "Programming, machines and systems",
+      "summary": "Electrical logic circuits (1886).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p82",
+      "name": "Konrad Zuse",
+      "domain": "Programming, machines and systems",
+      "summary": "Plankalkül (1945) and Rechnender Raum (1969).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p83",
+      "name": "Alan Turing",
+      "domain": "Programming, machines and systems",
+      "summary": "The child machine (1950).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p84",
+      "name": "John von Neumann",
+      "domain": "Programming, machines and systems",
+      "summary": "The kinematic self-replicating machine (1948).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p85",
+      "name": "Heinz von Foerster",
+      "domain": "Programming, machines and systems",
+      "summary": "Biological Computer Laboratory (1958–1974).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p86",
+      "name": "Ivan Sutherland",
+      "domain": "Programming, machines and systems",
+      "summary": "Sketchpad constraints (1963).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p87",
+      "name": "Warren Teitelman",
+      "domain": "Programming, machines and systems",
+      "summary": "DWIM and the programmer's assistant (1966–1978).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p88",
+      "name": "Doug McIlroy",
+      "domain": "Programming, machines and systems",
+      "summary": "Mass-produced software components (1968).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p89",
+      "name": "John Backus",
+      "domain": "Programming, machines and systems",
+      "summary": "FP, function-level programming (1977).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p90",
+      "name": "Dan Ingalls",
+      "domain": "Programming, machines and systems",
+      "summary": "Fabrik (1988).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p91",
+      "name": "Niklaus Wirth",
+      "domain": "Programming, machines and systems",
+      "summary": "Oberon (1987).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p92",
+      "name": "Rob Pike, Ken Thompson and Bell Labs",
+      "domain": "Programming, machines and systems",
+      "summary": "Plan 9 (1992).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p93",
+      "name": "Jef Raskin",
+      "domain": "Programming, machines and systems",
+      "summary": "The Humane Interface (2000).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p94",
+      "name": "Jaron Lanier",
+      "domain": "Programming, machines and systems",
+      "summary": "Phenotropic programming (2003).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p95",
+      "name": "Douglas Lenat",
+      "domain": "Programming, machines and systems",
+      "summary": "Cyc (1984).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p96",
+      "name": "Marvin Minsky",
+      "domain": "Programming, machines and systems",
+      "summary": "The Society of Mind as a software architecture (1986).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p97",
+      "name": "Chris Crawford",
+      "domain": "Programming, machines and systems",
+      "summary": "Storytron (1997–2018).",
+      "evidence": "Research lead"
+    },
+    {
+      "id": "p101",
+      "name": "David Canfield Smith",
+      "domain": "Programming environments",
+      "summary": "Program by manipulating visual examples that the computer remembers.",
+      "evidence": "Prototype sourced",
+      "blueprint": "4a"
+    },
+    {
+      "id": "p102",
+      "name": "Ira Goldstein",
+      "domain": "Programming environments",
+      "summary": "Keep multiple perspectives and alternative designs inside one programming environment.",
+      "evidence": "Prototype sourced",
+      "blueprint": "4b"
+    },
+    {
+      "id": "p103",
+      "name": "Daniel Bobrow",
+      "domain": "Programming environments",
+      "summary": "Keep multiple perspectives and alternative designs inside one programming environment.",
+      "evidence": "Prototype sourced",
+      "blueprint": "4b"
+    },
+    {
+      "id": "p104",
+      "name": "David Harel",
+      "domain": "Programming environments",
+      "summary": "Specify software by demonstrating scenarios, then execute those requirements.",
+      "evidence": "Prototype sourced",
+      "blueprint": "4c"
+    },
+    {
+      "id": "p105",
+      "name": "Rami Marelly",
+      "domain": "Programming environments",
+      "summary": "Specify software by demonstrating scenarios, then execute those requirements.",
+      "evidence": "Prototype sourced",
+      "blueprint": "4c"
+    }
+  ]
+}

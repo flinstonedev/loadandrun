@@ -1,0 +1,1623 @@
+[
+  {
+    "id": "community-associative-trails",
+    "title": "Research trails another community can continue",
+    "summary": "Pass on the reasoning behind a discovery, with branching paths through its evidence.",
+    "opportunity": "Build a portable trail reader and editor where a community links passages, explains each connection, and hands a branching investigation to another group without losing attribution or uncertainty.",
+    "domain": "Shared knowledge",
+    "tags": [
+      "Hypertext",
+      "Collective memory",
+      "Research"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "As We May Think (1945)",
+        "url": "https://www.w3.org/History/1945/vbush/vbush.txt"
+      },
+      {
+        "title": "Hypothesis client: source and implementation guide",
+        "url": "https://github.com/hypothesis/client/blob/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a/README.md"
+      }
+    ],
+    "existingWork": "Bush proposed transferable trails in the Memex essay. Hypothesis provides browser annotation. This experiment adds explicit reading order, reasons for connections, branching, and handoff between independently hosted communities.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Hypothesis client",
+      "codeUrl": "https://github.com/hypothesis/client/tree/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a",
+      "licenseUrl": "https://github.com/hypothesis/client/blob/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a/LICENSE",
+      "license": "BSD 2-Clause License",
+      "licenseId": "BSD-2-Clause",
+      "notice": "Copyright (c) 2013-2019 Hypothes.is Project and contributors",
+      "scope": "The pinned Hypothesis client source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain copyright notices, conditions, and disclaimer in source distributions and reproduce them in documentation or other materials for binary distributions. Preserve the included MIT notice for the Annotator subcomponent as well.",
+      "commit": "b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a",
+      "licenseText": "Copyright (c) 2013-2019 Hypothes.is Project and contributors\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR\nANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n\nSubcomponents\n\nThe project includes a number of subcomponents with separate\ncopyright notices and license terms. Your use of the code for the these\nsubcomponents is subject to the terms and conditions of the following licenses.\n\nFor the annotator subcomponent:\n\n Copyright 2012 Aron Carroll, Rufus Pollock, and Nick Stenning.\n\n Permission is hereby granted, free of charge, to any person obtaining a copy\n of this software and associated documentation files (the \"Software\"), to deal\n in the Software without restriction, including without limitation the rights\n to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n copies of the Software, and to permit persons to whom the Software is\n furnished to do so, subject to the following conditions:\n\n The above copyright notice and this permission notice shall be included in\n all copies or substantial portions of the Software.\n\n THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n THE SOFTWARE.\n",
+      "licenseTextSha256": "8000e9f55b3ea757318f072c8fae3640a4f9e2e3b578c6a271ae98b1598eee7f"
+    },
+    "details": {
+      "origin": {
+        "title": "Memex and associative trails",
+        "people": [
+          "Vannevar Bush"
+        ],
+        "year": 1945,
+        "summary": "As We May Think describes a personal information machine in which a reader connects records into named trails, adds side paths, and gives a trail to another person. Its enduring proposal is that a useful result includes the route through the evidence, allowing later readers to extend an investigation instead of starting over.",
+        "sourceIds": [
+          "origin"
+        ]
+      },
+      "history": {
+        "status": "unrealized-vision",
+        "summary": "Bush described a design vision in 1945. Later hypertext and annotation systems made linked reading and commentary practical. This continuation brings those capabilities together in a portable investigation that another community can extend.",
+        "whatWasBuilt": "The modern Hypothesis client supports selecting passages and displaying annotations in browsers. Its source offers an annotation starting point, rather than a reconstruction of Bush’s device.",
+        "whatRemains": "Make the reasoning path independently exportable, forkable, and repairable when sources change, then evaluate whether a new group can continue it accurately.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A community investigating an environmental question or maintaining a public-interest software project could preserve why it rejected one approach and pursued another. Browser annotations provide a practical starting point. The benefit to test is reduced rediscovery: a new participant should understand the evidence, alternatives, and unresolved questions before making another contribution.",
+        "beneficiaries": [
+          "Citizen-science groups",
+          "Community researchers",
+          "Open-source maintainers"
+        ],
+        "sourceIds": [
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Two groups exchange one twenty-source investigation, including three branches and one deliberately changed source, through an export file.",
+        "steps": [
+          {
+            "title": "Capture a reasoned connection",
+            "description": "Build a passage selector and trail editor. Each step records a source URL, an anchor, an author-written explanation, a date, and an optional next step. Let authors identify a connection as evidence, analogy, objection, or unresolved question.",
+            "deliverable": "A reader can follow a short investigation and inspect why each source was included."
+          },
+          {
+            "title": "Make branching and handoff explicit",
+            "description": "Give trails stable identifiers and export their structure and original notes. A receiving group can fork a branch, add an objection, and compare its additions with the upstream trail while preserving the original attribution.",
+            "deliverable": "Two independent installations exchange a trail and distinguish original work from additions."
+          },
+          {
+            "title": "Test what survives change",
+            "description": "Change a source document, withdraw a source, and remove access to another. Present an honest unavailable or uncertain anchor state. Ask unfamiliar readers to reconstruct the central claim using the remaining trail.",
+            "deliverable": "A published handoff exercise with recoverable anchors and a record of misunderstandings."
+          }
+        ],
+        "successCriteria": [
+          "Every exported connection retains its source, explanation, and author.",
+          "Readers distinguish supporting evidence from objections without a facilitator.",
+          "A changed or missing source never silently appears as verified evidence."
+        ],
+        "nonGoals": [
+          "Reproduce the mechanical Memex.",
+          "Copy full third-party papers into exports by default.",
+          "Automatically decide whether a research conclusion is true."
+        ],
+        "roles": [
+          {
+            "name": "Browser developer",
+            "contribution": "Implement anchoring, navigation, and export."
+          },
+          {
+            "name": "Research facilitator",
+            "contribution": "Design the reading task and observe misunderstandings."
+          },
+          {
+            "name": "Community editor",
+            "contribution": "Create a useful first investigation with permissioned materials."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Trails can persuade by omission",
+          "description": "An elegant path can conceal contradictory evidence. Make branches and excluded alternatives visible, and allow readers to annotate the framing of the investigation."
+        },
+        {
+          "title": "Evidence changes",
+          "description": "A URL can survive while its content changes. Keep minimal anchors and version context, clearly separate unavailable content, and avoid presenting guessed matches as certain."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Hypothesis client",
+          "url": "https://github.com/hypothesis/client",
+          "relationship": "Existing annotation UI and anchoring to extend; it does not itself establish this trail handoff experiment."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "As We May Think (1945)",
+          "url": "https://www.w3.org/History/1945/vbush/vbush.txt",
+          "kind": "primary-research",
+          "supports": "Bush’s proposed associative indexing, branching trails, commentary, and exchange between readers."
+        },
+        {
+          "id": "implementation",
+          "title": "Hypothesis client: source and implementation guide",
+          "url": "https://github.com/hypothesis/client/blob/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "Hypothesis client: complete reuse license",
+          "url": "https://github.com/hypothesis/client/blob/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a/LICENSE",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "portable-linkbases",
+    "title": "A shared link layer for documents you do not own",
+    "summary": "Let communities connect manuals, reports, and web pages without changing the originals.",
+    "opportunity": "Build a link service that lets a repair community maintain one set of explanatory connections across independently hosted HTML manuals and locally held documents.",
+    "domain": "Interoperability",
+    "tags": [
+      "Open hypermedia",
+      "Document linking",
+      "Community repair"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Towards Interoperability in Open Hypermedia Linkservices",
+        "url": "https://www.southampton.ac.uk/~hcd/ohp/finalpaper/jodi.html"
+      },
+      {
+        "title": "Annotator: source and implementation guide",
+        "url": "https://github.com/openannotation/annotator/blob/f4f7c75869f54b046f7ca89492b4c35cfbc162bb/README.md"
+      }
+    ],
+    "existingWork": "Microcosm and other open hypermedia systems separated links from document content. The Open Hypermedia Protocol work addressed incompatible link services. Annotator already supplies web annotation components; the proposed contribution is a portable linkbase tested across two viewers.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Annotator",
+      "codeUrl": "https://github.com/openannotation/annotator/tree/f4f7c75869f54b046f7ca89492b4c35cfbc162bb",
+      "licenseUrl": "https://github.com/openannotation/annotator/blob/f4f7c75869f54b046f7ca89492b4c35cfbc162bb/LICENSE-MIT",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Annotator contributors; preserve applicable source-file notices and the repository AUTHORS attribution file.",
+      "scope": "The pinned Annotator source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain the copyright, permission notice, and disclaimer in copies or substantial portions of the software. The repository explicitly offers MIT or GPL; this build path selects the MIT option.",
+      "commit": "f4f7c75869f54b046f7ca89492b4c35cfbc162bb",
+      "licenseText": "Permission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
+      "licenseTextSha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e"
+    },
+    "details": {
+      "origin": {
+        "title": "Microcosm and interoperable open hypermedia link services",
+        "people": [
+          "Hugh Davis",
+          "Sigi Reich",
+          "Antoine Rizk"
+        ],
+        "year": 1997,
+        "summary": "The authors of Towards Interoperability in Open Hypermedia Linkservices described a concrete limitation: systems could keep links outside documents yet still require their own client protocols. They proposed a common model and protocol so viewers could cooperate with multiple services. This brief revives that interoperability question in a small, useful setting.",
+        "sourceIds": [
+          "origin"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Microcosm and other open hypermedia systems implemented external links in prototypes and commercial products. The Open Hypermedia Protocol addressed incompatible client interfaces. This continuation tests one shared link collection in two independently developed viewers.",
+        "whatWasBuilt": "The paper describes Microcosm viewers and link-service communication scenarios. Annotator provides modern browser components for annotations, storage integration, and application permissions.",
+        "whatRemains": "Separate link ownership from document ownership while preserving anchor meaning, contributor attribution, and the ability to switch link providers.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "Repair groups often collect knowledge about materials they cannot edit: a manufacturer’s manual, a public service document, and their own troubleshooting note. A shared link layer could connect an ambiguous instruction to a community explanation. The initial value is measurable navigation between those materials, using owned or permissioned test documents and existing annotation components.",
+        "beneficiaries": [
+          "Repair cafés",
+          "Volunteer technical support groups",
+          "Public-interest documentation teams"
+        ],
+        "sourceIds": [
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "One repair group maintains fifty links that work in an HTML viewer and a separate local-document viewer through the same exported linkbase.",
+        "steps": [
+          {
+            "title": "Define links as independent records",
+            "description": "Give each link its own identifier, endpoints, author, purpose, and visibility. Record enough anchor context to identify the target passage. Keep the link store independent from document storage, with an explicit policy for who may edit a link.",
+            "deliverable": "A small documented link format and a permissioned example collection."
+          },
+          {
+            "title": "Build two different viewers",
+            "description": "Use Annotator for the HTML experience and implement a second adapter for a simple local text-document viewer. Both query the same service, show link purposes, and resolve endpoints without rewriting the underlying files.",
+            "deliverable": "A demonstration in which one link update becomes available in both viewers."
+          },
+          {
+            "title": "Prove the exit path",
+            "description": "Export the collection and import it into a second service. Move a document and edit an anchor passage. Show broken or ambiguous targets for human repair, with a history of the correction.",
+            "deliverable": "A migration report showing which links survive, fail, or need review."
+          }
+        ],
+        "successCriteria": [
+          "All unchanged test anchors resolve identically in both viewers.",
+          "Moving between services preserves link identity and authorship.",
+          "An unauthorized contributor cannot rewrite another group’s link collection."
+        ],
+        "nonGoals": [
+          "Rewrite every existing desktop application.",
+          "Promise universal anchors for arbitrary file formats.",
+          "Republish copyrighted manuals as part of the link service."
+        ],
+        "roles": [
+          {
+            "name": "Protocol developer",
+            "contribution": "Specify export and service behavior."
+          },
+          {
+            "name": "Viewer developer",
+            "contribution": "Build independent adapters and failure states."
+          },
+          {
+            "name": "Repair practitioner",
+            "contribution": "Choose real navigation problems and validate the explanations."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "An anchor is a claim about a location",
+          "description": "Text matching can attach an explanation to the wrong repeated instruction. Use context and confidence, and request repair when several matches are plausible."
+        },
+        {
+          "title": "Link spam and conflicting guidance",
+          "description": "Communities need selectable collections and visible authorship. A link should identify its maintainer and purpose instead of appearing to be an instruction from the document publisher."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Open Hypermedia Protocol proposal",
+          "url": "https://www.southampton.ac.uk/~hcd/ohp/finalpaper/jodi.html",
+          "relationship": "Historical models and interoperability scenarios."
+        },
+        {
+          "title": "Annotator",
+          "url": "https://github.com/openannotation/annotator",
+          "relationship": "Modern reusable web annotation components under an explicit MIT option."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Towards Interoperability in Open Hypermedia Linkservices",
+          "url": "https://www.southampton.ac.uk/~hcd/ohp/finalpaper/jodi.html",
+          "kind": "primary-research",
+          "supports": "Existing open hypermedia systems, their private protocols, and the proposal for interoperable clients and link services."
+        },
+        {
+          "id": "implementation",
+          "title": "Annotator: source and implementation guide",
+          "url": "https://github.com/openannotation/annotator/blob/f4f7c75869f54b046f7ca89492b4c35cfbc162bb/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "Annotator: complete reuse license",
+          "url": "https://github.com/openannotation/annotator/blob/f4f7c75869f54b046f7ca89492b4c35cfbc162bb/LICENSE-MIT",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        },
+        {
+          "id": "license-choice",
+          "title": "Annotator: explicit MIT or GPL choice",
+          "url": "https://github.com/openannotation/annotator/blob/f4f7c75869f54b046f7ca89492b4c35cfbc162bb/LICENSE",
+          "kind": "license",
+          "supports": "The repository grants a choice; the linked MIT file is the option selected here."
+        },
+        {
+          "id": "authors",
+          "title": "Annotator contributor attribution",
+          "url": "https://github.com/openannotation/annotator/blob/f4f7c75869f54b046f7ca89492b4c35cfbc162bb/AUTHORS",
+          "kind": "license",
+          "supports": "The contributors named alongside the source code and MIT license option."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "spatial-research-maps",
+    "title": "Research maps that turn arrangement into useful structure",
+    "summary": "Let a group organize uncertain evidence before it has agreed on the categories.",
+    "opportunity": "Build a spatial research board that proposes collections from placement and appearance, asks people to confirm its interpretation, and preserves the original arrangement alongside a searchable structure.",
+    "domain": "Visual computing",
+    "tags": [
+      "Spatial hypertext",
+      "Sensemaking",
+      "Research"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "VIKI: Spatial Hypertext Supporting Emergent Structure",
+        "url": "https://people.engr.tamu.edu/shipman/abstracts/echt94-abstract.html"
+      },
+      {
+        "title": "Searching for the Missing Link: Discovering Implicit Structure in Spatial Hypertext",
+        "url": "https://people.engr.tamu.edu/shipman/viki/papers/ht93/ht93.html"
+      },
+      {
+        "title": "Cytoscape.js: source and implementation guide",
+        "url": "https://github.com/cytoscape/cytoscape.js/blob/fd3595bbf0eaac76ef2a6984a29e85703c239703/README.md"
+      }
+    ],
+    "existingWork": "VIKI was a working spatial hypertext system, and the preceding research developed heuristic recognition of implicit structure. Cytoscape.js supplies a graph interaction building block. This proposal concentrates on collaborative interpretation and reversible suggestions, rather than claiming to invent visual boards.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Cytoscape.js",
+      "codeUrl": "https://github.com/cytoscape/cytoscape.js/tree/fd3595bbf0eaac76ef2a6984a29e85703c239703",
+      "licenseUrl": "https://github.com/cytoscape/cytoscape.js/blob/fd3595bbf0eaac76ef2a6984a29e85703c239703/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2016-2024, The Cytoscape Consortium.",
+      "scope": "The pinned Cytoscape.js source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain the copyright, permission notice, and disclaimer in copies or substantial portions of the software.",
+      "commit": "fd3595bbf0eaac76ef2a6984a29e85703c239703",
+      "licenseText": "Copyright (c) 2016-2024, The Cytoscape Consortium.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the “Software”), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies\nof the Software, and to permit persons to whom the Software is furnished to do\nso, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.",
+      "licenseTextSha256": "a29c0d78a54de204b78357976c3d272a573b8592d0478b9db07af3f1da31a65a"
+    },
+    "details": {
+      "origin": {
+        "title": "VIKI and recognition of implicit spatial structure",
+        "people": [
+          "Catherine C. Marshall",
+          "Frank M. Shipman III",
+          "James H. Coombs"
+        ],
+        "year": 1994,
+        "summary": "VIKI explored how information organization emerges while people work. Semi-structured objects, spatial collections, and a parser allowed tentative visual arrangements to develop into more explicit types. Earlier research examined how proximity and visual conventions could reveal structure while acknowledging that human interaction was needed to guide interpretation.",
+        "sourceIds": [
+          "origin",
+          "precursor"
+        ]
+      },
+      "history": {
+        "status": "research-prototype",
+        "summary": "VIKI implemented spatial hypertext and recognition mechanisms. This continuation adds collaborative review of inferred relationships, so a group can preserve useful ambiguity while developing a shared interpretation.",
+        "whatWasBuilt": "VIKI supported evolving objects, collections, composites, and spatial parsing. Cytoscape.js offers graph visualization and interaction code for a fresh implementation of the proposed board.",
+        "whatRemains": "Test whether several people can refine inferred structure without erasing meaningful ambiguity or forcing everyone into one taxonomy.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A community comparing evidence about a local environmental problem may need to keep incomplete patterns visible before choosing labels. A board can hold conflicting explanations next to observations and let categories develop through use. Existing graph interaction code makes it feasible to test the difficult part: whether suggested structure helps participants explain their reasoning to each other.",
+        "beneficiaries": [
+          "Community research groups",
+          "Investigative teams",
+          "Volunteer design collectives"
+        ],
+        "sourceIds": [
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "A group sorts sixty evidence cards, reviews suggested collections, and exports both the agreed structure and the unresolved spatial arrangement.",
+        "steps": [
+          {
+            "title": "Preserve an expressive board",
+            "description": "Build cards with source links, a short note, shape or label cues, and free placement. Support named regions without requiring every card to belong to one. Record moves so a group can return to a previous arrangement.",
+            "deliverable": "A board that supports incomplete, overlapping interpretations and reversible edits."
+          },
+          {
+            "title": "Suggest structure with an explanation",
+            "description": "Start with inspectable rules for proximity, alignment, and repeated visual cues. Show the evidence behind a proposed collection and allow acceptance, rejection, or correction. Store inferred suggestions separately from relationships people explicitly create.",
+            "deliverable": "A suggestion panel whose decisions can be explained without a machine-learning model."
+          },
+          {
+            "title": "Evaluate the handover",
+            "description": "Invite a second group to interpret the board and compare its understanding with the original group’s account. Export cards, coordinates, accepted relationships, and source URLs. Reimport the file and inspect whether meaning survives.",
+            "deliverable": "A small study and a portable board format with documented ambiguous cases."
+          }
+        ],
+        "successCriteria": [
+          "Rejecting a suggestion leaves the underlying board unchanged.",
+          "An exported board retains unresolved cards and overlapping regions.",
+          "Participants can identify which relationships were inferred and which were authored."
+        ],
+        "nonGoals": [
+          "Automatically discover the correct taxonomy.",
+          "Replace detailed source reading with card summaries.",
+          "Require a graph layout algorithm to decide where every card belongs."
+        ],
+        "roles": [
+          {
+            "name": "Interaction designer",
+            "contribution": "Design reversible suggestions and accessible board navigation."
+          },
+          {
+            "name": "Frontend developer",
+            "contribution": "Implement cards, history, and export."
+          },
+          {
+            "name": "Research facilitator",
+            "contribution": "Observe interpretation differences between groups."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Proximity has many meanings",
+          "description": "A nearby card might be a counterexample, a reminder, or a temporary parking place. Suggestions must remain provisional and show the rule that produced them."
+        },
+        {
+          "title": "A canvas can exclude people",
+          "description": "Provide a keyboard-accessible list and region outline with equivalent operations. Test whether the structured view communicates the same relationships as the spatial one."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "VIKI abstract",
+          "url": "https://people.engr.tamu.edu/shipman/abstracts/echt94-abstract.html",
+          "relationship": "The implemented historical system and its emergent-structure model."
+        },
+        {
+          "title": "Cytoscape.js",
+          "url": "https://github.com/cytoscape/cytoscape.js",
+          "relationship": "Graph display and interaction code; the collaborative board and parser remain work to build."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "VIKI: Spatial Hypertext Supporting Emergent Structure",
+          "url": "https://people.engr.tamu.edu/shipman/abstracts/echt94-abstract.html",
+          "kind": "primary-research",
+          "supports": "VIKI’s objects, collections, composites, and spatial parser."
+        },
+        {
+          "id": "precursor",
+          "title": "Searching for the Missing Link: Discovering Implicit Structure in Spatial Hypertext",
+          "url": "https://people.engr.tamu.edu/shipman/viki/papers/ht93/ht93.html",
+          "kind": "primary-research",
+          "supports": "Experiments with recognizing spatial structure and the need for human guidance."
+        },
+        {
+          "id": "implementation",
+          "title": "Cytoscape.js: source and implementation guide",
+          "url": "https://github.com/cytoscape/cytoscape.js/blob/fd3595bbf0eaac76ef2a6984a29e85703c239703/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "Cytoscape.js: complete reuse license",
+          "url": "https://github.com/cytoscape/cytoscape.js/blob/fd3595bbf0eaac76ef2a6984a29e85703c239703/LICENSE",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "community-chronicle",
+    "title": "A community memory you can search through time",
+    "summary": "Bring decisions, documents, and future commitments into a chronology that survives a change of tools.",
+    "opportunity": "Build a community chronicle that imports permissioned records from several tools, preserves event time and provenance, and helps a newcomer reconstruct how one project decision unfolded.",
+    "domain": "Collective memory",
+    "tags": [
+      "Lifestreams",
+      "Search",
+      "Provenance"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "The Yale Lifestreams Project Page",
+        "url": "https://www.cs.yale.edu/homes/freeman/lifestreams.html"
+      },
+      {
+        "title": "Tantivy: source and implementation guide",
+        "url": "https://github.com/quickwit-oss/tantivy/blob/b5d8deb80c26924e6b007a5b1a7630f35ca64de4/README.md"
+      }
+    ],
+    "existingWork": "Yale’s Lifestreams prototype organized personal information as a time-ordered stream, and its authors describe later related commercial work. Tantivy supplies full-text search. This experiment focuses on a portable group history and understandable provenance.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Tantivy",
+      "codeUrl": "https://github.com/quickwit-oss/tantivy/tree/b5d8deb80c26924e6b007a5b1a7630f35ca64de4",
+      "licenseUrl": "https://github.com/quickwit-oss/tantivy/blob/b5d8deb80c26924e6b007a5b1a7630f35ca64de4/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright (c) 2018 by the project authors, as listed in the AUTHORS file.",
+      "scope": "The pinned Tantivy source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain the copyright, permission notice, and disclaimer in copies or substantial portions of the software.",
+      "commit": "b5d8deb80c26924e6b007a5b1a7630f35ca64de4",
+      "licenseText": "Copyright (c) 2018 by the project authors, as listed in the AUTHORS file. \n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+      "licenseTextSha256": "acacd14bebbffdb30d62443c282fb4da3e81915a9f69c63d5d745a029f44de8a"
+    },
+    "details": {
+      "origin": {
+        "title": "Lifestreams",
+        "people": [
+          "Eric Freeman",
+          "David Gelernter"
+        ],
+        "year": 1996,
+        "summary": "The Yale project proposed organizing documents and electronic events in a time-ordered stream, including future reminders, with operators for finding, filtering, and summarizing information. Its project page describes personal-information prototypes and identifies enterprise information as a direction that the researchers were beginning to explore.",
+        "sourceIds": [
+          "origin"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Lifestreams produced a working personal-information prototype and related commercial efforts. This continuation applies its chronology and filtering model to a group history that remains reconstructable when the community changes tools.",
+        "whatWasBuilt": "A research architecture, personal-information prototype, and related later efforts are documented by the authors. Tantivy supplies a modern full-text index and query implementation.",
+        "whatRemains": "Give a group a reconstructable history whose dates, edits, imported records, and missing context remain understandable after a tool migration.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "Volunteer teams change tools and participants over time. A project’s rationale can become difficult to reconstruct when an issue, a meeting note, and a later correction live apart. The experiment would help a new maintainer answer what changed and why. A local search library allows an initial test without sending a group’s entire history to an external search service.",
+        "beneficiaries": [
+          "Volunteer software teams",
+          "Long-running community projects",
+          "New maintainers"
+        ],
+        "sourceIds": [
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Import three months of permissioned records from two sources and let a new participant reconstruct five decisions with their supporting documents.",
+        "steps": [
+          {
+            "title": "Model time honestly",
+            "description": "Define a record with event time, import time, source identifier, author, and revision relationship. Preserve original timestamps and distinguish scheduled commitments from completed events. Build importers for a simple issue export and Markdown meeting notes.",
+            "deliverable": "A deterministic import fixture with duplicates, edited records, and future reminders."
+          },
+          {
+            "title": "Build chronology and focused search",
+            "description": "Index record text and metadata with Tantivy. Let people move from a search result into its surrounding chronology, save a query as a substream, and attach a concise explanation of a decision that links back to source records.",
+            "deliverable": "A usable chronology with source-aware search and editable decision summaries."
+          },
+          {
+            "title": "Test migration and onboarding",
+            "description": "Export records and index-independent metadata, rebuild on a fresh machine, and replay the five decision tasks with newcomers. Include one removed source and a corrected date; observe whether readers recognize both limitations.",
+            "deliverable": "A repeatable migration and onboarding exercise with accuracy and time measurements."
+          }
+        ],
+        "successCriteria": [
+          "Reimporting a source creates no duplicate events.",
+          "Every displayed event distinguishes source time from import time.",
+          "A newcomer can locate the evidence for a decision and its later correction."
+        ],
+        "nonGoals": [
+          "Record every private communication automatically.",
+          "Treat chronology as proof of causation.",
+          "Require every community tool to adopt a single application or database."
+        ],
+        "roles": [
+          {
+            "name": "Data engineer",
+            "contribution": "Design import, deduplication, and portable records."
+          },
+          {
+            "name": "Search developer",
+            "contribution": "Build source-aware queries and chronology navigation."
+          },
+          {
+            "name": "Community historian",
+            "contribution": "Select decisions and validate reconstruction tasks."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Chronology can create false confidence",
+          "description": "Events close in time may be unrelated. Explanations should cite actual decision records and mark missing context rather than infer intent from sequence."
+        },
+        {
+          "title": "History includes people’s private information",
+          "description": "Import only material the group is entitled to use. Design deletion, redaction, and permission changes before adding more connectors, including removal from search indexes."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Yale Lifestreams project",
+          "url": "https://www.cs.yale.edu/homes/freeman/lifestreams.html",
+          "relationship": "Historical prototype and author-documented descendants."
+        },
+        {
+          "title": "Tantivy",
+          "url": "https://github.com/quickwit-oss/tantivy",
+          "relationship": "MIT-licensed search implementation; the chronicle, importers, and community workflow are new work."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "The Yale Lifestreams Project Page",
+          "url": "https://www.cs.yale.edu/homes/freeman/lifestreams.html",
+          "kind": "primary-research",
+          "supports": "The stream metaphor, implemented personal-information prototype, related commercial efforts, and the stated enterprise direction."
+        },
+        {
+          "id": "implementation",
+          "title": "Tantivy: source and implementation guide",
+          "url": "https://github.com/quickwit-oss/tantivy/blob/b5d8deb80c26924e6b007a5b1a7630f35ca64de4/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "Tantivy: complete reuse license",
+          "url": "https://github.com/quickwit-oss/tantivy/blob/b5d8deb80c26924e6b007a5b1a7630f35ca64de4/LICENSE",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "permission-aware-semantic-desktop",
+    "title": "A personal knowledge graph with a deliberate sharing boundary",
+    "summary": "Connect your documents and contacts while choosing exactly which relationships a group can see.",
+    "opportunity": "Build a local semantic index that relates files, contacts, and project notes, then lets a member publish a previewable subset of those relationships to a community.",
+    "domain": "Personal computing",
+    "tags": [
+      "Semantic desktop",
+      "Privacy",
+      "Knowledge graphs"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "NEPOMUK: Networked Environment for Personalized, Ontology-based Management of Unified Knowledge",
+        "url": "https://www.dfki.de/en/web/research/projects-and-publications/project/nepomuk"
+      },
+      {
+        "title": "RDFLib: source and implementation guide",
+        "url": "https://github.com/RDFLib/rdflib/blob/581d7189991f84fb21e6b89e1a063908276a0bb1/README.md"
+      }
+    ],
+    "existingWork": "NEPOMUK delivered an open-source framework and reference implementations for a social semantic desktop, including cross-application links and social exchange. RDFLib already handles RDF graphs. This proposal tests a specific, understandable sharing boundary rather than recreating the entire desktop.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "RDFLib",
+      "codeUrl": "https://github.com/RDFLib/rdflib/tree/581d7189991f84fb21e6b89e1a063908276a0bb1",
+      "licenseUrl": "https://github.com/RDFLib/rdflib/blob/581d7189991f84fb21e6b89e1a063908276a0bb1/LICENSE",
+      "license": "BSD 3-Clause License",
+      "licenseId": "BSD-3-Clause",
+      "notice": "Copyright (c) 2002-2026, RDFLib Team",
+      "scope": "The pinned RDFLib source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain copyright notices, conditions, and disclaimer in source distributions and reproduce them in documentation or other materials for binary distributions. Do not use contributor names to endorse derived products without permission.",
+      "commit": "581d7189991f84fb21e6b89e1a063908276a0bb1",
+      "licenseText": "BSD 3-Clause License\n\nCopyright (c) 2002-2026, RDFLib Team\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its\n   contributors may be used to endorse or promote products derived from\n   this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n",
+      "licenseTextSha256": "53a705e51bfd199e8c97d0442376cb4bbd4ffcf13ba4f2c4c2794211400e4012"
+    },
+    "details": {
+      "origin": {
+        "title": "NEPOMUK: the Social Semantic Desktop",
+        "people": [
+          "NEPOMUK consortium",
+          "DFKI"
+        ],
+        "year": 2006,
+        "summary": "NEPOMUK aimed to connect personal information across applications and support exchange across social and organizational relationships. The project combined semantic data structures, adapters, and collaboration research. DFKI’s account describes both a delivered open-source framework and a broader ambition to make personal knowledge useful across workspaces.",
+        "sourceIds": [
+          "origin"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "The framework and implementations existed. The proposed work isolates one question within that broad vision: can an ordinary participant understand and control the exact slice of personal context being shared?",
+        "whatWasBuilt": "NEPOMUK produced cross-application infrastructure and reference implementations. RDFLib provides a later, separately licensed RDF representation, parsing, serialization, and query building block.",
+        "whatRemains": "Build a human-readable sharing preview, provenance-aware relationship selection, and a revocation workflow that distinguishes local deletion from copies already received.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "An open-source contributor may want to share relevant project context without publishing their personal address book or all files mentioning a collaborator. A small local graph could connect that information while keeping publication deliberate. The benefit to test is confident, limited knowledge exchange: users should understand what a recipient will learn, including implications from visible relationships.",
+        "beneficiaries": [
+          "Independent researchers",
+          "Open-source contributors",
+          "Cross-organization volunteer groups"
+        ],
+        "sourceIds": [
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Index a participant-created test folder and contact list, share ten selected relationships, and verify the recipient sees only the approved export.",
+        "steps": [
+          {
+            "title": "Build a small local graph",
+            "description": "Write opt-in adapters for Markdown files and a user-provided contacts file. Store facts with source provenance and stable identifiers. Keep inferred relationships separate from explicit ones, and allow a person to inspect and correct each connection.",
+            "deliverable": "A local browser for relationships with source-level explanations and no automatic upload."
+          },
+          {
+            "title": "Design the publication preview",
+            "description": "Let a member select a project and inspect the exact entities, labels, and relationships that would leave their machine. Highlight references that reveal an otherwise hidden contact or document title. Generate a portable RDF export only after confirmation.",
+            "deliverable": "An export preview that matches the recipient’s imported view field for field."
+          },
+          {
+            "title": "Exercise correction and withdrawal",
+            "description": "Share the export with a separate installation, correct a mistaken identity merge, and withdraw selected relationships. Represent subsequent correction requests explicitly, while explaining that a recipient may retain earlier copies.",
+            "deliverable": "A documented exchange protocol and a study of whether participants understand its boundaries."
+          }
+        ],
+        "successCriteria": [
+          "Private source contents never appear in an export unless explicitly selected.",
+          "Every visible fact can be traced to its source or identified as an inference.",
+          "Participants accurately predict which contacts and document names a recipient will see."
+        ],
+        "nonGoals": [
+          "Index the whole computer by default.",
+          "Promise to erase data from someone else’s offline copy.",
+          "Require collaborators to share their entire personal graph."
+        ],
+        "roles": [
+          {
+            "name": "Data developer",
+            "contribution": "Build adapters, identifiers, and export."
+          },
+          {
+            "name": "Privacy-focused designer",
+            "contribution": "Test the sharing preview and withdrawal explanation."
+          },
+          {
+            "name": "Community participant",
+            "contribution": "Supply a realistic consented information set and feedback."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Relationships reveal information indirectly",
+          "description": "Even an innocent title or connection can identify a confidential collaborator. The preview must show the recipient’s complete resulting graph rather than a list of selected files."
+        },
+        {
+          "title": "Names do not establish identity",
+          "description": "Two contacts may share a name, and one person may use several addresses. Keep suggested merges reversible and preserve the evidence for each identity decision."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "NEPOMUK project at DFKI",
+          "url": "https://www.dfki.de/en/web/research/projects-and-publications/project/nepomuk",
+          "relationship": "Historical goals, delivered framework, partners, and dates."
+        },
+        {
+          "title": "RDFLib",
+          "url": "https://github.com/RDFLib/rdflib",
+          "relationship": "A separately licensed RDF building block; it does not supply the sharing interface or access policy."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "NEPOMUK: Networked Environment for Personalized, Ontology-based Management of Unified Knowledge",
+          "url": "https://www.dfki.de/en/web/research/projects-and-publications/project/nepomuk",
+          "kind": "primary-research",
+          "supports": "The project’s 2006–2008 dates, cross-application and social-exchange ambitions, and delivered open-source framework."
+        },
+        {
+          "id": "implementation",
+          "title": "RDFLib: source and implementation guide",
+          "url": "https://github.com/RDFLib/rdflib/blob/581d7189991f84fb21e6b89e1a063908276a0bb1/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "RDFLib: complete reuse license",
+          "url": "https://github.com/RDFLib/rdflib/blob/581d7189991f84fb21e6b89e1a063908276a0bb1/LICENSE",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "shareable-knowledge-lenses",
+    "title": "Views of public knowledge that communities can share",
+    "summary": "Let a useful way of reading a dataset travel independently of the website that first displayed it.",
+    "opportunity": "Build two independent data browsers that can import the same community-authored presentation lens and show a consistent, accessible view of a public-interest dataset.",
+    "domain": "Interoperability",
+    "tags": [
+      "Fresnel",
+      "Linked data",
+      "Accessibility"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Fresnel: Display Vocabulary for RDF",
+        "url": "https://www.w3.org/2005/04/fresnel-info/"
+      },
+      {
+        "title": "Fresnel vocabulary user manual (30 June 2005)",
+        "url": "https://www.w3.org/2005/04/fresnel-info/manual/"
+      },
+      {
+        "title": "N3.js: source and implementation guide",
+        "url": "https://github.com/rdfjs/N3.js/blob/8585618a988b058769e9ea5e506da0b30f1c1cc7/README.md"
+      }
+    ],
+    "existingWork": "Fresnel defined a browser-independent RDF display vocabulary, and its project lists several implementations. N3.js handles RDF data in JavaScript. This experiment tests a small portable lens profile and community authoring across independent viewers.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "N3.js",
+      "codeUrl": "https://github.com/rdfjs/N3.js/tree/8585618a988b058769e9ea5e506da0b30f1c1cc7",
+      "licenseUrl": "https://github.com/rdfjs/N3.js/blob/8585618a988b058769e9ea5e506da0b30f1c1cc7/LICENSE.md",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright ©2012–present N3.js contributors",
+      "scope": "The pinned N3.js source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain the copyright, permission notice, and disclaimer in copies or substantial portions of the software.",
+      "commit": "8585618a988b058769e9ea5e506da0b30f1c1cc7",
+      "licenseText": "# License\nThe MIT License (MIT)\nCopyright ©2012–present N3.js contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+      "licenseTextSha256": "c865fbe2694190f63fbc44c760a11574f843ca837fa580b332d56d23d5867443"
+    },
+    "details": {
+      "origin": {
+        "title": "Fresnel display vocabulary",
+        "people": [
+          "Christian Bizer",
+          "Emmanuel Pietriga",
+          "Ryan Lee",
+          "Fresnel contributors"
+        ],
+        "year": 2005,
+        "summary": "Fresnel separates which RDF properties a reader sees from how those properties are presented. Its authors wanted presentation knowledge to be reusable across browsers rather than reimplemented in each application. Lenses choose and order information; formats guide rendering. The specification explicitly allows different output formats and representation styles.",
+        "sourceIds": [
+          "origin",
+          "manual"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "Fresnel was implemented in browsers and APIs listed by its project. This continuation develops a small, community-maintained compatibility profile for accessible viewers, with examples that independent implementations can test.",
+        "whatWasBuilt": "The vocabulary, manuals, and multiple historical implementations exist. N3.js supplies a modern RDF parser and store for implementing a new lens evaluator.",
+        "whatRemains": "Let a non-specialist publish a useful reading view and prove that independent viewers preserve its field selection, labels, ordering, and limitations.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "Community groups interpreting public datasets often need domain knowledge to decide which fields matter and how to explain them. Sharing that reading view could help another town or volunteer group reuse the work. The initial test should use a small dataset with explicit reuse permission and compare understanding across two interfaces, including an accessible text-oriented one.",
+        "beneficiaries": [
+          "Civic data groups",
+          "Public-interest researchers",
+          "Accessible data publishers"
+        ],
+        "sourceIds": [
+          "manual"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Create one reusable lens for a community-owned dataset and render it in an interactive browser and a keyboard-first document view with identical selected information.",
+        "steps": [
+          {
+            "title": "Specify a modest profile",
+            "description": "Choose a documented subset: resource types, ordered properties, labels, simple nested records, and missing-value behavior. Write conformance examples with expected selections. Keep rendering rules declarative, with no executable code embedded in a lens.",
+            "deliverable": "A short compatibility profile and fixtures that both implementations can test."
+          },
+          {
+            "title": "Build an authoring experience",
+            "description": "Use N3.js to read the underlying graph and develop a form-based editor for field selection and explanation. Preview records with missing and repeated values. Allow community authors to attach a version, authorship, license, and intended use to their lens.",
+            "deliverable": "An exportable lens that a domain volunteer can create without hand-editing RDF."
+          },
+          {
+            "title": "Implement an independent reader",
+            "description": "Have a second contributor build the document renderer against the profile rather than the first viewer’s internals. Import the same lens and compare selected content, field order, and keyboard navigation on the test fixtures.",
+            "deliverable": "A cross-viewer demonstration and a published compatibility report."
+          }
+        ],
+        "successCriteria": [
+          "Both viewers select the same facts for every profile fixture.",
+          "Unsupported features produce an explicit notice instead of silently changing meaning.",
+          "A volunteer can revise field labels and publish a new lens without changing application code."
+        ],
+        "nonGoals": [
+          "Force identical pixels in every viewer.",
+          "Treat a presentation filter as access control.",
+          "Claim full Fresnel compatibility from a limited subset."
+        ],
+        "roles": [
+          {
+            "name": "Data developer",
+            "contribution": "Implement the profile and reference evaluator."
+          },
+          {
+            "name": "Accessibility developer",
+            "contribution": "Build the independent document view."
+          },
+          {
+            "name": "Domain volunteer",
+            "contribution": "Author explanations and check whether the selected facts are useful."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "A polished view can hide missing data",
+          "description": "The lens should explain absent and filtered properties. Readers need a way to inspect the underlying record so a selective presentation does not become a misleading completeness claim."
+        },
+        {
+          "title": "Compatibility is more than parsing",
+          "description": "Two readers may interpret nested records or unsupported selectors differently. Use executable examples and visible version negotiation, and distinguish data selection from visual styling."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Fresnel project and implementations",
+          "url": "https://www.w3.org/2005/04/fresnel-info/",
+          "relationship": "Historical vocabulary and existing browsers; the W3C-hosted materials retain their own terms."
+        },
+        {
+          "title": "N3.js",
+          "url": "https://github.com/rdfjs/N3.js",
+          "relationship": "MIT-licensed RDF parsing and storage for an independent implementation, not a ready-made Fresnel renderer."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Fresnel: Display Vocabulary for RDF",
+          "url": "https://www.w3.org/2005/04/fresnel-info/",
+          "kind": "primary-research",
+          "supports": "The shared-presentation ambition, history, contributors, and list of implemented browsers."
+        },
+        {
+          "id": "manual",
+          "title": "Fresnel vocabulary user manual (30 June 2005)",
+          "url": "https://www.w3.org/2005/04/fresnel-info/manual/",
+          "kind": "specification",
+          "supports": "The separation of selection and formatting, lens behavior, and support for different output representations."
+        },
+        {
+          "id": "implementation",
+          "title": "N3.js: source and implementation guide",
+          "url": "https://github.com/rdfjs/N3.js/blob/8585618a988b058769e9ea5e506da0b30f1c1cc7/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "N3.js: complete reuse license",
+          "url": "https://github.com/rdfjs/N3.js/blob/8585618a988b058769e9ea5e506da0b30f1c1cc7/LICENSE.md",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "portable-federated-annotations",
+    "title": "Annotations that travel with their community",
+    "summary": "Move a group’s conversation about evidence between services without detaching it from the passages.",
+    "opportunity": "Build a portable annotation exchange that preserves passage anchors, authorship, reply context, and visibility when a reading group migrates to another independently hosted service.",
+    "domain": "Collaboration",
+    "tags": [
+      "Web Annotation",
+      "Portability",
+      "Research"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Web Annotation Data Model",
+        "url": "https://www.w3.org/TR/annotation-model/"
+      },
+      {
+        "title": "Web Annotation Model: all implementation results",
+        "url": "https://w3c.github.io/test-results/annotation-model/all.html"
+      },
+      {
+        "title": "Hypothesis client: source and implementation guide",
+        "url": "https://github.com/hypothesis/client/blob/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a/README.md"
+      }
+    ],
+    "existingWork": "W3C Web Annotation is a published standard with an implementation report, and Hypothesis provides an annotation client. This proposal evaluates migration between services with explicit tests for reply context, attribution, visibility, and changed source material.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "Hypothesis client",
+      "codeUrl": "https://github.com/hypothesis/client/tree/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a",
+      "licenseUrl": "https://github.com/hypothesis/client/blob/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a/LICENSE",
+      "license": "BSD 2-Clause License",
+      "licenseId": "BSD-2-Clause",
+      "notice": "Copyright (c) 2013-2019 Hypothes.is Project and contributors",
+      "scope": "The pinned Hypothesis client source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain copyright notices, conditions, and disclaimer in source distributions and reproduce them in documentation or other materials for binary distributions. Preserve the included MIT notice for the Annotator subcomponent as well.",
+      "commit": "b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a",
+      "licenseText": "Copyright (c) 2013-2019 Hypothes.is Project and contributors\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR\nANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n\nSubcomponents\n\nThe project includes a number of subcomponents with separate\ncopyright notices and license terms. Your use of the code for the these\nsubcomponents is subject to the terms and conditions of the following licenses.\n\nFor the annotator subcomponent:\n\n Copyright 2012 Aron Carroll, Rufus Pollock, and Nick Stenning.\n\n Permission is hereby granted, free of charge, to any person obtaining a copy\n of this software and associated documentation files (the \"Software\"), to deal\n in the Software without restriction, including without limitation the rights\n to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n copies of the Software, and to permit persons to whom the Software is\n furnished to do so, subject to the following conditions:\n\n The above copyright notice and this permission notice shall be included in\n all copies or substantial portions of the Software.\n\n THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n THE SOFTWARE.\n",
+      "licenseTextSha256": "8000e9f55b3ea757318f072c8fae3640a4f9e2e3b578c6a271ae98b1598eee7f"
+    },
+    "details": {
+      "origin": {
+        "title": "Web Annotation and interoperable annotation collections",
+        "people": [
+          "W3C Web Annotation Working Group"
+        ],
+        "year": 2017,
+        "summary": "The Web Annotation Data Model describes a common representation for annotations, bodies, targets, and selected regions of resources. It aims to support sharing and migration across systems without losing significant information. Its implementation report documents working implementations, while the model distinguishes the representation from the transport used to exchange it.",
+        "sourceIds": [
+          "origin",
+          "implementations"
+        ]
+      },
+      "history": {
+        "status": "unfinished-direction",
+        "summary": "The standard and multiple applications are real. The proposed experiment takes the interoperability ambition into a practical community exit test with replies, access boundaries, and changing source material.",
+        "whatWasBuilt": "The standardized model represents annotation bodies, targets, selected passages, and collections. The implementation report documents working applications, and the Hypothesis client provides browser-based selection and discussion interfaces.",
+        "whatRemains": "Demonstrate understandable movement between independent services and show precisely which metadata, rights, and conversation structures survive.",
+        "sourceIds": [
+          "origin",
+          "implementations",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A reading group should be able to change its hosting arrangement without losing months of discussion about evidence. An interoperable model and reusable client make a focused test possible. The social benefit is continuity and choice: participants should know who wrote an observation and which passage it addressed after the original service is gone.",
+        "beneficiaries": [
+          "Reading groups",
+          "Research collectives",
+          "Community education programs"
+        ],
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Move one hundred permissioned annotations and a threaded discussion between two local services, then inspect changed documents and withdrawn memberships.",
+        "steps": [
+          {
+            "title": "Make an exchange profile",
+            "description": "Define exactly how the experiment represents annotations, creator attribution, replies, quote anchors, timestamps, and collection membership. Add an explicit visibility policy outside the data model where needed. Write fixtures covering edited and deleted annotations.",
+            "deliverable": "A documented export profile with expected import results and known limitations."
+          },
+          {
+            "title": "Build two service adapters",
+            "description": "Adapt the Hypothesis client where appropriate and implement separate storage adapters. Keep exported creator attribution distinct from locally authenticated account identity. Show imported authors as attributed historical authors unless identity is independently verified.",
+            "deliverable": "A pair of installations that display the same imported discussion without granting impersonation rights."
+          },
+          {
+            "title": "Test real migration failures",
+            "description": "Remove a group member, change a target passage, and import a collection twice. Check deduplication, inaccessible replies, uncertain anchors, and explicit withdrawal requests. Ask participants to verify what another member can actually see.",
+            "deliverable": "A migration checklist backed by fixtures and a participant walkthrough."
+          }
+        ],
+        "successCriteria": [
+          "Export and reimport preserve all supported annotation fields and reply relationships.",
+          "Historical creator attribution cannot be used to log in as that person.",
+          "Private collections never become public through a default import choice."
+        ],
+        "nonGoals": [
+          "Claim federation merely because two systems accept JSON.",
+          "Promise recall of every annotation copy already exported.",
+          "Treat the W3C data model as a complete authentication or moderation protocol."
+        ],
+        "roles": [
+          {
+            "name": "Interoperability developer",
+            "contribution": "Specify the exchange profile and adapters."
+          },
+          {
+            "name": "Identity developer",
+            "contribution": "Separate account permissions from imported attribution."
+          },
+          {
+            "name": "Community moderator",
+            "contribution": "Define visibility and withdrawal expectations with participants."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Attributed identity is not authenticated identity",
+          "description": "Imported annotations can name anyone. Preserve the claim and its provenance, but do not infer account ownership or verification from an exported creator field."
+        },
+        {
+          "title": "Portability includes uncomfortable cases",
+          "description": "Deletion, blocked members, and orphaned replies can change the meaning of a conversation. Show what cannot be preserved and provide a review screen before publishing imported material."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "W3C implementation results",
+          "url": "https://w3c.github.io/test-results/annotation-model/all.html",
+          "relationship": "Evidence that annotation models were implemented; also shows variation in supported features."
+        },
+        {
+          "title": "Hypothesis client",
+          "url": "https://github.com/hypothesis/client",
+          "relationship": "Existing client code that can support a new exchange experiment under its own license."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Web Annotation Data Model",
+          "url": "https://www.w3.org/TR/annotation-model/",
+          "kind": "specification",
+          "supports": "Portable annotations, bodies and targets, selected regions, and the distinction between data model and transport."
+        },
+        {
+          "id": "implementations",
+          "title": "Web Annotation Model: all implementation results",
+          "url": "https://w3c.github.io/test-results/annotation-model/all.html",
+          "kind": "implementation-report",
+          "supports": "Multiple implemented annotations and differences in support for optional features and collections."
+        },
+        {
+          "id": "implementation",
+          "title": "Hypothesis client: source and implementation guide",
+          "url": "https://github.com/hypothesis/client/blob/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "Hypothesis client: complete reuse license",
+          "url": "https://github.com/hypothesis/client/blob/b4d085a2f893aa6de3b61d8b8bc3ae4d0f24fc1a/LICENSE",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "task-oriented-information-tools",
+    "title": "Small tools that gather around a shared task",
+    "summary": "Bring the relevant people, notes, and actions together without making everyone move to one application.",
+    "opportunity": "Build a task-oriented workbench where a community can assemble a contact view, evidence list, and next-action tool around shared records, with changes reflected across those tools.",
+    "domain": "Personal computing",
+    "tags": [
+      "Haystack",
+      "Composable tools",
+      "Semantic data"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Haystack: A Platform for Authoring End User Semantic Web Applications",
+        "url": "https://haystack.csail.mit.edu/papers/iswc2003-haystack"
+      },
+      {
+        "title": "User Interaction Experience for Semantic Web Information",
+        "url": "https://haystack.csail.mit.edu/papers/www2003-ui.pdf"
+      },
+      {
+        "title": "N3.js: source and implementation guide",
+        "url": "https://github.com/rdfjs/N3.js/blob/8585618a988b058769e9ea5e506da0b30f1c1cc7/README.md"
+      }
+    ],
+    "existingWork": "MIT’s Haystack was an implemented platform for RDF-based end-user applications, with customizable interfaces and cooperative tools. N3.js provides a modern RDF building block. The proposed contribution is a narrow community task kit with independently replaceable tools.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "N3.js",
+      "codeUrl": "https://github.com/rdfjs/N3.js/tree/8585618a988b058769e9ea5e506da0b30f1c1cc7",
+      "licenseUrl": "https://github.com/rdfjs/N3.js/blob/8585618a988b058769e9ea5e506da0b30f1c1cc7/LICENSE.md",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright ©2012–present N3.js contributors",
+      "scope": "The pinned N3.js source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain the copyright, permission notice, and disclaimer in copies or substantial portions of the software.",
+      "commit": "8585618a988b058769e9ea5e506da0b30f1c1cc7",
+      "licenseText": "# License\nThe MIT License (MIT)\nCopyright ©2012–present N3.js contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+      "licenseTextSha256": "c865fbe2694190f63fbc44c760a11574f843ca837fa580b332d56d23d5867443"
+    },
+    "details": {
+      "origin": {
+        "title": "Haystack and information-centric cooperative tools",
+        "people": [
+          "Dennis Quan",
+          "David Huynh",
+          "David R. Karger"
+        ],
+        "year": 2003,
+        "summary": "Haystack explored interfaces where information objects could be managed across views instead of remaining trapped inside separate application models. Its researchers implemented an RDF-based platform and argued for small cooperative tools. They also treated user-interface specifications as structured data so applications could be extended and customized.",
+        "sourceIds": [
+          "origin",
+          "interaction"
+        ]
+      },
+      "history": {
+        "status": "research-prototype",
+        "summary": "Haystack existed as an extensible research platform. The proposed experiment revisits its cooperative-tool model with a specific community workflow and a measurable replacement test.",
+        "whatWasBuilt": "The papers describe tools for creating, viewing, and manipulating RDF information, including direct manipulation of information objects. N3.js supplies a later parser and store for new browser-based tools.",
+        "whatRemains": "Demonstrate that a group can replace one tool without losing shared records, breaking task context, or learning the underlying graph representation.",
+        "sourceIds": [
+          "origin",
+          "interaction",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A volunteer group organizing a repair event might coordinate people, equipment, and preparation notes in several separate tools. A small shared information model could support focused views for each task while retaining coherent records. The benefit to test is fewer repeated updates and easier tool replacement, using one deliberately limited workflow rather than proposing a universal desktop.",
+        "beneficiaries": [
+          "Volunteer event organizers",
+          "Community workshops",
+          "Small public-interest teams"
+        ],
+        "sourceIds": [
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Support planning one repair event through three small tools, then replace the contact tool with a separately written implementation without changing the event records.",
+        "steps": [
+          {
+            "title": "Choose one shared task model",
+            "description": "Define stable identifiers for events, people, equipment, and preparation actions. Record provenance and ownership for each editable field. Build a small permissioned dataset and explain it in domain language before writing the interface.",
+            "deliverable": "A documented task model and examples that organizers can understand and correct."
+          },
+          {
+            "title": "Assemble three cooperative tools",
+            "description": "Use a common RDF store with a contact view, an equipment checklist, and an evidence-notes panel. Let an organizer move a person or item into a task context through direct manipulation or equivalent keyboard actions.",
+            "deliverable": "An event workbench where all three tools show consistent updates to the same records."
+          },
+          {
+            "title": "Prove independent replaceability",
+            "description": "Have another contributor implement the contact view against documented records and operations. Export the event, open it with the new tool, and ask organizers to complete the same preparation scenario.",
+            "deliverable": "A replacement demonstration identifying any hidden assumptions between components."
+          }
+        ],
+        "successCriteria": [
+          "Editing one shared record does not create competing copies in different tools.",
+          "The replacement tool completes the same agreed organizer tasks.",
+          "Organizers can use the workbench without understanding RDF syntax."
+        ],
+        "nonGoals": [
+          "Rebuild all desktop applications.",
+          "Turn arbitrary imported data into trustworthy shared facts.",
+          "Execute unreviewed interface plugins with unrestricted access to group records."
+        ],
+        "roles": [
+          {
+            "name": "Data-model developer",
+            "contribution": "Define stable records and operations."
+          },
+          {
+            "name": "Tool developer",
+            "contribution": "Build one focused view against the shared interface."
+          },
+          {
+            "name": "Community organizer",
+            "contribution": "Validate the workflow and identify unnecessary complexity."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "A shared record needs a shared meaning",
+          "description": "Different tools may interpret a status or contact role differently. Specify observable behavior and let tools decline unsupported operations instead of silently translating them."
+        },
+        {
+          "title": "Replaceable tools need bounded authority",
+          "description": "A convenient plugin should not inherit every permission in the workbench. Scope access to the records and actions it needs, and make data export independent of any plugin."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Haystack platform paper",
+          "url": "https://haystack.csail.mit.edu/papers/iswc2003-haystack",
+          "relationship": "Historical implementation and end-user customization model."
+        },
+        {
+          "title": "N3.js",
+          "url": "https://github.com/rdfjs/N3.js",
+          "relationship": "Separately licensed RDF handling for independently written tools; no Haystack code rights are implied."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Haystack: A Platform for Authoring End User Semantic Web Applications",
+          "url": "https://haystack.csail.mit.edu/papers/iswc2003-haystack",
+          "kind": "primary-research",
+          "supports": "Implemented RDF-based platform, structured interfaces, extensibility, and customization."
+        },
+        {
+          "id": "interaction",
+          "title": "User Interaction Experience for Semantic Web Information",
+          "url": "https://haystack.csail.mit.edu/papers/www2003-ui.pdf",
+          "kind": "primary-research",
+          "supports": "Information-centric navigation, direct manipulation, and the proposal for small cooperative tools."
+        },
+        {
+          "id": "implementation",
+          "title": "N3.js: source and implementation guide",
+          "url": "https://github.com/rdfjs/N3.js/blob/8585618a988b058769e9ea5e506da0b30f1c1cc7/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "N3.js: complete reuse license",
+          "url": "https://github.com/rdfjs/N3.js/blob/8585618a988b058769e9ea5e506da0b30f1c1cc7/LICENSE.md",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  },
+  {
+    "id": "self-organizing-document-collections",
+    "title": "Document collections that follow the work",
+    "summary": "Let the same document belong to several useful contexts, with understandable rules for what happens next.",
+    "opportunity": "Build a property-based document organizer for a community project, where personal and group views coexist and simple rules propose actions without moving or duplicating the original files.",
+    "domain": "Information management",
+    "tags": [
+      "Placeless Documents",
+      "Document properties",
+      "Workflow"
+    ],
+    "sourceMaterial": [
+      {
+        "title": "Extending document management systems with user-specific active properties",
+        "url": "https://doi.org/10.1145/348751.348758"
+      },
+      {
+        "title": "The Appropriation of Interactive Technologies: Some Lessons from Placeless Documents",
+        "url": "https://www.dourish.com/publications/2002/jcscw-appropriation.pdf"
+      },
+      {
+        "title": "DuckDB: source and implementation guide",
+        "url": "https://github.com/duckdb/duckdb/blob/e3946f2327a3cc622e1ec7fe71d51de49f93e61d/README.md"
+      }
+    ],
+    "existingWork": "Xerox PARC’s Placeless Documents was a working prototype with user-specific and active properties. DuckDB provides a modern local query engine. The proposed experiment focuses on understandable, reversible document behavior for a small community.",
+    "originalityStatus": "proposed-experiment",
+    "implementation": {
+      "name": "DuckDB",
+      "codeUrl": "https://github.com/duckdb/duckdb/tree/e3946f2327a3cc622e1ec7fe71d51de49f93e61d",
+      "licenseUrl": "https://github.com/duckdb/duckdb/blob/e3946f2327a3cc622e1ec7fe71d51de49f93e61d/LICENSE",
+      "license": "MIT License",
+      "licenseId": "MIT",
+      "notice": "Copyright 2018-2026 Stichting DuckDB Foundation",
+      "scope": "The pinned DuckDB source code is an openly licensed building block for a new, independent implementation of this proposed experiment. It is not the historical system. Its license does not cover the original research papers, historical code, screenshots, trademarks, linked documents, or third-party dependencies; those sources are linked for study under their own terms.",
+      "reviewedOn": "2026-09-05",
+      "reviewStatus": "approved",
+      "permissions": {
+        "use": true,
+        "modify": true,
+        "redistribute": true,
+        "commercial": true,
+        "royaltyFree": true
+      },
+      "shareRequirement": "Retain the copyright, permission notice, and disclaimer in copies or substantial portions of the software.",
+      "commit": "e3946f2327a3cc622e1ec7fe71d51de49f93e61d",
+      "licenseText": "Copyright 2018-2026 Stichting DuckDB Foundation\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+      "licenseTextSha256": "075c33400ffcb0c586dd106a029d3e733e9da3693f8fcb9cebfc651c8a2f14e3"
+    },
+    "details": {
+      "origin": {
+        "title": "Placeless Documents",
+        "people": [
+          "Paul Dourish",
+          "W. Keith Edwards",
+          "Anthony LaMarca",
+          "John Lamping",
+          "Karin Petersen",
+          "Michael Salisbury",
+          "Douglas B. Terry",
+          "James Thornton"
+        ],
+        "year": 2000,
+        "summary": "Placeless Documents explored organizing information through document properties instead of one fixed hierarchy. Properties could represent users’ different perspectives, while active properties could attach behavior to documents. The research describes an experimental infrastructure and applications, with later reflection on how people adapt the system to their working practices.",
+        "sourceIds": [
+          "origin",
+          "reflection"
+        ]
+      },
+      "history": {
+        "status": "research-prototype",
+        "summary": "Placeless Documents implemented a property-based infrastructure and explored it through applications. This continuation focuses on transparent rules and coexisting community views, with preview and undo for metadata changes.",
+        "whatWasBuilt": "Placeless supported user-specific properties and active document services. DuckDB supplies a separate MIT-licensed engine for querying structured metadata in a new implementation.",
+        "whatRemains": "Let ordinary group members understand why a document appears in a collection, preview an action rule, and reverse mistaken metadata changes without losing their own organization.",
+        "sourceIds": [
+          "origin",
+          "implementation"
+        ]
+      },
+      "whyNow": {
+        "summary": "A community preparing a public-interest software release might need views for missing approvals, contributor instructions, and translated material. Those views can overlap without duplicating files. The experiment would test whether inspectable document properties and suggested actions reduce filing work while allowing members to retain personal organization alongside the group’s process.",
+        "beneficiaries": [
+          "Community documentation teams",
+          "Volunteer translators",
+          "Public-interest software maintainers"
+        ],
+        "sourceIds": [
+          "reflection",
+          "implementation"
+        ]
+      },
+      "buildPlan": {
+        "firstMilestone": "Organize one hundred permissioned documents into three overlapping group views and personal views, then safely preview and undo one metadata rule.",
+        "steps": [
+          {
+            "title": "Keep files and perspectives separate",
+            "description": "Index document identifiers, locations, versions, and selected metadata. Store group properties separately from personal properties, with attribution. Use DuckDB queries to form collections while leaving the underlying files in place.",
+            "deliverable": "A local organizer where a document can appear in several views with no duplicate file."
+          },
+          {
+            "title": "Explain collection membership",
+            "description": "Build a readable filter editor and show which properties caused each document to appear. Let a participant override their own view without rewriting group policy. Provide a list of documents with insufficient metadata rather than hiding them.",
+            "deliverable": "Three useful collections with per-document explanations and explicit missing-data states."
+          },
+          {
+            "title": "Add previewable actions",
+            "description": "Implement one bounded rule, such as suggesting a review label when required metadata is present. Show the exact affected records before approval and preserve an undo log. Test with a changed file location and a deliberately incorrect property.",
+            "deliverable": "A reversible rule demonstration and a report of whether participants predict its effect."
+          }
+        ],
+        "successCriteria": [
+          "One file can appear in multiple collections without copied content.",
+          "A participant can explain why a document is included or omitted.",
+          "An approved metadata change can be reversed without overwriting another member’s later change."
+        ],
+        "nonGoals": [
+          "Run arbitrary code embedded in downloaded documents.",
+          "Replace the operating system’s file permissions.",
+          "Automatically rename, move, or delete original files."
+        ],
+        "roles": [
+          {
+            "name": "Data developer",
+            "contribution": "Implement metadata provenance, queries, and undo."
+          },
+          {
+            "name": "Interaction designer",
+            "contribution": "Design rule previews and membership explanations."
+          },
+          {
+            "name": "Documentation maintainer",
+            "contribution": "Choose realistic overlapping views and evaluate the workflow."
+          }
+        ]
+      },
+      "challenges": [
+        {
+          "title": "Personal and shared organization can conflict",
+          "description": "A group’s release status and a member’s private reminder are different facts. Preserve their scopes and authors so one perspective cannot silently overwrite another."
+        },
+        {
+          "title": "Automation must remain legible",
+          "description": "A rule that changes hundreds of records can be hard to inspect. Begin with bounded metadata suggestions, explain the trigger, and test undo before permitting any external action."
+        }
+      ],
+      "relatedWork": [
+        {
+          "title": "Placeless Documents research",
+          "url": "https://doi.org/10.1145/348751.348758",
+          "relationship": "Primary description of user-specific active properties and the implemented infrastructure."
+        },
+        {
+          "title": "DuckDB",
+          "url": "https://github.com/duckdb/duckdb",
+          "relationship": "MIT-licensed metadata query building block for a new organizer; not the historical document system."
+        }
+      ],
+      "references": [
+        {
+          "id": "origin",
+          "title": "Extending document management systems with user-specific active properties",
+          "url": "https://doi.org/10.1145/348751.348758",
+          "kind": "primary-research",
+          "supports": "The implemented Placeless Documents prototype and its property-based document services."
+        },
+        {
+          "id": "reflection",
+          "title": "The Appropriation of Interactive Technologies: Some Lessons from Placeless Documents",
+          "url": "https://www.dourish.com/publications/2002/jcscw-appropriation.pdf",
+          "kind": "primary-research",
+          "supports": "The author’s account of document properties, multiple perspectives, and adaptation to working practices."
+        },
+        {
+          "id": "implementation",
+          "title": "DuckDB: source and implementation guide",
+          "url": "https://github.com/duckdb/duckdb/blob/e3946f2327a3cc622e1ec7fe71d51de49f93e61d/README.md",
+          "kind": "implementation",
+          "supports": "The capabilities of the modern building block and its distinction from the proposed product."
+        },
+        {
+          "id": "license",
+          "title": "DuckDB: complete reuse license",
+          "url": "https://github.com/duckdb/duckdb/blob/e3946f2327a3cc622e1ec7fe71d51de49f93e61d/LICENSE",
+          "kind": "license",
+          "supports": "The reviewed permission to use, modify, redistribute, and use this code commercially, subject to its notices."
+        }
+      ],
+      "reviewedOn": "2026-09-05"
+    }
+  }
+]
