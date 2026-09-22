@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "@workos-inc/node": "^10.13.0",
-    "jose": "^6.2.11"
+    "jose": "^6.2.12"
   }
 }
