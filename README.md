@@ -1,6 +1,9 @@
 # Load and Run
 
-Source for customizable personal and shared spaces for notes, links, tasks, ideas, videos, and GitHub projects, with AI adapters exercised using mocked providers.
+Load and Run combines a sourced catalog of project ideas and a builder community
+with customizable personal and shared spaces for notes, links, tasks, videos,
+and GitHub projects. The offline demo covers the catalog, groups, and posts;
+the broader spaces and optional AI adapters are available for local testing.
 
 A code-only project built with plain JavaScript, TypeScript Workers and SQLite-backed Durable Objects. Cloudflare Access and WorkOS adapters are retained for local testing and architecture review. There is no hosted service or deployment workflow in this project; configuration contains no operator account or authentication application. The former Cloudflare Worker and its four Durable Object namespaces were deleted on September 21, 2026; this repository contains source and synthetic fixtures, not that stored data.
 
